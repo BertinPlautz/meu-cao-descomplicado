@@ -1006,6 +1006,29 @@ p {
   line-height: 1.5;
 }
 
+.btn-card-zoom {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--navy-surface, #F3EFEA);
+  border: 1.5px solid var(--gold);
+  color: var(--navy);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-card-zoom:hover {
+  background: var(--gold);
+  color: var(--navy-deep);
+  transform: translateY(-1px);
+}
+
 .por-dentro-actions {
   display: flex;
   flex-wrap: wrap;
@@ -1496,17 +1519,53 @@ p {
 }
 
 .painel-apoio-preview button {
+  position: relative;
   background: none;
   border: none;
   padding: 0;
   cursor: zoom-in;
   display: block;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.painel-apoio-preview button:hover {
+  transform: translateY(-2px);
+}
+
+.painel-apoio-preview button:hover img {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
 }
 
 .painel-apoio-preview img {
-  border-radius: 4px;
+  border-radius: 6px;
   box-shadow: var(--shadow-md);
   width: 100%;
+  display: block;
+  transition: box-shadow 0.2s ease;
+}
+
+.painel-zoom-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(13, 27, 48, 0.92);
+  color: var(--gold-lt);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-full);
+  padding: 6px 14px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  pointer-events: none;
 }
 
 .painel-apoio-copy h3 {
@@ -2004,7 +2063,7 @@ footer {
 }
 
 /* ==========================================================================
-   MODAL / LIGHTBOX UNIVERSAL
+   MODAL / LIGHTBOX UNIVERSAL & LEITOR DE AMOSTRA EM ALTA RESOLUÇÃO
    ========================================================================== */
 .zoom-dialog {
   padding: 0;
@@ -2014,47 +2073,143 @@ footer {
   max-width: none;
   max-height: none;
   margin: 0;
-  background: rgba(9, 19, 34, 0.97);
+  background: rgba(9, 19, 34, 0.98);
   color: #FFFFFF;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   overscroll-behavior: contain;
 }
 
 .zoom-dialog::backdrop {
-  background: rgba(9, 19, 34, 0.95);
-  backdrop-filter: blur(8px);
+  background: rgba(9, 19, 34, 0.96);
+  backdrop-filter: blur(10px);
+}
+
+.zoom-dialog:not([open]) {
+  display: none;
 }
 
 .zoom-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  position: relative;
+  z-index: 30;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
-  padding: 14px 20px;
-  background: rgba(9, 19, 34, 0.92);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
+  gap: 14px;
+  padding: 12px 20px;
+  background: rgba(13, 27, 48, 0.96);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  flex-shrink: 0;
+  flex-wrap: wrap;
 }
 
-.zoom-header-info {
-  font-size: 14px;
-  color: #C2CCDE;
+.zoom-title-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.zoom-badge-pill {
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold-lt);
+  background: rgba(200, 155, 60, 0.18);
+  border: 1px solid rgba(200, 155, 60, 0.45);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.zoom-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.zoom-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.zoom-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-sm);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.zoom-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+.zoom-btn:active {
+  transform: translateY(0);
+}
+
+.zoom-level-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 54px;
+  height: 36px;
+  padding: 0 8px;
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--gold-lt);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
+}
+
+.zoom-btn-mode.active {
+  background: var(--gold);
+  color: var(--navy-deep);
+  border-color: var(--gold);
+  font-weight: 700;
 }
 
 .zoom-close-btn {
-  background: none;
+  background: transparent;
   border: 1.5px solid var(--gold);
   color: #FFFFFF;
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 14.5px;
-  padding: 8px 20px;
+  font-size: 13.5px;
+  height: 36px;
+  padding: 0 16px;
   border-radius: var(--radius-full);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .zoom-close-btn:hover {
@@ -2062,32 +2217,395 @@ footer {
   color: var(--navy-deep);
 }
 
-.zoom-container {
+/* Barra de Abas das 3 Páginas */
+.zoom-tabs-bar {
+  position: relative;
+  z-index: 25;
+  background: rgba(10, 20, 36, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 16px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.zoom-tabs-bar.hidden {
+  display: none;
+}
+
+.zoom-tabs-track {
+  display: inline-flex;
+  gap: 8px;
+  max-width: 100%;
+}
+
+.zoom-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-full);
+  color: #B4C0D4;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.zoom-tab:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+}
+
+.zoom-tab.active {
+  background: rgba(200, 155, 60, 0.22);
+  border-color: var(--gold);
+  color: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(200, 155, 60, 0.2);
+}
+
+.zoom-tab-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 11px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.zoom-tab.active .zoom-tab-step {
+  background: var(--gold);
+  color: var(--navy-deep);
+}
+
+/* Área Interativa de Leitura e Pan/Zoom */
+.zoom-viewport {
+  position: relative;
+  flex: 1 1 auto;
+  overflow: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 20px 16px 60px;
-  min-height: calc(100dvh - 80px);
+  padding: 24px 16px 80px;
+  outline: none;
+  cursor: default;
 }
 
-.zoom-container img {
-  max-width: 95%;
-  max-height: 84vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 6px;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+.zoom-viewport.can-drag {
+  cursor: grab;
+}
+
+.zoom-viewport.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+/* Botões Flutuantes Próximo / Anterior */
+.zoom-nav-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(13, 27, 48, 0.85);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+}
+
+.zoom-nav-arrow.prev {
+  left: 20px;
+}
+
+.zoom-nav-arrow.next {
+  right: 20px;
+}
+
+.zoom-nav-arrow:hover:not(:disabled) {
+  background: var(--gold);
+  color: var(--navy-deep);
+  border-color: var(--gold);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.zoom-nav-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.zoom-nav-arrow.hidden {
+  display: none;
+}
+
+/* Palco da Imagem */
+.zoom-canvas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.zoom-img-wrapper {
+  position: relative;
+  display: inline-block;
+  transition: width 0.18s cubic-bezier(0.2, 0, 0, 1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
   background: #FFFFFF;
+  overflow: hidden;
+  max-width: none;
+}
+
+.zoom-img-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: auto;
+}
+
+.zoom-drag-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 13px;
+  color: #C2CCDE;
 }
 
 .zoom-caption-text {
-  margin-top: 14px;
+  margin-top: 10px;
   font-size: 14.5px;
   color: #C2CCDE;
   text-align: center;
-  max-width: 600px;
+  max-width: 680px;
+  line-height: 1.5;
+}
+
+/* Seção de Transcrição Formatada */
+.zoom-transcription-section {
+  width: 100%;
+  max-width: 860px;
+  margin: 40px auto 20px;
+  display: none;
+}
+
+.zoom-transcription-section.visible {
+  display: block;
+}
+
+.zoom-transcription-card {
+  background: #0E1D33;
+  border: 1.5px solid rgba(200, 155, 60, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  color: #E2E8F0;
+}
+
+.zoom-transcription-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 18px;
+  margin-bottom: 20px;
+}
+
+.zoom-transcription-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  margin-bottom: 8px;
+}
+
+.zoom-transcription-header h4 {
+  font-size: 24px;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+  font-family: var(--font-serif);
+}
+
+.zoom-transcription-header p {
+  font-size: 15px;
+  color: #94A3B8;
+  margin: 0;
+}
+
+.zoom-transcription-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.transcription-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.transcription-item-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.transcription-num-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--navy-deep);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.transcription-item-type {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold-lt);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.transcription-item h5 {
+  font-size: 16px;
+  color: #FFFFFF;
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+
+.transcription-item p {
+  font-size: 14px;
+  color: #CBD5E1;
+  margin: 0;
+  line-height: 1.55;
+  white-space: pre-line;
+}
+
+.transcription-footer-note {
+  margin-top: 20px;
+  padding: 14px 18px;
+  background: rgba(200, 155, 60, 0.1);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 14px;
+  color: #E2E8F0;
+  line-height: 1.5;
+}
+
+/* Banner de Conversão ao Fim do Modal */
+.zoom-conversion-banner {
+  width: 100%;
+  max-width: 860px;
+  margin: 32px auto 10px;
+  background: linear-gradient(135deg, rgba(26, 44, 76, 0.95), rgba(13, 27, 48, 0.98));
+  border: 1.5px solid var(--gold);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.zoom-conversion-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.zoom-conversion-info strong {
+  font-size: 16px;
+  color: #FFFFFF;
+}
+
+.zoom-conversion-info span {
+  font-size: 14px;
+  color: #CBD5E1;
+}
+
+.zoom-conversion-banner .btn-primary {
+  padding: 10px 20px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .zoom-header {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+  .zoom-title-area {
+    width: 100%;
+    order: 1;
+  }
+  .zoom-toolbar {
+    width: 100%;
+    order: 2;
+    justify-content: space-between;
+  }
+  .zoom-btn-mode span {
+    display: none;
+  }
+  .zoom-btn-mode {
+    padding: 0 10px;
+  }
+  .zoom-nav-arrow {
+    display: none;
+  }
+  .zoom-tabs-bar {
+    justify-content: flex-start;
+    padding: 8px 12px;
+  }
+  .zoom-tab {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  .zoom-conversion-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 18px 16px;
+  }
+  .zoom-conversion-banner .btn-primary {
+    width: 100%;
+  }
 }
 
 /* Gallery Modal: As 12 Capas */
@@ -2341,7 +2859,7 @@ footer {
 </section>
 
 <!-- ==========================================================================
-     POR DENTRO: ANATOMIA REAL (VOLUME PASSEIO COM GUIA)
+     POR DENTRO: ANATOMIA REAL (VOLUME 04: ELE SOFRE QUANDO FICA SOZINHO?)
      ========================================================================== -->
 <section class="section-por-dentro" id="por-dentro" aria-labelledby="t-pordentro">
   <div class="wrap">
@@ -2349,15 +2867,15 @@ footer {
     <div class="section-head">
       <span class="sec-tag">Transparência Total</span>
       <h2 id="t-pordentro">Veja o que está comprando. Por dentro.</h2>
-      <p>Esta é uma página real do volume <strong>Passeio com Guia</strong>.</p>
-      <p style="margin-top: 6px;">Abra a amostra e veja como as orientações estão organizadas, como os exemplos ajudam a entender o uso e onde você pode registrar suas observações.</p>
+      <p>Esta é uma demonstração real de 3 páginas do volume <strong>Ele sofre quando fica sozinho?</strong> (Volume 04 da coleção).</p>
+      <p style="margin-top: 6px;">Abra a amostra para ampliar e ler cada orientação em tamanho real, ver como os exemplos funcionam e como registrar suas observações.</p>
     </div>
 
     <div class="por-dentro-card">
       <div class="por-dentro-top-action">
-        <button class="btn-primary" type="button" data-zoom="img/pag-03-zoom.webp" data-caption="Volume Passeio com Guia: Mapa de situações real mostrando os 6 cards correspondentes">
+        <button class="btn-primary" type="button" data-sample-idx="0" data-caption="Volume 04: Mapa de situações real mostrando os 6 cards correspondentes">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
-          <span>AMPLIAR A AMOSTRA</span>
+          <span>AMPLIAR A AMOSTRA (3 PÁGINAS)</span>
         </button>
       </div>
 
@@ -2365,49 +2883,61 @@ footer {
         
         <!-- Step 1 -->
         <div class="step-card">
-          <div class="step-media" data-zoom="img/pag-03-zoom.webp" data-caption="Página 03: Mapa de situações e direcionamento de cards" role="button" tabindex="0" aria-label="Ampliar Mapa de Situações">
+          <div class="step-media" data-zoom="img/pag-03-zoom.webp" data-sample-idx="0" data-caption="Página 03: Mapa de situações e direcionamento de cards" role="button" tabindex="0" aria-label="Ampliar Mapa de Situações (Página 03)">
             <img src="img/pag-03.webp" width="760" height="1074" loading="lazy" alt="Página de mapa de situações indicando quais cards consultar">
-            <span class="step-media-badge">Mapa</span>
+            <span class="step-media-badge">Pág. 03 · Mapa</span>
           </div>
           <div class="step-body">
             <div class="step-number">1</div>
             <h3>1. Encontre a situação</h3>
             <p>O mapa de cada volume apresenta situações e indica quais cards consultar.</p>
+            <button class="btn-card-zoom" type="button" data-sample-idx="0">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/></svg>
+              <span>Ampliar e ler página 03</span>
+            </button>
           </div>
         </div>
 
         <!-- Step 2 -->
         <div class="step-card">
-          <div class="step-media" data-zoom="img/pag-05-zoom.webp" data-caption="Página 05: Cards de consulta com blocos de orientação e cenas de aplicação" role="button" tabindex="0" aria-label="Ampliar Cards de Orientação">
+          <div class="step-media" data-zoom="img/pag-05-zoom.webp" data-sample-idx="1" data-caption="Página 05: Cards de consulta com blocos de orientação e cenas de aplicação" role="button" tabindex="0" aria-label="Ampliar Cards de Orientação (Página 05)">
             <img src="img/pag-05.webp" width="760" height="1074" loading="lazy" alt="Cards recortáveis com blocos de orientação prática">
-            <span class="step-media-badge">Cards</span>
+            <span class="step-media-badge">Pág. 05 · Cards</span>
           </div>
           <div class="step-body">
             <div class="step-number">2</div>
             <h3>2. Leia a orientação e o exemplo</h3>
             <p>Cada card reúne blocos de consulta e uma cena de aplicação na rotina.</p>
+            <button class="btn-card-zoom" type="button" data-sample-idx="1">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/></svg>
+              <span>Ampliar e ler página 05</span>
+            </button>
           </div>
         </div>
 
         <!-- Step 3 -->
         <div class="step-card">
-          <div class="step-media" data-zoom="img/pag-09-zoom.webp" data-caption="Página 09: Ficha de observação para preencher à mão e levar para consulta" role="button" tabindex="0" aria-label="Ampliar Ficha de Observação">
+          <div class="step-media" data-zoom="img/pag-09-zoom.webp" data-sample-idx="2" data-caption="Página 09: Ficha de observação para preencher à mão e levar para consulta" role="button" tabindex="0" aria-label="Ampliar Ficha de Observação (Página 09)">
             <img src="img/pag-09.webp" width="760" height="1074" loading="lazy" alt="Ficha de observação com campos para preenchimento">
-            <span class="step-media-badge">Ficha</span>
+            <span class="step-media-badge">Pág. 09 · Ficha</span>
           </div>
           <div class="step-body">
             <div class="step-number">3</div>
             <h3>3. Organize suas observações</h3>
             <p>Use as fichas para anotar o que aconteceu, quais cuidados foram adotados e o que deseja conversar com um profissional.</p>
+            <button class="btn-card-zoom" type="button" data-sample-idx="2">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/></svg>
+              <span>Ampliar e ler página 09</span>
+            </button>
           </div>
         </div>
 
       </div>
 
       <div class="por-dentro-actions">
-        <button class="btn-outline" type="button" data-zoom="img/pag-03-zoom.webp" data-caption="Mapa de situações do volume Passeio com Guia">
+        <button class="btn-outline" type="button" data-sample-idx="0" data-caption="Mapa de situações do volume Ele sofre quando fica sozinho?">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <span>VER O MAPA DE SITUAÇÕES</span>
+          <span>VER AS 3 PÁGINAS DA AMOSTRA</span>
         </button>
       </div>
 
@@ -2523,7 +3053,7 @@ footer {
         <p style="font-size: 16px; color: var(--muted); margin-bottom: 12px;">Você vê como organizar as informações antes de fazer suas próprias anotações.</p>
         <p style="font-size: 16px; color: var(--muted); margin-bottom: 24px;">Isso permite registrar situações da rotina, combinar a participação de outros cuidadores e reunir dúvidas para uma consulta.</p>
         
-        <button class="btn-outline" type="button" data-zoom="img/pag-09-zoom.webp" data-caption="Exemplo de ficha de observação e anotações para o tutor">
+        <button class="btn-outline" type="button" data-zoom="img/pag-09-zoom.webp" data-sample-idx="2" data-caption="Exemplo de ficha de observação e anotações para o tutor">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
           <span>VER UM EXEMPLO PREENCHIDO</span>
         </button>
@@ -2545,16 +3075,23 @@ footer {
     <!-- Painel de Apoio ao Tutor Card -->
     <div class="painel-apoio-card">
       <div class="painel-apoio-preview">
-        <button type="button" data-zoom="img/painel-sos.webp" data-caption="Painel de Apoio ao Tutor: página para organizar contatos de emergência e lembretes de cuidado" aria-label="Ampliar Painel de Apoio ao Tutor">
-          <img src="img/painel-sos.webp" width="430" height="608" loading="lazy" alt="Painel de Apoio ao Tutor para afixar na geladeira">
+        <button type="button" data-painel="true" data-zoom="img/painel-apoio-zoom.jpg" data-caption="Painel de Apoio ao Tutor: guia prático com sinais de urgência, quando falar com o veterinário, lembretes dos 12 temas e contatos de emergência" aria-label="Ampliar Painel de Apoio ao Tutor">
+          <img src="img/painel-apoio-novo.jpg" width="724" height="1024" loading="lazy" alt="Painel de Apoio ao Tutor: SOS, urgências e contatos da rotina">
+          <span class="painel-zoom-badge" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/></svg>
+            <span>Toque para ampliar</span>
+          </span>
         </button>
       </div>
       <div class="painel-apoio-copy">
         <span class="sec-tag">Recurso de Emergência e Segurança</span>
         <h3>Painel de Apoio ao Tutor</h3>
-        <p>Uma página para organizar contatos e lembretes de cuidado.</p>
-        <p>Imprima, preencha e deixe em um lugar fácil de consultar.</p>
-        <button class="btn-primary" type="button" data-zoom="img/painel-sos.webp" data-caption="Painel de Apoio ao Tutor: Guia prático de contatos e apoio">CONHECER O PAINEL</button>
+        <p>Um guia visual para ter à mão na geladeira ou mural: <strong>Na dúvida, comece pelo cuidado.</strong></p>
+        <p>Reúne os 8 sinais de urgência imediata para procurar atendimento, sinais de alerta para consultar o veterinário, direcionamento de rotina para os 12 temas e campos para anotar contatos de emergência.</p>
+        <button class="btn-primary" type="button" data-painel="true" data-zoom="img/painel-apoio-zoom.jpg" data-caption="Painel de Apoio ao Tutor: Guia prático de contatos e apoio">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/></svg>
+          <span>AMPLIAR E LER O PAINEL</span>
+        </button>
         <p class="painel-disclaimer">O painel é educativo e não substitui avaliação ou atendimento profissional.</p>
       </div>
     </div>
@@ -2833,14 +3370,106 @@ footer {
 <!-- ==========================================================================
      MODAL UNIVERSAL DE AMPLIAÇÃO / ZOOM
      ========================================================================== -->
-<dialog class="zoom-dialog" id="zoom-dialog" aria-label="Visualização em alta resolução">
+<dialog class="zoom-dialog" id="zoom-dialog" aria-label="Visualizador em Alta Resolução">
+  <!-- Top Bar: Header & Controls -->
   <div class="zoom-header">
-    <span class="zoom-header-info">Use o movimento de pinça ou rolagem para ampliar</span>
-    <button class="zoom-close-btn" type="button" id="zoom-close">Fechar</button>
+    <div class="zoom-title-area">
+      <div class="zoom-badge-pill" id="zoom-badge">Amostra Real</div>
+      <h3 class="zoom-title" id="zoom-title">Visualização em Alta Resolução</h3>
+    </div>
+
+    <!-- Zoom Controls Toolbar -->
+    <div class="zoom-toolbar" role="toolbar" aria-label="Controles de ampliação e leitura">
+      <button class="zoom-btn" type="button" id="zoom-btn-out" aria-label="Reduzir ampliação (tecla -)" title="Reduzir (-)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <span class="zoom-level-badge" id="zoom-level" aria-live="polite">100%</span>
+      <button class="zoom-btn" type="button" id="zoom-btn-in" aria-label="Aumentar ampliação (tecla +)" title="Aumentar (+)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <button class="zoom-btn zoom-btn-mode" type="button" id="zoom-btn-reading" aria-label="Tamanho 100% nítido de leitura" title="Tamanho Real de Leitura (100%)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M8 11h6"/></svg>
+        <span>Leitura</span>
+      </button>
+      <button class="zoom-btn zoom-btn-mode" type="button" id="zoom-btn-fit" aria-label="Ajustar à tela" title="Ajustar à tela inteira">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+        <span>Ajustar</span>
+      </button>
+      <button class="zoom-btn zoom-btn-mode" type="button" id="zoom-btn-text" aria-label="Alternar transcrição do texto formatado" title="Ler texto transcrito">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        <span>Texto</span>
+      </button>
+      <button class="zoom-close-btn" type="button" id="zoom-close" aria-label="Fechar visualizador (Esc)">
+        <span>Fechar</span>
+      </button>
+    </div>
   </div>
-  <div class="zoom-container">
-    <img id="zoom-img" src="" alt="">
-    <p class="zoom-caption-text" id="zoom-caption"></p>
+
+  <!-- Page Selector Tabs (visible when inspecting sample pages) -->
+  <div class="zoom-tabs-bar" id="zoom-tabs-bar" role="tablist" aria-label="Páginas da amostra">
+    <div class="zoom-tabs-track">
+      <button class="zoom-tab active" type="button" role="tab" data-tab-idx="0" id="tab-pag-03" aria-selected="true">
+        <span class="zoom-tab-step">1</span>
+        <span class="zoom-tab-label"><b>Pág. 03</b> · Mapa de Situações</span>
+      </button>
+      <button class="zoom-tab" type="button" role="tab" data-tab-idx="1" id="tab-pag-05" aria-selected="false">
+        <span class="zoom-tab-step">2</span>
+        <span class="zoom-tab-label"><b>Pág. 05</b> · Cards de Orientação</span>
+      </button>
+      <button class="zoom-tab" type="button" role="tab" data-tab-idx="2" id="tab-pag-09" aria-selected="false">
+        <span class="zoom-tab-step">3</span>
+        <span class="zoom-tab-label"><b>Pág. 09</b> · Ficha de Registro</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Interactive Viewport for Pan & Zoom -->
+  <div class="zoom-viewport" id="zoom-viewport" tabindex="0" role="region" aria-label="Área de leitura e ampliação da página">
+    
+    <!-- Prev / Next Floating Arrows -->
+    <button class="zoom-nav-arrow prev" type="button" id="zoom-arrow-prev" aria-label="Página anterior (Seta esquerda)" title="Página anterior">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="zoom-nav-arrow next" type="button" id="zoom-arrow-next" aria-label="Próxima página (Seta direita)" title="Próxima página">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+
+    <div class="zoom-canvas" id="zoom-canvas">
+      <!-- Image Stage -->
+      <div class="zoom-img-wrapper" id="zoom-img-wrapper">
+        <img id="zoom-img" src="" alt="" draggable="false">
+      </div>
+      
+      <!-- Visual Hint Pill -->
+      <div class="zoom-drag-hint" id="zoom-drag-hint" aria-hidden="true">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        <span>Arraste para navegar · Clique duplo para aproximar o texto</span>
+      </div>
+
+      <p class="zoom-caption-text" id="zoom-caption"></p>
+    </div>
+
+    <!-- Structured Formatted Transcription Box -->
+    <div class="zoom-transcription-section" id="zoom-transcription">
+      <div class="zoom-transcription-card">
+        <div class="zoom-transcription-header">
+          <span class="zoom-transcription-tag" id="transcription-tag">CONTEÚDO FORMATADO</span>
+          <h4 id="transcription-title">Título da Página</h4>
+          <p id="transcription-desc">Descrição</p>
+        </div>
+        <div class="zoom-transcription-body" id="transcription-body"></div>
+      </div>
+    </div>
+
+    <!-- Dialog Conversion Banner -->
+    <div class="zoom-conversion-banner">
+      <div class="zoom-conversion-info">
+        <strong>Coleção Completa Meu Cão Descomplicado</strong>
+        <span>12 volumes em PDF, 72 cards práticos, mapas e fichas de registro por <b>R$ 27,00</b>.</span>
+      </div>
+      <a class="btn-primary" href="#comprar" id="zoom-cta-btn" data-checkout>QUERO A COLEÇÃO COMPLETA</a>
+    </div>
+
   </div>
 </dialog>
 
@@ -3183,41 +3812,530 @@ galleryDialog.addEventListener("click", e => {
   if (e.target === galleryDialog) galleryDialog.close();
 });
 
-/* Sistema Universal de Zoom / Lightbox */
+/* ==========================================================================
+   SISTEMA DE LEITURA & ZOOM DE ALTA RESOLUÇÃO (AMOSTRAS & UNIVERSAL)
+   ========================================================================== */
+const SAMPLE_PAGES = [
+  {
+    num: "03",
+    badge: "Pág. 03 · Mapa de Situações",
+    title: "Página 03: Mapa de Situações e Pistas",
+    src: "img/pag-03-zoom.webp",
+    caption: "Página 03: Mapa visual para identificar o contexto da queixa e direcionar imediatamente aos cards de orientação correspondentes.",
+    tag: "O QUE VOCÊ PERCEBE? · VOLUME 04",
+    h1: "Siga as pistas. Busque contexto.",
+    desc: "Comece pela segurança da página 2. Use este mapa para escolher um card; situações diferentes podem acontecer juntas.",
+    items: [
+      { num: "1", type: "CARD 01 / OBSERVAÇÃO", title: "Não sei o que acontece", text: "Você recebe relatos ou encontra sinais, mas ainda não viu o contexto?" },
+      { num: "2", type: "CARD 02 / PREPARAÇÃO", title: "Começa antes da saída", text: "Chaves, sapatos ou movimentos da rotina já mudam o comportamento?" },
+      { num: "3", type: "CARD 03 / DESCANSO", title: "Não relaxa nem com você", text: "Fica em alerta, acompanha cada movimento ou não descansa?" },
+      { num: "4", type: "CARD 04 / REDE DE APOIO", title: "Preciso sair de casa", text: "Há alguém com quem ele fica confortável para ajudar na rotina?" },
+      { num: "5", type: "CARD 05 / AMBIENTE", title: "Tem algo difícil no ambiente", text: "Barulho, confinamento ou um objeto novo podem estar envolvidos?" },
+      { num: "6", type: "CARD 06 / AJUDA PROFISSIONAL", title: "Chora, foge ou se machuca", text: "Há agitação persistente, tentativa de fuga ou risco de lesão?" }
+    ],
+    footer: "Silêncio, sozinho, não comprova bem-estar. Observe o corpo inteiro e a situação. Um sinal isolado não fecha um diagnóstico. [5]"
+  },
+  {
+    num: "05",
+    badge: "Pág. 05 · Cards de Orientação",
+    title: "Página 05: Cards de Orientação Prática e Exemplos",
+    src: "img/pag-05-zoom.webp",
+    caption: "Página 05: Cards destacáveis (180 × 115 mm) com blocos de ação rápida: AGORA, APOIO e CUIDADO.",
+    tag: "RECORTE NO CONTORNO · 180 × 115 mm · A4 A 100%",
+    h1: "Cards de Apoio Prático na Rotina",
+    desc: "Cada card traz blocos objetivos para aplicar com calma e sem riscos no dia a dia.",
+    items: [
+      {
+        num: "01",
+        type: "SIMBAS PET / 01 / APOIO PARA FICAR BEM",
+        title: "Observe o conjunto — O contexto muda a leitura.",
+        text: "• AGORA: Use registros existentes ou observações seguras. Anote sons, movimento, postura e o que ocorreu antes.\n• APOIO: Compare momentos com e sem companhia, sem criar uma ausência para testar. Leve os registros à consulta. [2, 5]\n• CUIDADO: Ficar imóvel ou aceitar um petisco não comprova tranquilidade. Não conclua 'birra' a partir de um vídeo curto."
+      },
+      {
+        num: "02",
+        type: "SIMBAS PET / 02 / APOIO PARA FICAR BEM",
+        title: "A saída já preocupa? — Facilite antes de pedir mais.",
+        text: "• AGORA: Perceba se a agitação aparece quando você pega objetos ou muda a rotina. Anote quais situações se repetem.\n• APOIO: Reduza a pressa e organize apoio. Combine com o profissional como trabalhar os sinais de saída sem causar aflição. [3]\n• CUIDADO: Não balance chaves repetidamente nem faça falsas saídas até ele cansar. Repetir um gatilho pode ser difícil demais."
+      }
+    ],
+    footer: "Cards recortáveis / Frente única · 05 / 12"
+  },
+  {
+    num: "09",
+    badge: "Pág. 09 · Ficha de Registro",
+    title: "Página 09: Ficha de Observação e Registro",
+    src: "img/pag-09-zoom.webp",
+    caption: "Página 09: Ferramenta de anotação para o tutor registrar fatos da rotina e levar para a consulta com o veterinário.",
+    tag: "REGISTRE SEM TESTAR · SIMBAS PET",
+    h1: "O que ajuda o cão a ficar bem?",
+    desc: "Preencha com situações que já ocorreram ou observações seguras. Não crie uma ausência para completar a ficha.",
+    items: [
+      {
+        num: "📋",
+        type: "CAMPOS DE CABEÇALHO",
+        title: "Identificação da Rotina",
+        text: "• Cão / Cuidador / Data ou período / Mudança recente\n• Observe: corpo, sons e contexto.\n• Registre: companhia, resposta e próximo cuidado. Tempo apenas se já conhecido; sem meta de aumentar."
+      },
+      {
+        num: "📊",
+        type: "TABELA DE REGISTRO EM 5 COLUNAS",
+        title: "Colunas de Acompanhamento",
+        text: "1. Data / hora\n2. Situação / quem estava\n3. Sinais observados\n4. O que ajudou / resposta\n5. Próximo cuidado planejado"
+      },
+      {
+        num: "🤝",
+        type: "REDE DE APOIO & CONSULTA",
+        title: "Fechamento da Ficha",
+        text: "• Pessoa de apoio / contato para emergências\n• Pergunta prioritária preparada para a próxima consulta"
+      }
+    ],
+    footer: "FICHA DE OBSERVAÇÃO / COPIE QUANDO PRECISAR · 09 / 12"
+  }
+];
+
+// Elementos do Modal
 const zoomDialog = $("#zoom-dialog");
+const zoomViewport = $("#zoom-viewport");
+const zoomCanvas = $("#zoom-canvas");
+const zoomImgWrapper = $("#zoom-img-wrapper");
 const zoomImg = $("#zoom-img");
 const zoomCaption = $("#zoom-caption");
+const zoomBadge = $("#zoom-badge");
+const zoomTitle = $("#zoom-title");
+const zoomLevelBadge = $("#zoom-level");
+const zoomTabsBar = $("#zoom-tabs-bar");
+const zoomArrowPrev = $("#zoom-arrow-prev");
+const zoomArrowNext = $("#zoom-arrow-next");
 const zoomClose = $("#zoom-close");
+const zoomBtnIn = $("#zoom-btn-in");
+const zoomBtnOut = $("#zoom-btn-out");
+const zoomBtnReading = $("#zoom-btn-reading");
+const zoomBtnFit = $("#zoom-btn-fit");
+const zoomBtnText = $("#zoom-btn-text");
+const zoomTranscriptionSection = $("#zoom-transcription");
+const zoomCtaBtn = $("#zoom-cta-btn");
 
-document.addEventListener("click", e => {
-  const zoomTrigger = e.target.closest("[data-zoom]");
-  if (!zoomTrigger) return;
-  
-  const zoomSrc = zoomTrigger.dataset.zoom;
-  const zoomCap = zoomTrigger.dataset.caption || "";
-  
-  if (zoomSrc) {
-    zoomImg.src = zoomSrc;
-    zoomImg.alt = zoomCap;
-    zoomCaption.textContent = zoomCap;
-    zoomDialog.showModal();
-  }
-});
+// Estado do Visualizador
+let isSampleMode = false;
+let currentSampleIdx = 0;
+let currentZoomMode = "reading"; // "fit" | "reading" | "custom"
+let currentZoomPercent = 100;
+const ZOOM_LEVELS = [55, 75, 100, 130, 160, 200, 250];
 
-// Acessibilidade por teclado (Enter ou Space) em itens com data-zoom
-document.addEventListener("keydown", e => {
-  if (e.key === "Enter" || e.key === " ") {
-    const zoomTrigger = document.activeElement && document.activeElement.closest("[data-zoom]");
-    if (zoomTrigger && zoomTrigger.tagName !== "BUTTON" && zoomTrigger.tagName !== "A") {
-      e.preventDefault();
-      zoomTrigger.click();
+// Aplicar Escala de Zoom
+function applyZoomWidth() {
+  if (!zoomDialog.open) return;
+  
+  if (currentZoomMode === "fit") {
+    const availWidth = zoomViewport.clientWidth - 32;
+    const availHeight = zoomViewport.clientHeight - 80;
+    // Aspect ratio 1241x1754 (0.7075)
+    const fitWidth = Math.max(300, Math.min(availWidth, availHeight * (1241 / 1754)));
+    zoomImgWrapper.style.width = Math.round(fitWidth) + "px";
+    const fitPercent = Math.round((fitWidth / 1241) * 100);
+    zoomLevelBadge.textContent = fitPercent + "%";
+    zoomBtnFit.classList.add("active");
+    zoomBtnReading.classList.remove("active");
+    zoomViewport.classList.remove("can-drag");
+  } else {
+    // Modo Leitura / Custom
+    const targetWidth = Math.round(1241 * (currentZoomPercent / 100));
+    zoomImgWrapper.style.width = targetWidth + "px";
+    zoomLevelBadge.textContent = currentZoomPercent + "%";
+    zoomBtnReading.classList.toggle("active", currentZoomPercent === 100);
+    zoomBtnFit.classList.remove("active");
+    
+    // Habilitar cursor de arrasto se imagem for maior que a viewport
+    if (targetWidth > zoomViewport.clientWidth - 20) {
+      zoomViewport.classList.add("can-drag");
+    } else {
+      zoomViewport.classList.remove("can-drag");
     }
   }
+}
+
+function setZoomMode(mode, customPercent) {
+  currentZoomMode = mode;
+  if (mode === "reading") {
+    currentZoomPercent = 100;
+  } else if (mode === "custom" && customPercent) {
+    currentZoomPercent = customPercent;
+  }
+  applyZoomWidth();
+}
+
+function stepZoom(direction) {
+  currentZoomMode = "custom";
+  let nextIdx;
+  if (direction > 0) {
+    nextIdx = ZOOM_LEVELS.findIndex(lvl => lvl > currentZoomPercent);
+    if (nextIdx === -1) nextIdx = ZOOM_LEVELS.length - 1;
+  } else {
+    const reversed = [...ZOOM_LEVELS].reverse();
+    const match = reversed.find(lvl => lvl < currentZoomPercent);
+    nextIdx = match ? ZOOM_LEVELS.indexOf(match) : 0;
+  }
+  currentZoomPercent = ZOOM_LEVELS[nextIdx];
+  applyZoomWidth();
+}
+
+// Renderizar Transcrição Formatada
+function renderTranscription(p) {
+  $("#transcription-tag").textContent = p.tag;
+  $("#transcription-title").textContent = p.h1;
+  $("#transcription-desc").textContent = p.desc;
+  
+  const body = $("#transcription-body");
+  body.innerHTML = `
+    <div class="zoom-transcription-grid">
+      ${p.items.map(item => `
+        <div class="transcription-item">
+          <div class="transcription-item-header">
+            <span class="transcription-num-badge">${escapeHtml(item.num)}</span>
+            <span class="transcription-item-type">${escapeHtml(item.type)}</span>
+          </div>
+          <h5>${escapeHtml(item.title)}</h5>
+          <p>${escapeHtml(item.text)}</p>
+        </div>
+      `).join("")}
+    </div>
+    <div class="transcription-footer-note">
+      <strong>Observação da página:</strong> ${escapeHtml(p.footer)}
+    </div>
+  `;
+}
+
+function centerViewportX() {
+  const doCenter = () => {
+    if (zoomViewport) {
+      const maxScroll = zoomViewport.scrollWidth - zoomViewport.clientWidth;
+      if (maxScroll > 0) {
+        zoomViewport.scrollLeft = Math.round(maxScroll / 2);
+      }
+    }
+  };
+  requestAnimationFrame(doCenter);
+  setTimeout(doCenter, 60);
+  setTimeout(doCenter, 180);
+}
+
+// Carregar Página da Amostra
+function loadSamplePage(idx, preserveZoom = true) {
+  if (idx < 0) idx = 0;
+  if (idx >= SAMPLE_PAGES.length) idx = SAMPLE_PAGES.length - 1;
+  currentSampleIdx = idx;
+  const p = SAMPLE_PAGES[idx];
+
+  zoomImg.src = p.src;
+  zoomImg.alt = p.title;
+  zoomBadge.textContent = p.badge;
+  zoomTitle.textContent = p.title;
+  zoomCaption.textContent = p.caption;
+
+  // Atualizar Abas
+  $$(".zoom-tab").forEach((tab, i) => {
+    const active = i === idx;
+    tab.classList.toggle("active", active);
+    tab.setAttribute("aria-selected", active ? "true" : "false");
+  });
+
+  // Atualizar Setas de Navegação
+  zoomArrowPrev.disabled = (idx === 0);
+  zoomArrowNext.disabled = (idx === SAMPLE_PAGES.length - 1);
+
+  // Atualizar Transcrição
+  renderTranscription(p);
+
+  // Aplicar zoom
+  if (!preserveZoom) {
+    setZoomMode("reading");
+    zoomViewport.scrollTop = 0;
+    centerViewportX();
+  } else {
+    applyZoomWidth();
+  }
+}
+
+// Abrir Modo Amostra das 3 Páginas
+function openSampleViewer(initialIdx = 0) {
+  isSampleMode = true;
+  zoomTabsBar.classList.remove("hidden");
+  zoomArrowPrev.classList.remove("hidden");
+  zoomArrowNext.classList.remove("hidden");
+  
+  loadSamplePage(initialIdx, false);
+  zoomDialog.showModal();
+  
+  // Garantir cálculo correto de dimensões na renderização
+  requestAnimationFrame(() => {
+    applyZoomWidth();
+    centerViewportX();
+    zoomViewport.focus();
+  });
+}
+
+// Dados do Painel de Apoio ao Tutor (SOS)
+const PAINEL_APOIO_DATA = {
+  src: "img/painel-apoio-zoom.jpg",
+  badge: "BÔNUS · RECURSO DE EMERGÊNCIA",
+  title: "Painel de Apoio ao Tutor: SOS e Cuidados da Rotina",
+  caption: "Painel visual para fixar na geladeira ou mural: sinais de urgência imediata, quando falar com o veterinário, lembretes dos 12 temas e contatos de emergência.",
+  tag: "SIMBAS PET · MEU CÃO DESCOMPLICADO",
+  h1: "Painel de Apoio ao Tutor",
+  desc: "Na dúvida, comece pelo cuidado. Guia visual rápido para emergências, observação de saúde e rotina.",
+  items: [
+    {
+      num: "01",
+      type: "URGÊNCIA • PROCURE ATENDIMENTO AGORA",
+      title: "Ligue para a emergência. Não espere passar.",
+      text: "• Respiração difícil ou gengivas azuladas.\n• Convulsão, desmaio ou fraqueza súbita intensa.\n• Barriga inchada com tentativas de vomitar.\n• Esforço para urinar sem conseguir.\n• Suspeita de veneno ou ingestão de algo perigoso.\n• Atropelamento, queda grave ou sangramento intenso.\n• Vômitos repetidos, sangue ou prostração importante.\n• Calor intenso com ofegação e desequilíbrio."
+    },
+    {
+      num: "02",
+      type: "MUDOU O PADRÃO? FALE COM O VETERINÁRIO",
+      title: "Peça orientação sobre quando atender. Se piorar, procure urgência.",
+      text: "• Apetite, sede ou xixi diferentes do habitual.\n• Dor, mancar ou desconforto ao toque.\n• Tosse, perda de peso ou cansaço incomum.\n• Coceira persistente ou mudança de comportamento."
+    },
+    {
+      num: "03",
+      type: "NA ROTINA • ESCOLHA UM PRIMEIRO CUIDADO",
+      title: "Sem sinais de alerta, consulte o volume do tema (Estes lembretes não são tratamento).",
+      text: "01. Latidos: Reduza estímulos e observe o contexto.\n02. Xixi fora: Facilite o acesso. Recompense após terminar.\n03. Puxa a guia: Pratique em local fácil, sem trancos.\n04. Sofre sozinho: Organize companhia e procure apoio.\n05. Destruição: Proteja os objetos e supervisione alternativas.\n06. Visitas: Prepare a chegada. Reconheça patas no chão.\n07. Come fezes: Reduza o acesso e recolha sem disputa.\n08. Fogos e trovões: Ofereça abrigo seguro, ventilado e apoio.\n09. Filhote morde: Prepare brinquedo adequado e pausas.\n10. Brincadeiras: Escolha uma atividade fácil e supervisionada.\n11. Cão idoso: Facilite caminhos. Mudanças pedem avaliação.\n12. Recém-adotado: Preserve descanso, espaço e rotina."
+    },
+    {
+      num: "📞",
+      type: "CONTATOS À MÃO & O QUE EVITAR SEMPRE",
+      title: "Contatos de Emergência & Boas Práticas",
+      text: "• Espaço para anotar: Veterinário / Emergência 24h / Pessoa de apoio.\n\n• EVITE SEMPRE: Broncas e castigos • Remédios sem orientação • Forçar contato • Deixar chorar até acostumar."
+    }
+  ],
+  footer: "Material educativo. Não substitui avaliação veterinária. Na dúvida, ligue. simbaspet.com.br"
+};
+
+// Abrir Leitor do Painel de Apoio
+function openPainelViewer() {
+  isSampleMode = false;
+  zoomTabsBar.classList.add("hidden");
+  zoomArrowPrev.classList.add("hidden");
+  zoomArrowNext.classList.add("hidden");
+  zoomTranscriptionSection.classList.remove("visible");
+  zoomBtnText.classList.remove("active");
+
+  zoomImg.src = PAINEL_APOIO_DATA.src;
+  zoomImg.alt = PAINEL_APOIO_DATA.title;
+  zoomBadge.textContent = PAINEL_APOIO_DATA.badge;
+  zoomTitle.textContent = PAINEL_APOIO_DATA.title;
+  zoomCaption.textContent = PAINEL_APOIO_DATA.caption;
+
+  renderTranscription(PAINEL_APOIO_DATA);
+
+  zoomDialog.showModal();
+  requestAnimationFrame(() => {
+    setZoomMode("reading");
+    zoomViewport.scrollTop = 0;
+    centerViewportX();
+    zoomViewport.focus();
+  });
+}
+
+// Abrir Zoom Universal para outras fotos/capas
+function openUniversalZoom(src, caption, badgeText = "Imagem em Alta Resolução") {
+  isSampleMode = false;
+  zoomTabsBar.classList.add("hidden");
+  zoomArrowPrev.classList.add("hidden");
+  zoomArrowNext.classList.add("hidden");
+  zoomTranscriptionSection.classList.remove("visible");
+  zoomBtnText.classList.remove("active");
+
+  zoomImg.src = src;
+  zoomImg.alt = caption;
+  zoomBadge.textContent = badgeText;
+  zoomTitle.textContent = caption || "Visualização em Alta Resolução";
+  zoomCaption.textContent = caption;
+
+  zoomDialog.showModal();
+  requestAnimationFrame(() => {
+    setZoomMode("fit");
+  });
+}
+
+// Eventos dos Controles da Barra
+zoomBtnIn.addEventListener("click", () => stepZoom(1));
+zoomBtnOut.addEventListener("click", () => stepZoom(-1));
+zoomBtnReading.addEventListener("click", () => {
+  setZoomMode("reading");
+  zoomViewport.scrollTop = 0;
+  centerViewportX();
+});
+zoomBtnFit.addEventListener("click", () => setZoomMode("fit"));
+
+zoomBtnText.addEventListener("click", () => {
+  const isVisible = zoomTranscriptionSection.classList.toggle("visible");
+  zoomBtnText.classList.toggle("active", isVisible);
+  if (isVisible) {
+    zoomTranscriptionSection.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 });
 
+// Eventos de Troca de Aba
+zoomTabsBar.addEventListener("click", e => {
+  const tab = e.target.closest(".zoom-tab");
+  if (!tab) return;
+  const idx = parseInt(tab.dataset.tabIdx, 10);
+  loadSamplePage(idx, true);
+});
+
+// Setas Flutuantes Anterior / Próxima
+zoomArrowPrev.addEventListener("click", () => {
+  if (currentSampleIdx > 0) loadSamplePage(currentSampleIdx - 1, true);
+});
+zoomArrowNext.addEventListener("click", () => {
+  if (currentSampleIdx < SAMPLE_PAGES.length - 1) loadSamplePage(currentSampleIdx + 1, true);
+});
+
+// Fechar Modal
 zoomClose.addEventListener("click", () => zoomDialog.close());
 zoomDialog.addEventListener("click", e => {
   if (e.target === zoomDialog) zoomDialog.close();
+});
+if (zoomCtaBtn) {
+  zoomCtaBtn.addEventListener("click", () => zoomDialog.close());
+}
+
+// Clique Duplo para aproximar/afastar no ponto do cursor
+zoomCanvas.addEventListener("dblclick", e => {
+  if (e.target.closest("button, a")) return;
+  if (currentZoomMode === "fit") {
+    setZoomMode("reading");
+    const rect = zoomCanvas.getBoundingClientRect();
+    const ratioY = (e.clientY - rect.top) / rect.height;
+    setTimeout(() => {
+      zoomViewport.scrollTop = (zoomCanvas.scrollHeight * ratioY) - (zoomViewport.clientHeight / 2);
+    }, 40);
+  } else {
+    setZoomMode("fit");
+  }
+});
+
+// Arrasto Suave (Drag to Pan)
+let isDragging = false;
+let startX = 0, startY = 0;
+let startScrollLeft = 0, startScrollTop = 0;
+
+zoomViewport.addEventListener("mousedown", e => {
+  if (e.button !== 0 || e.target.closest("button, a, .zoom-transcription-section")) return;
+  if (zoomImgWrapper.clientWidth <= zoomViewport.clientWidth && zoomImgWrapper.clientHeight <= zoomViewport.clientHeight) return;
+  
+  isDragging = true;
+  startX = e.pageX;
+  startY = e.pageY;
+  startScrollLeft = zoomViewport.scrollLeft;
+  startScrollTop = zoomViewport.scrollTop;
+  zoomViewport.classList.add("is-dragging");
+});
+
+window.addEventListener("mousemove", e => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const dx = e.pageX - startX;
+  const dy = e.pageY - startY;
+  zoomViewport.scrollLeft = startScrollLeft - dx;
+  zoomViewport.scrollTop = startScrollTop - dy;
+});
+
+window.addEventListener("mouseup", () => {
+  if (isDragging) {
+    isDragging = false;
+    zoomViewport.classList.remove("is-dragging");
+  }
+});
+
+// Zoom pelo Mouse Wheel (com tecla Ctrl)
+zoomViewport.addEventListener("wheel", e => {
+  if (e.ctrlKey) {
+    e.preventDefault();
+    if (e.deltaY < 0) stepZoom(1);
+    else stepZoom(-1);
+  }
+}, { passive: false });
+
+// Teclado no Modal (Setas, +, -, 0, 1)
+document.addEventListener("keydown", e => {
+  if (!zoomDialog.open) return;
+  
+  if (e.key === "+" || e.key === "=") {
+    e.preventDefault();
+    stepZoom(1);
+  } else if (e.key === "-" || e.key === "_") {
+    e.preventDefault();
+    stepZoom(-1);
+  } else if (e.key === "0") {
+    e.preventDefault();
+    setZoomMode("fit");
+  } else if (e.key === "1") {
+    e.preventDefault();
+    setZoomMode("reading");
+  } else if (isSampleMode && (e.key === "ArrowLeft" || e.key === "PageUp")) {
+    e.preventDefault();
+    if (currentSampleIdx > 0) loadSamplePage(currentSampleIdx - 1, true);
+  } else if (isSampleMode && (e.key === "ArrowRight" || e.key === "PageDown")) {
+    e.preventDefault();
+    if (currentSampleIdx < SAMPLE_PAGES.length - 1) loadSamplePage(currentSampleIdx + 1, true);
+  }
+});
+
+// Responsividade ao redimensionar a janela
+window.addEventListener("resize", () => {
+  if (zoomDialog.open && currentZoomMode === "fit") {
+    applyZoomWidth();
+  }
+});
+
+// Gatilhos de Abertura Global
+document.addEventListener("click", e => {
+  // 1. Gatilho de Amostra das 3 Páginas
+  const sampleTrigger = e.target.closest("[data-sample-idx]");
+  if (sampleTrigger && !e.target.closest("#zoom-dialog")) {
+    const idx = parseInt(sampleTrigger.dataset.sampleIdx, 10) || 0;
+    openSampleViewer(idx);
+    return;
+  }
+
+  // 2. Gatilho dedicado do Painel de Apoio ao Tutor (SOS)
+  const painelTrigger = e.target.closest("[data-painel], [data-zoom*='painel']");
+  if (painelTrigger && !e.target.closest("#zoom-dialog")) {
+    openPainelViewer();
+    return;
+  }
+
+  // 3. Elementos com data-zoom que apontem para páginas da amostra
+  const zoomTrigger = e.target.closest("[data-zoom]");
+  if (!zoomTrigger || e.target.closest("#zoom-dialog")) return;
+
+  const zoomSrc = zoomTrigger.dataset.zoom || "";
+  const zoomCap = zoomTrigger.dataset.caption || "";
+
+  if (zoomSrc.includes("pag-03")) {
+    openSampleViewer(0);
+  } else if (zoomSrc.includes("pag-05")) {
+    openSampleViewer(1);
+  } else if (zoomSrc.includes("pag-09")) {
+    openSampleViewer(2);
+  } else {
+    // Foto / Capa comum
+    openUniversalZoom(zoomSrc, zoomCap);
+  }
+});
+
+// Acessibilidade por teclado (Enter ou Space) em itens acionáveis
+document.addEventListener("keydown", e => {
+  if (e.key === "Enter" || e.key === " ") {
+    const trigger = document.activeElement && document.activeElement.closest("[data-sample-idx], [data-zoom]");
+    if (trigger && trigger.tagName !== "BUTTON" && trigger.tagName !== "A") {
+      e.preventDefault();
+      trigger.click();
+    }
+  }
 });
 
 /* Barra Fixa de Conversão */

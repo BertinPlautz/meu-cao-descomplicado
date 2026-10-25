@@ -2731,7 +2731,7 @@ footer {
 
   <div class="wrap">
     <div class="hero-cta-box" id="hero-cta">
-      <a class="btn-primary" href="#comprar" data-checkout>QUERO A COLEÇÃO POR R$27</a>
+      <a class="btn-primary" href="https://pay.hotmart.com/O108186457I?checkoutMode=10" data-checkout>QUERO A COLEÇÃO POR R$27</a>
       <p class="hero-cta-guarantee">Pagamento único · 15 dias de garantia</p>
       
       <div>
@@ -3022,7 +3022,7 @@ footer {
           <p style="margin-top: 6px;">Papel, tinta e impressão não estão incluídos. No celular, pode ser necessário ampliar o conteúdo.</p>
         </div>
 
-        <a class="btn-primary" href="#comprar" data-checkout>QUERO A COLEÇÃO COMPLETA POR R$27</a>
+        <a class="btn-primary" href="https://pay.hotmart.com/O108186457I?checkoutMode=10" data-checkout>QUERO A COLEÇÃO COMPLETA POR R$27</a>
       </div>
 
       <div class="fridge-photo-card">
@@ -3195,7 +3195,7 @@ footer {
         
         <p class="price-condition">Pagamento único pela coleção completa.</p>
         
-        <a class="btn-primary btn-block" href="#comprar" data-checkout>QUERO MINHA COLEÇÃO POR R$27</a>
+        <a class="btn-primary btn-block" href="https://pay.hotmart.com/O108186457I?checkoutMode=10" data-checkout>QUERO MINHA COLEÇÃO POR R$27</a>
         <p class="oferta-microcopy">Arquivos digitais em PDF. Impressão opcional. Sem envio físico.</p>
       </div>
 
@@ -3339,7 +3339,7 @@ footer {
     <h2 id="t-fechamento">Escolha por onde começar. A coleção acompanha.</h2>
     <p>12 guias digitais, 72 cards e exemplos para consultar nas dúvidas da rotina com seu cão.</p>
     
-    <a class="btn-primary btn-block" href="#comprar" data-checkout>QUERO O MEU CÃO DESCOMPLICADO POR R$27</a>
+    <a class="btn-primary btn-block" href="https://pay.hotmart.com/O108186457I?checkoutMode=10" data-checkout>QUERO O MEU CÃO DESCOMPLICADO POR R$27</a>
     
     <p class="fechamento-terms">Pagamento único · Coleção completa · 15 dias de garantia</p>
     <p class="fechamento-sub">Arquivos em PDF. Impressão opcional, feita por você. Não há envio físico.</p>
@@ -3467,7 +3467,7 @@ footer {
         <strong>Coleção Completa Meu Cão Descomplicado</strong>
         <span>12 volumes em PDF, 72 cards práticos, mapas e fichas de registro por <b>R$ 27,00</b>.</span>
       </div>
-      <a class="btn-primary" href="#comprar" id="zoom-cta-btn" data-checkout>QUERO A COLEÇÃO COMPLETA</a>
+      <a class="btn-primary" href="https://pay.hotmart.com/O108186457I?checkoutMode=10" id="zoom-cta-btn" data-checkout>QUERO A COLEÇÃO COMPLETA</a>
     </div>
 
   </div>
@@ -3495,7 +3495,7 @@ footer {
     <strong>Meu Cão Descomplicado</strong>
     <span>12 volumes por R$27 · Pagamento único</span>
   </div>
-  <a class="btn-primary" href="#comprar" data-checkout tabindex="-1">Quero a coleção</a>
+  <a class="btn-primary" href="https://pay.hotmart.com/O108186457I?checkoutMode=10" data-checkout tabindex="-1">Quero a coleção</a>
 </div>
 
 <!-- ==========================================================================
@@ -3503,7 +3503,7 @@ footer {
      ========================================================================== -->
 <script>
 /* Configurações comerciais e de rastreamento */
-const CHECKOUT_URL = ""; // Preencher com a URL final do checkout (ex: Kirvano)
+const CHECKOUT_URL = "https://pay.hotmart.com/O108186457I?checkoutMode=10";
 const PIXEL_ID = "";     // ID do Pixel Meta se aplicável
 
 /* Banco de dados dos 12 volumes e seus 6 cards com descrições exatas */
@@ -3684,6 +3684,25 @@ const escapeHtml = str => str.replace(/[&<>'"]/g, tag => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
 }[tag] || tag));
 
+/* Integração Checkout e Passagem de Parâmetros UTM */
+const currentSearchParams = new URLSearchParams(window.location.search);
+function setupCheckoutLinks() {
+  $$("a[data-checkout]").forEach(link => {
+    if (CHECKOUT_URL) {
+      try {
+        const url = new URL(CHECKOUT_URL);
+        currentSearchParams.forEach((val, key) => {
+          if (!url.searchParams.has(key)) url.searchParams.set(key, val);
+        });
+        link.href = url.toString();
+      } catch (err) {
+        console.warn("Invalid Checkout URL:", err);
+      }
+    }
+  });
+}
+setupCheckoutLinks();
+
 /* Renderização da Prateleira Infinita de Capas no Topo */
 const shelfTrack = $("#shelf-track");
 const makeShelfItem = (v, i, isClone) => `
@@ -3758,11 +3777,13 @@ function selectVolume(index, shouldScroll) {
 
         <div class="vol-detail-footer">
           <p class="vol-detail-footer-note">Este e todos os outros 11 volumes estão incluídos por <strong>R$27</strong>.</p>
-          <a class="btn-primary" href="#comprar" data-checkout>QUERO A COLEÇÃO COMPLETA</a>
+          <a class="btn-primary" href="https://pay.hotmart.com/O108186457I?checkoutMode=10" data-checkout>QUERO A COLEÇÃO COMPLETA</a>
         </div>
       </div>
     </div>
   `;
+
+  setupCheckoutLinks();
 
   if (shouldScroll) {
     volDetail.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest" });
@@ -4366,25 +4387,6 @@ const offerObserver = new IntersectionObserver(([entry]) => {
 
 heroObserver.observe(heroCtaElement);
 offerObserver.observe(comprarSection);
-
-/* Integração Checkout e Passagem de Parâmetros UTM */
-const currentSearchParams = new URLSearchParams(window.location.search);
-function setupCheckoutLinks() {
-  $$("a[data-checkout]").forEach(link => {
-    if (CHECKOUT_URL) {
-      try {
-        const url = new URL(CHECKOUT_URL);
-        currentSearchParams.forEach((val, key) => {
-          if (!url.searchParams.has(key)) url.searchParams.set(key, val);
-        });
-        link.href = url.toString();
-      } catch (err) {
-        console.warn("Invalid Checkout URL:", err);
-      }
-    }
-  });
-}
-setupCheckoutLinks();
 </script>
 
 </body>

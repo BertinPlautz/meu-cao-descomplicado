@@ -92,7 +92,7 @@ function normalize(payload) {
     utm_source: utm.source || utm.utm_source || utm.src || '',
     utm_campaign: utm.campaign || utm.utm_campaign || '',
     utm_content: utm.content || utm.utm_content || '',
-    sck: purchase.sckPaymentLink || p.sck || '',
+    sck: purchase.origin?.sck || purchase.sckPaymentLink || p.sck || '',
     buyer_hash: buyerEmail ? sha256(buyerEmail) : '',
     raw_payload: p,
     timestamp: new Date().toISOString(),

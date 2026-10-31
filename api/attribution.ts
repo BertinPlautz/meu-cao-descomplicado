@@ -131,7 +131,7 @@ export async function POST(request) {
 
     // Store session
     const sessionKey = `session:${sid}`;
-    await kvSet(sessionKey, JSON.stringify(payload.session));
+    await kvSet(sessionKey, payload.session);  // objeto raw — kvSet faz JSON.stringify
 
     // Process events
     for (const evt of payload.events) {

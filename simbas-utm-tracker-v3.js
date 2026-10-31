@@ -179,9 +179,8 @@
   /* Instala o listener SEMPRE (sem guarda de scrollHeight, que pode ser
    * artificialmente pequeno antes das imagens carregarem). A função
    * getScrollPct recalcula a altura real a cada evento. */
-  if (document.body) {
-    window.addEventListener('scroll', onScroll, { passive: true });
-  }
+  /* OUVINTE instalado dentro de initTracker() — quando o DOM já existe.
+   * No módulo, document.body pode ser null (script no <head>). */
 
   /* ── Engajamento: 30s na página ── */
   var engagedFired = false;
@@ -239,6 +238,11 @@
     var allLinks = document.querySelectorAll(CHECKOUT_SEL);
     for (var i = 0; i < allLinks.length; i++) {
       allLinks[i].addEventListener('click', onCtaClick);
+    }
+    
+    /* Instalar scroll listener (document.body só existe depois do DOM pronto) */
+    if (document.body) {
+      window.addEventListener('scroll', onScroll, { passive: true });
     }
   }
 

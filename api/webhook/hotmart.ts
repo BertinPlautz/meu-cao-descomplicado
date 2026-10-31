@@ -18,7 +18,7 @@
  * @date    2026-10-30
  */
 
-const HOTTOK = process.env.HOTMART_HOTTOK || '';
+const HOTTOK = (process.env.HOTMART_HOTTOK || '').trim();
 const KV_URL = process.env.KV_REST_API_URL || '';
 const KV_TOKEN = process.env.KV_REST_API_TOKEN || '';
 
@@ -92,11 +92,28 @@ export async function POST(request) {
   try {
     // ── Validar hottok ──
     const params = new URL(request.url).searchParams;
-    const receivedHottok = params.get('hottok') || request.headers.get('x-hottok') || '';
+    // Hotmart v2.0.0 envia X-HOTMART-HOTTOK; fallback para query param e x-hottok legado
+    const hottokHeaders = [
+      request.headers.get('x-hotmart-hottok') || '',
+      request.headers.get('x-hotmart-hot-token') || '',
+      request.headers.get('x-hottok') || '',
+    ];
+    const receivedHottok = params.get('hottok') || hottokHeaders.find(h => h.length > 0) || '';
+
+    // ── LOG TEMPORÁRIO (sem o segredo) ──
+    console.log('[WebhookHotmart-DEBUG] header_present:' + String(hottokHeaders[0].length > 0 || hottokHeaders[1].length > 0 || hottokHeaders[2].length > 0 || params.has('hottok')));
+    console.log('[WebhookHotmart-DEBUG] header_x-hotmart-hottok_len:' + String(hottokHeaders[0].length));
+    console.log('[WebhookHotmart-DEBUG] header_x-hotmart-hot-token_len:' + String(hottokHeaders[1].length));
+    console.log('[WebhookHotmart-DEBUG] header_x-hottok_len:' + String(hottokHeaders[2].length));
+    console.log('[WebhookHotmart-DEBUG] query_hottok_present:' + String(params.has('hottok')));
+    console.log('[WebhookHotmart-DEBUG] received_len:' + String(receivedHottok.length));
+    console.log('[WebhookHotmart-DEBUG] configured_len:' + String(HOTTOK.length));
+    console.log('[WebhookHotmart-DEBUG] match:' + String(receivedHottok.length > 0 && receivedHottok === HOTTOK));
+    // ── FIM LOG TEMPORÁRIO ──
 
     // Se HOTMART_HOTTOK está configurado, validar
     if (HOTTOK && receivedHottok !== HOTTOK) {
-      console.warn('[WebhookHotmart] hottok inválido ou ausente:', receivedHottok ? receivedHottok.substring(0, 10) : '(vazio)');
+      console.warn('[WebhookHotmart] hottok inválido ou ausente (len:' + String(receivedHottok.length) + ')');
       return new Response(JSON.stringify({ error: 'Unauthorized' }),
         { status: 401, headers: { 'Content-Type': 'application/json' } });
     }

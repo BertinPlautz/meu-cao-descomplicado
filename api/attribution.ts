@@ -1,96 +1,80 @@
 /**
- * Simbas Pet — Attribution API v3 (multiproduto)
- * ===============================================
- * Vercel Serverless Function — recebe eventos do tracker v3,
- * valida, deduplica, e armazena no Vercel KV.
+ * Simbas Pet — Attribution API v3 (multiproduto, REST API)
+ * ==========================================================
+ * Usa KV REST API diretamente (sem @vercel/kv) para funcionar
+ * com as env vars que Fuka colar no dashboard.
  *
  * Endpoint: POST /api/attribution
- * Body: { session: {...}, events: [...], sent_at: "..." }
+ * Corpo:    { session: {...}, events: [...], sent_at: "..." }
  *
- * Event types suportados (v3):
- *   pageview, scroll_25, scroll_50, scroll_75, scroll_90,
- *   engaged_30s, cta_click, checkout_click
+ * ENV:
+ *   KV_REST_API_URL    — Vercel KV REST API endpoint (obrigatório)
+ *   KV_REST_API_TOKEN  — Vercel KV REST API token   (obrigatório)
+ *   ALLOWED_ORIGIN     — CORS origin override (default: https://simbaspet.com.br)
  *
- * Product_id vem do payload (data-product no tracker).
- *
- * IDEMPOTÊNCIA via event_type + timestamp + session_id.
- *
- * @version 3.0.0
- * @date    2026-10-30
+ * @version 3.1.0
  */
 
-import { kv } from '@vercel/kv';
+const KV_URL = process.env.KV_REST_API_URL || '';
+const KV_TOKEN = process.env.KV_REST_API_TOKEN || '';
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || 'https://simbaspet.com.br';
 
 const PENDING_KEY = 'queue:pending';
 const EVENT_PREFIX = 'event:';
 const EVENT_TTL_SECONDS = 7 * 24 * 60 * 60; // 7 dias
 const MAX_PAYLOAD_SIZE = 64 * 1024; // 64KB
-const ALLOWED_ORIGIN = 'https://simbaspet.com.br';
 
-// ── Types ──
-interface AttributionEvent {
-  event_type: string;
-  event_source: string;
-  product_id?: string;
-  timestamp: string;
-  url?: string;
-  session_id?: string;
-  landing_page?: string;
-  attribution_confidence: string;
-  confidence_reason?: string;
-  cta_text?: string;
-  cta_href?: string;
-  utm_source?: string;
-  utm_medium?: string;
-  utm_campaign?: string;
-  utm_content?: string;
-  utm_term?: string;
-  [key: string]: unknown;
+// ── KV REST helpers ──
+async function kvSet(key, value) {
+  if (!KV_URL || !KV_TOKEN) throw new Error('KV_REST_API_URL e KV_REST_API_TOKEN obrigatórios');
+  const url = `${KV_URL.replace(/\/$/, '')}/set/${encodeURIComponent(key)}`;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${KV_TOKEN}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(typeof value === 'string' ? value : JSON.stringify(value)),
+  });
+  if (!res.ok) throw new Error(`KV set error: ${res.status} ${await res.text()}`);
+  return res.json();
 }
 
-interface SessionData {
-  session_id: string;
-  timestamp: string;
-  product_id?: string;
-  utm_source?: string | null;
-  utm_medium?: string | null;
-  utm_campaign?: string | null;
-  utm_content?: string | null;
-  utm_term?: string | null;
-  fbclid?: string | null;
-  msclkid?: string | null;
-  gclid?: string | null;
-  referrer?: string | null;
-  landing_page?: string;
-  url?: string;
-  attribution_confidence: string;
-  confidence_reason?: string;
+async function kvGet(key) {
+  if (!KV_URL || !KV_TOKEN) throw new Error('KV_REST_API_URL e KV_REST_API_TOKEN obrigatórios');
+  const url = `${KV_URL.replace(/\/$/, '')}/get/${encodeURIComponent(key)}`;
+  const res = await fetch(url, {
+    headers: { 'Authorization': `Bearer ${KV_TOKEN}` },
+  });
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`KV get error: ${res.status}`);
+  const data = await res.json();
+  return data.result;
 }
 
-interface Payload {
-  session: SessionData;
-  events: AttributionEvent[];
-  sent_at: string;
+async function kvRpush(key, value) {
+  const url = `${KV_URL.replace(/\/$/, '')}/rpush/${encodeURIComponent(key)}`;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${KV_TOKEN}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(value),
+  });
+  if (!res.ok) throw new Error(`KV rpush error: ${res.status}`);
+  return res.json();
 }
 
-interface IngestResult {
-  session: string;
-  events: Array<{
-    event_type: string;
-    status: 'ingested' | 'skipped' | 'error';
-    reason?: string;
-  }>;
-  errors: Array<{
-    event_type?: string;
-    error: string;
-  }>;
+async function kvExpire(key, seconds) {
+  const url = `${KV_URL.replace(/\/$/, '')}/expire/${encodeURIComponent(key)}/${seconds}`;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${KV_TOKEN}` },
+  });
+  if (!res.ok) throw new Error(`KV expire error: ${res.status}`);
+  return res.json();
 }
 
-// ── CORS Headers ──
-function corsHeaders(origin: string): Record<string, string> {
+// ── CORS ──
+function corsHeaders(origin) {
   const allowed = origin === ALLOWED_ORIGIN
-    || origin.startsWith('http://localhost')
-    || origin.startsWith('http://127.0.0.1');
+    || (origin || '').startsWith('http://localhost')
+    || (origin || '').startsWith('http://127.0.0.1');
   return {
     'Access-Control-Allow-Origin': allowed ? origin : ALLOWED_ORIGIN,
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -98,98 +82,68 @@ function corsHeaders(origin: string): Record<string, string> {
   };
 }
 
-// ── Validate Payload ──
-function validatePayload(body: unknown): { valid: true; payload: Payload } | { valid: false; error: string } {
-  if (!body || typeof body !== 'object') {
-    return { valid: false, error: 'Body deve ser JSON object' };
-  }
-  const p = body as Record<string, unknown>;
-  if (!p.session || typeof p.session !== 'object') {
-    return { valid: false, error: 'session é obrigatório' };
-  }
-  const session = p.session as Record<string, unknown>;
-  if (!session.session_id || typeof session.session_id !== 'string') {
-    return { valid: false, error: 'session.session_id é obrigatório' };
-  }
-  if (!Array.isArray(p.events)) {
-    return { valid: false, error: 'events deve ser array' };
-  }
-  if (p.events.length === 0) {
-    return { valid: false, error: 'events não pode estar vazio' };
-  }
+// ── Validate ──
+function validate(body) {
+  if (!body || typeof body !== 'object') return { valid: false, error: 'Body deve ser JSON' };
+  const p = body;
+  if (!p.session || typeof p.session !== 'object') return { valid: false, error: 'session obrigatório' };
+  if (!p.session.session_id || typeof p.session.session_id !== 'string') return { valid: false, error: 'session_id obrigatório' };
+  if (!Array.isArray(p.events) || p.events.length === 0) return { valid: false, error: 'events array não vazio obrigatório' };
   for (let i = 0; i < p.events.length; i++) {
-    const evt = p.events[i] as Record<string, unknown>;
-    if (!evt.event_type || typeof evt.event_type !== 'string') {
-      return { valid: false, error: `events[${i}].event_type é obrigatório` };
-    }
-    if (!evt.timestamp || typeof evt.timestamp !== 'string') {
-      return { valid: false, error: `events[${i}].timestamp é obrigatório` };
-    }
+    const e = p.events[i];
+    if (!e.event_type || typeof e.event_type !== 'string') return { valid: false, error: `events[${i}].event_type obrigatório` };
+    if (!e.timestamp || typeof e.timestamp !== 'string') return { valid: false, error: `events[${i}].timestamp obrigatório` };
   }
-  return { valid: true, payload: body as Payload };
+  return { valid: true, payload: p };
 }
 
-// ── Build idempotency key ──
-function buildIdempotencyKey(evt: AttributionEvent, sessionId: string): string {
-  return `${evt.event_type}_${evt.timestamp}_${sessionId || 'nosession'}`;
-}
-
-// ── Main Handler ──
-export async function POST(request: Request): Promise<Response> {
+export async function POST(request) {
   const origin = request.headers.get('origin') || '';
 
   try {
-    // ── 1. Size check ──
-    const contentLength = parseInt(request.headers.get('content-length') || '0', 10);
-    if (contentLength > MAX_PAYLOAD_SIZE) {
-      return new Response(
-        JSON.stringify({ error: 'Payload muito grande (max 64KB)' }),
-        { status: 413, headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' } }
-      );
+    // Size
+    const cl = parseInt(request.headers.get('content-length') || '0', 10);
+    if (cl > MAX_PAYLOAD_SIZE) {
+      return new Response(JSON.stringify({ error: 'Payload muito grande' }),
+        { status: 413, headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' } });
     }
 
-    // ── 2. Parse & Validate ──
-    let body: unknown;
-    try {
-      body = await request.json();
-    } catch {
-      return new Response(
-        JSON.stringify({ error: 'JSON inválido' }),
-        { status: 400, headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' } }
-      );
+    // Parse
+    let body;
+    try { body = await request.json(); } catch {
+      return new Response(JSON.stringify({ error: 'JSON inválido' }),
+        { status: 400, headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' } });
     }
 
-    const validation = validatePayload(body);
-    if (!validation.valid) {
-      return new Response(
-        JSON.stringify({ error: validation.error }),
-        { status: 400, headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' } }
-      );
+    const v = validate(body);
+    if (!v.valid) {
+      return new Response(JSON.stringify({ error: v.error }),
+        { status: 400, headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' } });
     }
 
-    const payload = validation.payload;
+    const payload = v.payload;
     const sid = payload.session.session_id;
     const productId = payload.session.product_id || 'unknown';
-    const result: IngestResult = { session: 'new', events: [], errors: [] };
+    const result = { session: 'new', events: [], errors: [] };
 
-    // ── 3. Store session in KV ──
+    // Store session
     const sessionKey = `session:${sid}`;
-    await kv.set(sessionKey, JSON.stringify(payload.session), { ex: EVENT_TTL_SECONDS });
+    await kvSet(sessionKey, JSON.stringify(payload.session));
 
-    // ── 4. Process each event ──
+    // Process events
     for (const evt of payload.events) {
       try {
-        const idemKey = buildIdempotencyKey(evt, sid);
+        const idemKey = `${evt.event_type}_${evt.timestamp}_${sid}`;
 
-        // Check if already exists (idempotency)
-        const exists = await kv.get(`${EVENT_PREFIX}${idemKey}`);
+        // Skip if exists
+        const exists = await kvGet(`${EVENT_PREFIX}${idemKey}`);
         if (exists) {
           result.events.push({ event_type: evt.event_type, status: 'skipped', reason: 'duplicate' });
           continue;
         }
 
-        // Store event with full metadata including product_id
-        await kv.set(`${EVENT_PREFIX}${idemKey}`, JSON.stringify({
+        // Store event
+        await kvSet(`${EVENT_PREFIX}${idemKey}`, {
           session_id: sid,
           product_id: evt.product_id || productId,
           event_type: evt.event_type,
@@ -206,39 +160,31 @@ export async function POST(request: Request): Promise<Response> {
           attribution_confidence: evt.attribution_confidence || 'UNKNOWN',
           confidence_reason: evt.confidence_reason || '',
           raw_payload: evt,
-        }), { ex: EVENT_TTL_SECONDS });
+        });
 
-        // Add to pending queue (for VPS kv_sync)
-        await kv.rpush(PENDING_KEY, idemKey);
-        await kv.expire(PENDING_KEY, EVENT_TTL_SECONDS);
+        // Queue for VPS sync
+        await kvRpush(PENDING_KEY, idemKey);
+        await kvExpire(PENDING_KEY, EVENT_TTL_SECONDS);
 
         result.events.push({ event_type: evt.event_type, status: 'ingested' });
       } catch (e) {
-        result.errors.push({
-          event_type: evt.event_type,
-          error: e instanceof Error ? e.message : String(e),
-        });
+        result.errors.push({ event_type: evt.event_type, error: e.message || String(e) });
       }
     }
 
     const ingested = result.events.filter(e => e.status === 'ingested').length;
     const skipped = result.events.filter(e => e.status === 'skipped').length;
 
-    return new Response(
-      JSON.stringify({ status: 'ok', ingested, skipped, errors: result.errors.length, events: result.events }),
-      { status: 200, headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ status: 'ok', ingested, skipped, errors: result.errors.length, events: result.events }),
+      { status: 200, headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' } });
   } catch (e) {
-    console.error('[AttributionAPI] Error:', e instanceof Error ? e.message : String(e));
-    return new Response(
-      JSON.stringify({ error: 'Internal server error', detail: e instanceof Error ? e.message : String(e) }),
-      { status: 500, headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' } }
-    );
+    console.error('[AttributionAPI] Error:', e.message || String(e));
+    return new Response(JSON.stringify({ error: 'Internal server error', detail: e.message || String(e) }),
+      { status: 500, headers: { ...corsHeaders(origin), 'Content-Type': 'application/json' } });
   }
 }
 
-// ── OPTIONS (CORS preflight) ──
-export async function OPTIONS(request: Request): Promise<Response> {
+export async function OPTIONS(request) {
   const origin = request.headers.get('origin') || '';
   return new Response(null, { status: 200, headers: corsHeaders(origin) });
 }

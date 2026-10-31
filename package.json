@@ -1,6 +1,3 @@
 {
-  "private": true,
-  "dependencies": {
-    "@vercel/kv": "^0.2.0"
-  }
+  "private": true
 }

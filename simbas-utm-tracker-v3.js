@@ -160,8 +160,15 @@
 
   /* ── Engajamento: scroll depth ── */
   var scrolled = {};
+  function getScrollPct() {
+    /* window.scrollY não é padrão; usar pageYOffset + fallbacks */
+    var sy = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var sh = document.body.scrollHeight || document.documentElement.scrollHeight || 1;
+    if (sh <= window.innerHeight) return 0; /* página inteira na tela */
+    return Math.round((sy + window.innerHeight) / sh * 100);
+  }
   function onScroll() {
-    var scrollPct = Math.round((window.scrollY + window.innerHeight) / document.body.scrollHeight * 100);
+    var scrollPct = getScrollPct();
     SCROLL_STEPS.forEach(function (step) {
       if (scrollPct >= step && !scrolled[step]) {
         scrolled[step] = true;
@@ -169,7 +176,10 @@
       }
     });
   }
-  if (document.body && document.body.scrollHeight > window.innerHeight) {
+  /* Instala o listener SEMPRE (sem guarda de scrollHeight, que pode ser
+   * artificialmente pequeno antes das imagens carregarem). A função
+   * getScrollPct recalcula a altura real a cada evento. */
+  if (document.body) {
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 

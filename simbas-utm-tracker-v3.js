@@ -230,13 +230,22 @@
     }
   }
 
-  /* Corrigir sck em todos os links de checkout já na carga */
-  fixCheckoutLinks();
+  /* ── Inicialização tardia: espera DOM pronto ── */
+  function initTracker() {
+    /* Corrigir sck em todos os links de checkout já na carga */
+    fixCheckoutLinks();
 
-  /* Instalar listeners em todos os links de checkout */
-  var allLinks = document.querySelectorAll(CHECKOUT_SEL);
-  for (var i = 0; i < allLinks.length; i++) {
-    allLinks[i].addEventListener('click', onCtaClick);
+    /* Instalar listeners em todos os links de checkout */
+    var allLinks = document.querySelectorAll(CHECKOUT_SEL);
+    for (var i = 0; i < allLinks.length; i++) {
+      allLinks[i].addEventListener('click', onCtaClick);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTracker);
+  } else {
+    initTracker(); /* DOM já pronto */
   }
 
   /* ── sendBeacon no beforeunload (última tentativa) ── */

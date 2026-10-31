@@ -55,20 +55,31 @@ async function kvRpush(key, value) {
   if (!res.ok) console.error('KV rpush error:', res.status, await res.text());
 }
 
-// ── Normalizador (inicial) ──
-// NOTA: Os mapeamentos abaixo são PRELIMINARES.
-// Fuka precisa enviar um webhook de teste da Hotmart para confirmar
-// os nomes reais dos campos e eventos.
+// ── Normalizador (Hotmart v2.0.0) ──
+// A Hotmart v2.0.0 envia payload aninhado em {"data": {...}, "event": "...", "id": "...", "version": "2.0.0"}
+// Campos relevantes:
+//   - event:   payload.event (top-level)
+//   - transação: payload.data.purchase.transaction (ou payload.data.purchase.order_date)
+//   - produto:  payload.data.product.name + product.external_id
+//   - valor:    payload.data.purchase.price.value (em centavos? depende do produto)
+//   - buyer:    payload.data.buyer.email
+//   - sck:      payload.data.purchase.sckPaymentLink
+//   - affiliate: payload.data.affiliates[].affiliate.code — onde vêm UTMs (se houver)
 function normalize(payload) {
   const p = payload;
   const eventType = (p.event || p.type || p.status || 'unknown').toLowerCase();
-  const orderId = p.transaction || p.order_id || p.id || p.hotmart_order || `raw_${Date.now()}`;
-  const productId = (p.product || p.prod || {}).id || p.product_id || p.prod_id || 'unknown';
-  const productName = (p.product || p.prod || {}).name || p.product_name || '';
 
-  // Extrai UTMs se vierem aninhadas
-  const utm = p.utm || p.affiliate || {};
-  const buyerEmail = p.buyer && p.buyer.email ? p.buyer.email : (p.email || p.customer && p.customer.email || '');
+  // Extrair do data wrapper
+  const data = p.data || {};
+  const purchase = data.purchase || {};
+  const product = data.product || {};
+  const buyer = data.buyer || {};
+
+  const orderId = purchase.transaction || purchase.order_date?.toString?.() || p.id || `raw_${Date.now()}`;
+  const productId = product.external_id || product.ucode || (product.id && product.id !== 0 ? String(product.id) : null) || 'unknown';
+  const productName = product.name || '';
+  const buyerEmail = buyer.email || '';
+  const utm = data.affiliates?.[0]?.affiliate || {};
 
   return {
     event_type: `webhook_hotmart_${eventType}`,
@@ -76,15 +87,15 @@ function normalize(payload) {
     product_id: productId,
     product_name: productName,
     transaction: orderId,
-    value: p.price || p.value || p.commission || p.total || 0,
-    currency: p.currency || 'BRL',
+    value: purchase.price?.value || purchase.original_offer_price?.value || p.commission || 0,
+    currency: purchase.price?.currency_value || purchase.original_offer_price?.currency_value || 'BRL',
     utm_source: utm.source || utm.utm_source || utm.src || '',
     utm_campaign: utm.campaign || utm.utm_campaign || '',
     utm_content: utm.content || utm.utm_content || '',
-    sck: p.sck || p.session_id || p.session || '',
+    sck: purchase.sckPaymentLink || p.sck || '',
     buyer_hash: buyerEmail ? sha256(buyerEmail) : '',
     raw_payload: p,
-    timestamp: p.created_at || p.date || p.timestamp || new Date().toISOString(),
+    timestamp: new Date().toISOString(),
   };
 }
 
@@ -100,17 +111,6 @@ export async function POST(request) {
     ];
     const receivedHottok = params.get('hottok') || hottokHeaders.find(h => h.length > 0) || '';
 
-    // ── LOG TEMPORÁRIO (sem o segredo) ──
-    console.log('[WebhookHotmart-DEBUG] header_present:' + String(hottokHeaders[0].length > 0 || hottokHeaders[1].length > 0 || hottokHeaders[2].length > 0 || params.has('hottok')));
-    console.log('[WebhookHotmart-DEBUG] header_x-hotmart-hottok_len:' + String(hottokHeaders[0].length));
-    console.log('[WebhookHotmart-DEBUG] header_x-hotmart-hot-token_len:' + String(hottokHeaders[1].length));
-    console.log('[WebhookHotmart-DEBUG] header_x-hottok_len:' + String(hottokHeaders[2].length));
-    console.log('[WebhookHotmart-DEBUG] query_hottok_present:' + String(params.has('hottok')));
-    console.log('[WebhookHotmart-DEBUG] received_len:' + String(receivedHottok.length));
-    console.log('[WebhookHotmart-DEBUG] configured_len:' + String(HOTTOK.length));
-    console.log('[WebhookHotmart-DEBUG] match:' + String(receivedHottok.length > 0 && receivedHottok === HOTTOK));
-    // ── FIM LOG TEMPORÁRIO ──
-
     // Se HOTMART_HOTTOK está configurado, validar
     if (HOTTOK && receivedHottok !== HOTTOK) {
       console.warn('[WebhookHotmart] hottok inválido ou ausente (len:' + String(receivedHottok.length) + ')');
@@ -125,8 +125,11 @@ export async function POST(request) {
         { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
-    // ── Log para debug (sempre, mesmo sem KV) ──
-    console.log('[WebhookHotmart] RAW PAYLOAD:', JSON.stringify(payload));
+    // ── Log seguro (apenas metadados, sem PII) ──
+    const rawEvent = (payload.event || 'unknown').toString().toLowerCase();
+    const rawTxn = payload.data?.purchase?.transaction || payload.id || '';
+    const rawProd = payload.data?.product?.name || '';
+    console.log('[WebhookHotmart] evento=' + rawEvent + ' txn=' + String(rawTxn).substring(0, 30) + ' prod=' + rawProd);
 
     // ── Normalizar ──
     const normalized = normalize(payload);

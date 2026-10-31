@@ -182,9 +182,18 @@
     }
   }, 30000);
 
-  /* ── CTA clicks ── */
-  function findCheckoutLinks() {
-    try { return document.querySelectorAll(CHECKOUT_SEL); } catch (e) { return []; }
+  /* ── CTA clicks + SCK fix ── */
+  /* Na carga da página: substituir sck em TODOS os links de checkout */
+  function fixCheckoutLinks() {
+    var links = document.querySelectorAll(CHECKOUT_SEL);
+    for (var i = 0; i < links.length; i++) {
+      var href = links[i].getAttribute('href') || '';
+      if (href.indexOf('sck=') > -1) {
+        /* Substitui sck existente pelo session_id real */
+        href = href.replace(/sck=[^&]+/, 'sck=' + encodeURIComponent(sid));
+        links[i].setAttribute('href', href);
+      }
+    }
   }
 
   function onCtaClick(evt) {
@@ -193,22 +202,21 @@
     var text = (link.textContent || '').trim().substring(0, 60);
 
     /* Determinar se é checkout_click ou cta_click */
-    var isCheckout = false;
-    try {
-      isCheckout = new RegExp(CHECKOUT_SEL.replace(/.*href\*="([^"]+).*/, '$1')).test(href);
-    } catch (e) {
-      isCheckout = href.indexOf('pay.') > -1 || href.indexOf('checkout') > -1;
-    }
+    var isCheckout = href.indexOf('pay.') > -1 || href.indexOf('checkout') > -1;
 
     if (isCheckout) {
-      /* checkout_click: anexar UTMs ao link */
-      var sep = href.indexOf('?') > -1 ? '&' : '?';
+      /* checkout_click: remover sck antigo e adicionar o correto + UTMs */
+      /* Remove qualquer sck existente primeiro */
+      var base = href.replace(/[?&]sck=[^&]*/g, '');
+      /* Monta os novos parâmetros */
       var params = 'sck=' + encodeURIComponent(sid);
       if (fu.utm_source) params += '&src=' + encodeURIComponent(fu.utm_source);
       ks.forEach(function (k) {
         if (fu[k]) params += '&' + k + '=' + encodeURIComponent(fu[k]);
       });
-      link.setAttribute('href', href + sep + params);
+      var sep = base.indexOf('?') > -1 ? '&' : '?';
+      var newHref = base + sep + params;
+      link.setAttribute('href', newHref);
 
       track('checkout_click', {
         cta_text: text,
@@ -222,7 +230,10 @@
     }
   }
 
-  /* Instalar listeners em todos os links de CTA */
+  /* Corrigir sck em todos os links de checkout já na carga */
+  fixCheckoutLinks();
+
+  /* Instalar listeners em todos os links de checkout */
   var allLinks = document.querySelectorAll(CHECKOUT_SEL);
   for (var i = 0; i < allLinks.length; i++) {
     allLinks[i].addEventListener('click', onCtaClick);

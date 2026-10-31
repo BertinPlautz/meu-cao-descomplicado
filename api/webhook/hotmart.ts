@@ -38,7 +38,7 @@ async function kvSet(key, value) {
   const res = await fetch(url, {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${KV_TOKEN}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(typeof value === 'string' ? value : JSON.stringify(value)),
+    body: JSON.stringify(value),
   });
   if (!res.ok) console.error('KV set error:', res.status, await res.text());
 }

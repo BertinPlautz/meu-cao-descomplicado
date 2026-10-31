@@ -28,10 +28,12 @@ const MAX_PAYLOAD_SIZE = 64 * 1024; // 64KB
 async function kvSet(key, value) {
   if (!KV_URL || !KV_TOKEN) throw new Error('KV_REST_API_URL e KV_REST_API_TOKEN obrigatórios');
   const url = `${KV_URL.replace(/\/$/, '')}/set/${encodeURIComponent(key)}`;
+  // value já é objeto → JSON.stringify() serializa corretamente
+  const body = JSON.stringify(value);
   const res = await fetch(url, {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${KV_TOKEN}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(typeof value === 'string' ? value : JSON.stringify(value)),
+    body,
   });
   if (!res.ok) throw new Error(`KV set error: ${res.status} ${await res.text()}`);
   return res.json();

@@ -53,10 +53,11 @@ async function kvGet(key) {
 
 async function kvRpush(key, value) {
   const url = `${KV_URL.replace(/\/$/, '')}/rpush/${encodeURIComponent(key)}`;
+  // REST API rpush trata body como RAW — NÃO JSON.stringify em string
   const res = await fetch(url, {
     method: 'POST',
-    headers: { 'Authorization': `Bearer ${KV_TOKEN}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(value),
+    headers: { 'Authorization': `Bearer ${KV_TOKEN}` },
+    body: value,
   });
   if (!res.ok) throw new Error(`KV rpush error: ${res.status}`);
   return res.json();

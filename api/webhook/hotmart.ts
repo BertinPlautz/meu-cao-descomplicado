@@ -46,10 +46,11 @@ async function kvSet(key, value) {
 async function kvRpush(key, value) {
   if (!KV_URL || !KV_TOKEN) return;
   const url = `${KV_URL.replace(/\/$/, '')}/rpush/${encodeURIComponent(key)}`;
+  // REST API espera o valor RAW (sem JSON.stringify), senão a string fica com quotes
   const res = await fetch(url, {
     method: 'POST',
-    headers: { 'Authorization': `Bearer ${KV_TOKEN}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(value),
+    headers: { 'Authorization': `Bearer ${KV_TOKEN}` },
+    body: value,
   });
   if (!res.ok) console.error('KV rpush error:', res.status, await res.text());
 }
@@ -95,7 +96,7 @@ export async function POST(request) {
 
     // Se HOTMART_HOTTOK está configurado, validar
     if (HOTTOK && receivedHottok !== HOTTOK) {
-      console.warn('[WebhookHotmart] hottok inválido:', receivedHottok.substring(0, 10));
+      console.warn('[WebhookHotmart] hottok inválido ou ausente:', receivedHottok ? receivedHottok.substring(0, 10) : '(vazio)');
       return new Response(JSON.stringify({ error: 'Unauthorized' }),
         { status: 401, headers: { 'Content-Type': 'application/json' } });
     }

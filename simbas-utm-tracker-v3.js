@@ -205,19 +205,9 @@
     var isCheckout = href.indexOf('pay.') > -1 || href.indexOf('checkout') > -1;
 
     if (isCheckout) {
-      /* checkout_click: remover sck antigo e adicionar o correto + UTMs */
-      /* Remove qualquer sck existente primeiro */
-      var base = href.replace(/[?&]sck=[^&]*/g, '');
-      /* Monta os novos parâmetros */
-      var params = 'sck=' + encodeURIComponent(sid);
-      if (fu.utm_source) params += '&src=' + encodeURIComponent(fu.utm_source);
-      ks.forEach(function (k) {
-        if (fu[k]) params += '&' + k + '=' + encodeURIComponent(fu[k]);
-      });
-      var sep = base.indexOf('?') > -1 ? '&' : '?';
-      var newHref = base + sep + params;
-      link.setAttribute('href', newHref);
-
+      /* APENAS tracking — o href já foi corrigido por fixCheckoutLinks() na carga da página.
+       * NÃO reescrever a URL: o antigo bug removia o ? junto com o sck,
+       * quebrando a URL e causando erro 008 no Hotmart. */
       track('checkout_click', {
         cta_text: text,
         cta_href: href.substring(0, 120)

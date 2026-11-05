@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/capa-nova-01.jpg">
+<link rel="preload" as="image" href="img/capa-v4-01.jpg">
 <link rel="preload" as="image" href="img/foto-mesa.webp">
 
 <style>
@@ -3760,7 +3760,7 @@ const shelfTrack = $("#shelf-track");
 const makeShelfItem = (v, i, isClone) => `
   <button class="shelf-card" type="button" data-vol-idx="${i}" ${isClone ? 'aria-hidden="true" tabindex="-1"' : `aria-label="Conhecer volume ${v.num}: ${escapeHtml(v.title)}"`}>
     <div class="shelf-card-media">
-      <img src="img/capa-nova-${v.num}.jpg" width="275" height="389" alt="Capa do volume ${v.num}: ${escapeHtml(v.title)}" ${i > 2 || isClone ? 'loading="lazy"' : ''}>
+      <img src="img/capa-v4-${v.num}.jpg" width="275" height="389" alt="Capa do volume ${v.num}: ${escapeHtml(v.title)}" ${i > 2 || isClone ? 'loading="lazy"' : ''}>
       <span class="shelf-card-tap-hint">Toque para ver</span>
     </div>
     <div class="shelf-card-info">
@@ -3796,8 +3796,8 @@ function selectVolume(index, shouldScroll) {
   volDetail.innerHTML = `
     <div class="vol-detail-grid">
       <div class="vol-cover-frame">
-        <button type="button" data-zoom="img/capa-nova-${v.num}-zoom.jpg" data-caption="Capa em alta resolução do Volume ${v.num}: ${escapeHtml(v.title)}" aria-label="Ampliar capa do volume ${v.num}">
-          <img src="img/capa-nova-${v.num}.jpg" width="480" height="679" alt="Capa do volume ${v.num}: ${escapeHtml(v.title)}">
+        <button type="button" data-zoom="img/capa-v4-${v.num}-zoom.jpg" data-caption="Capa em alta resolução do Volume ${v.num}: ${escapeHtml(v.title)}" aria-label="Ampliar capa do volume ${v.num}">
+          <img src="img/capa-v4-${v.num}.jpg" width="480" height="679" alt="Capa do volume ${v.num}: ${escapeHtml(v.title)}">
           <span class="vol-zoom-badge" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/></svg>
           </span>
@@ -3869,8 +3869,8 @@ const btnVerCapas = $("#btn-ver-todas-capas");
 const galleryClose = $("#gallery-close");
 
 galleryGrid.innerHTML = VOLUMES.map(v => `
-  <div class="gallery-item" data-zoom="img/capa-nova-${v.num}-zoom.jpg" data-caption="Volume ${v.num}: ${escapeHtml(v.title)}" role="button" tabindex="0">
-    <img src="img/capa-nova-${v.num}.jpg" width="480" height="679" loading="lazy" alt="Capa do Volume ${v.num}">
+  <div class="gallery-item" data-zoom="img/capa-v4-${v.num}-zoom.jpg" data-caption="Volume ${v.num}: ${escapeHtml(v.title)}" role="button" tabindex="0">
+    <img src="img/capa-v4-${v.num}.jpg" width="480" height="679" loading="lazy" alt="Capa do Volume ${v.num}">
     <span>Vol. ${v.num} — ${escapeHtml(v.short)}</span>
   </div>
 `).join("");

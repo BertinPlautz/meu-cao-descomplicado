@@ -3842,8 +3842,21 @@ function selectVolume(index, shouldScroll) {
   }
 }
 
-// Inicializar primeiro volume
-selectVolume(0, false);
+// Inicializar volume (aceita link direto: ?vol=08 ou #vol-08)
+(function initVolumeFromLink() {
+  const fromQuery = new URLSearchParams(window.location.search).get("vol");
+  const fromHash = (window.location.hash.match(/^#vol-(\d{1,2})$/) || [])[1];
+  const n = parseInt(fromQuery || fromHash || "", 10);
+  if (n >= 1 && n <= VOLUMES.length) {
+    selectVolume(n - 1, false);
+    window.addEventListener("load", () => {
+      const sec = document.getElementById("escolha-volume");
+      if (sec) setTimeout(() => sec.scrollIntoView({ behavior: "smooth", block: "start" }), 350);
+    });
+  } else {
+    selectVolume(0, false);
+  }
+})();
 
 // Eventos de clique nos chips e prateleira
 volChips.addEventListener("click", e => {

@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mapa das 7 Manias · Simbas Pet</title>
+<meta name="description" content="Baixe grátis o Mapa das 7 Manias: o que o seu cão está tentando te dizer — e o que fazer hoje.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Mapa das 7 Manias — grátis">
+<meta property="og:description" content="O que o seu cão está tentando te dizer — e o que fazer hoje. PDF de 12 páginas.">
+<meta property="og:image" content="https://www.simbaspet.com.br/mapa/mapa-mockup.webp">
+<link rel="canonical" href="https://www.simbaspet.com.br/mapa">
+<meta name="theme-color" content="#0B0E13">
+<link rel="icon" href="/img/logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+
+<!-- META PIXEL (mesmo ID da landing page) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+var PIXEL_ID='35007983302181877';
+if(PIXEL_ID!=='SEU_PIXEL_ID'){fbq('init',PIXEL_ID);fbq('track','PageView');}
+function ev(nome,dados){try{if(PIXEL_ID!=='SEU_PIXEL_ID')fbq('trackCustom',nome,dados||{});}catch(e){}}
+</script>
+
+<style>
+:root{
+  --noite:#0B0E13; --noite2:#141922; --ambar:#FFB020; --alerta:#FC3C32; --creme:#F3EEE2; --tinta:#14161C;
+  --navy:#0F1E36; --navy2:#16294A; --ouro:#D9B36A; --cinza:#9AA3B2; --linha:rgba(255,255,255,.10);
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--noite);color:#fff;font-family:Inter,system-ui,sans-serif;font-size:17px;line-height:1.55;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{max-width:640px;margin:0 auto;padding:0 20px}
+.anton{font-family:Anton,Impact,sans-serif;font-weight:400;letter-spacing:.5px;text-transform:uppercase;line-height:1.02}
+.ital{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500}
+.amb{color:var(--ambar)} .our{color:var(--ouro)}
+.selo{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:12.5px;letter-spacing:1.6px;text-transform:uppercase;padding:8px 14px;border-radius:999px;background:rgba(255,176,32,.12);color:var(--ambar);border:1px solid rgba(255,176,32,.35)}
+.selo.ouro{background:rgba(217,179,106,.12);color:var(--ouro);border-color:rgba(217,179,106,.4)}
+
+/* topo */
+.topo{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;max-width:640px;margin:0 auto}
+.topo img{height:34px;width:auto}
+.topo span{font-size:12.5px;color:var(--cinza);font-weight:600}
+
+/* HERO */
+.hero{padding:10px 0 34px;text-align:center;position:relative}
+.hero:before{content:"";position:absolute;inset:-60px 0 auto;height:520px;background:radial-gradient(60% 50% at 50% 30%,rgba(255,176,32,.16),transparent 70%);pointer-events:none}
+.hero h1{font-size:clamp(46px,13vw,74px);margin:18px 0 6px}
+.hero h1 s{text-decoration:none;position:relative;color:#fff}
+.hero .sub{font-size:19px;color:#D5DAE3;max-width:480px;margin:0 auto}
+.mock{width:min(440px,92%);margin:22px auto 6px;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:460px;margin:0 auto;padding:19px 22px;border-radius:14px;background:var(--ambar);color:var(--tinta);font-weight:800;font-size:18px;letter-spacing:.3px;text-decoration:none;border:0;cursor:pointer;box-shadow:0 10px 30px rgba(255,176,32,.28);transition:transform .15s}
+.btn:active{transform:scale(.98)}
+.btn svg{width:22px;height:22px}
+.micro{font-size:13.5px;color:var(--cinza);margin-top:12px}
+.ok{display:none;margin:14px auto 0;max-width:460px;background:rgba(80,200,120,.1);border:1px solid rgba(80,200,120,.35);color:#BFF0CF;border-radius:12px;padding:12px 14px;font-size:15px}
+.ok.on{display:block}
+.seta{margin-top:26px;font-size:15px;color:#fff;font-weight:600}
+.seta b{color:var(--ambar)}
+.seta i{display:block;font-style:normal;font-size:22px;color:var(--ambar);animation:pul 1.6s infinite}
+@keyframes pul{50%{transform:translateY(6px);opacity:.6}}
+
+/* PONTE */
+.ponte{padding:56px 0 20px;text-align:center}
+.ponte h2{font-size:clamp(36px,10vw,54px);margin:16px 0 10px}
+.ponte p{color:#C9CFDA;max-width:520px;margin:0 auto}
+.compara{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:left}
+.compara div{border-radius:16px;padding:18px 16px}
+.compara .a{background:#1B212C;border:1px solid #2A3240}
+.compara .b{background:linear-gradient(160deg,#1A2C4D,#0F1E36);border:1px solid rgba(217,179,106,.45)}
+.compara h5{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;font-weight:800;margin-bottom:8px}
+.compara .a h5{color:var(--ambar)} .compara .b h5{color:var(--ouro)}
+.compara strong{display:block;font-family:Anton,sans-serif;font-weight:400;font-size:30px;line-height:1;margin-bottom:6px}
+.compara span{font-size:14px;color:#C9CFDA;line-height:1.4;display:block}
+
+/* VIRADA (topo, ainda escuro) */
+.virada-topo{padding:44px 0 46px;text-align:center;border-top:1px solid var(--linha)}
+.virada-topo .bomba{text-wrap:balance;font-family:Anton,Impact,sans-serif;font-weight:400;font-size:clamp(40px,11vw,60px);line-height:1.02;margin:16px 0 12px}
+.virada-topo .lead{color:#C9CFDA;max-width:500px;margin:0 auto;font-size:18px}
+
+/* DORES — zona da landing page, com destaque */
+.dores{background:radial-gradient(120% 60% at 50% 0%,#1D3560 0%,var(--navy) 55%);padding:0 0 54px;position:relative;border-top:3px solid var(--ouro);box-shadow:0 -30px 60px rgba(217,179,106,.12)}
+.faixa{display:flex;justify-content:center;transform:translateY(-50%)}
+.faixa span{white-space:nowrap;background:var(--ouro);color:var(--navy);font-weight:800;font-size:clamp(11.5px,3.4vw,13.5px);letter-spacing:clamp(.8px,.4vw,1.6px);text-transform:uppercase;padding:11px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(217,179,106,.4)}
+.dores h2{text-wrap:balance;font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(26px,7vw,36px);line-height:1.2;text-align:center;margin:8px auto 26px;max-width:520px}
+.dores h2 em{color:var(--ouro);font-weight:500}
+.cta-brilho{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;text-decoration:none;margin:0 auto 30px;max-width:520px;padding:20px 18px 18px;border-radius:16px;overflow:hidden;
+  background:linear-gradient(180deg,#FFC94A 0%,#FFB020 55%,#E89B0C 100%);color:#14161C;
+  box-shadow:0 0 0 0 rgba(255,176,32,.6),0 14px 34px rgba(255,176,32,.35);animation:ctaPulsa 1.8s ease-in-out infinite}
+.cta-brilho:after{content:"";position:absolute;top:0;left:-60%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-20deg);animation:ctaBrilho 2.6s ease-in-out infinite}
+.cta-1{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:clamp(24px,7.2vw,32px);line-height:1.08;letter-spacing:.6px;position:relative;z-index:1}
+.cta-2{text-wrap:balance;font-size:clamp(12.5px,3.5vw,14.5px);line-height:1.35;font-weight:600;color:#3A2A08;position:relative;z-index:1}
+.cta-brilho:active{transform:scale(.98)}
+@keyframes ctaPulsa{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,176,32,.55),0 14px 34px rgba(255,176,32,.35)}50%{transform:scale(1.035);box-shadow:0 0 0 12px rgba(255,176,32,0),0 18px 40px rgba(255,176,32,.5)}}
+@keyframes ctaBrilho{0%{left:-60%}55%,100%{left:130%}}
+@media(prefers-reduced-motion:reduce){.cta-brilho,.cta-brilho:after{animation:none}}
+.dor{display:grid;grid-template-columns:48% 1fr;column-gap:14px;align-items:center;text-decoration:none;color:inherit;background:var(--navy2);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:14px 12px 16px;margin-bottom:16px;transition:border-color .2s}
+.dor:active,.dor:hover{border-color:rgba(217,179,106,.6)}
+.capa{position:relative;width:100%;aspect-ratio:1414/2000}
+.capa img{width:100%;height:100%;object-fit:cover;border-radius:7px;box-shadow:0 10px 24px rgba(0,0,0,.45);animation:pulsa 2.6s ease-in-out infinite;animation-delay:var(--d);transform-origin:center}
+.capa.duo{aspect-ratio:auto;padding-bottom:calc(100% * 0.8 * 1.414 * 1.36)}
+.capa.duo img{position:absolute;width:80%;height:auto;aspect-ratio:1414/2000;top:0;left:0}
+.capa.duo img:last-child{left:20%;top:auto;bottom:0;animation-delay:calc(var(--d) + .5s)}
+@keyframes pulsa{0%,100%{transform:scale(1);box-shadow:0 10px 24px rgba(0,0,0,.45),0 0 0 0 rgba(217,179,106,0)}50%{transform:scale(1.045);box-shadow:0 14px 30px rgba(0,0,0,.5),0 0 0 5px rgba(217,179,106,.35)}}
+@media(prefers-reduced-motion:reduce){.capa img{animation:none}}
+.txt{min-width:0}
+.dor .hoje{font-size:18.5px;line-height:1.38;color:#fff;font-weight:600}
+.dor .hoje:before{content:"✕";display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-size:13px;font-weight:800;background:rgba(252,60,50,.2);color:#FF7A72;margin-bottom:10px}
+.dor .depois{grid-column:1/-1;display:flex;gap:12px;font-size:17.5px;line-height:1.45;margin-top:14px;padding-top:14px;border-top:1px dashed rgba(255,255,255,.14);color:#E9EDF4}
+.dor .depois:before{content:"✓";flex:0 0 28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:14px;font-weight:800;background:rgba(217,179,106,.22);color:var(--ouro)}
+.dor .depois b{color:var(--ouro)}
+@media(max-width:359px){.dor .hoje{font-size:16.5px}.dor .depois{font-size:16px}.dor{column-gap:10px}}
+@media(min-width:760px){.dor{grid-template-columns:240px 1fr;column-gap:24px;padding:18px 20px 20px}.dor .hoje{font-size:21px}.dor .depois{font-size:18.5px}}
+.dor .v{display:inline-block;font-size:12px;font-weight:800;letter-spacing:1px;color:var(--ouro);border:1px solid rgba(217,179,106,.4);padding:2px 8px;border-radius:999px;margin-left:4px;white-space:nowrap}
+.btn.ouro{background:var(--ouro);color:var(--navy);margin-top:26px;box-shadow:0 10px 30px rgba(217,179,106,.3)}
+.dores .compara{margin-top:30px}
+.virada{margin:30px 0 0;text-align:center;font-family:'Playfair Display',serif;font-style:italic;font-size:24px;line-height:1.35;color:#fff}
+.virada b{font-style:normal;color:var(--ouro)}
+
+/* POR DENTRO */
+.dentro{background:var(--navy);padding:10px 0 56px}
+.dentro h3{font-family:'Playfair Display',serif;font-size:28px;line-height:1.2;text-align:center;margin-bottom:6px}
+.dentro .lead{text-align:center;color:#C4CCDB;margin-bottom:20px;font-size:16px}
+.galeria{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 14px;margin:0 -20px;-webkit-overflow-scrolling:touch}
+.galeria figure{flex:0 0 74%;scroll-snap-align:center;background:#fff;border-radius:14px;overflow:hidden;color:var(--tinta)}
+.galeria img{width:100%;aspect-ratio:4/5;object-fit:cover;background:#E8E3D6}
+.galeria figcaption{padding:10px 12px 12px;font-size:14px;line-height:1.35}
+.galeria figcaption b{display:block;font-size:15px;color:var(--navy)}
+.dica-arrasta{text-align:center;font-size:12.5px;color:#8E9AB0;margin-top:4px}
+.capas{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:34px}
+.capas img{border-radius:5px;box-shadow:0 6px 14px rgba(0,0,0,.35);aspect-ratio:3/4;object-fit:cover;width:100%;background:#1c2b47}
+
+/* OFERTA */
+.oferta{background:linear-gradient(180deg,var(--navy),#0A1528);padding:10px 0 60px}
+.caixa{background:#fff;color:var(--tinta);border-radius:22px;padding:26px 20px 22px;box-shadow:0 30px 60px rgba(0,0,0,.4)}
+.caixa .selo{background:var(--navy);color:var(--ouro);border:0}
+.caixa h2{font-family:'Playfair Display',serif;font-size:30px;line-height:1.15;color:var(--navy);margin:14px 0 4px}
+.caixa h2 em{color:#A7802F}
+.caixa .lead{color:#4A4F59;font-size:15.5px}
+.itens{list-style:none;margin:18px 0}
+.itens li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #EEE9DD;font-size:15.5px;line-height:1.35}
+.itens li:last-child{border:0}
+.itens li i{flex:0 0 40px;height:40px;border-radius:10px;background:var(--navy);color:var(--ouro);display:grid;place-items:center;font-style:normal;font-family:Anton,sans-serif;font-size:17px}
+.itens li b{display:block;color:var(--navy)}
+.preco{display:flex;align-items:baseline;justify-content:center;gap:8px;margin:6px 0 2px;color:var(--navy)}
+.preco small{font-size:15px;color:#6A6F78}
+.preco strong{font-family:Anton,sans-serif;font-weight:400;font-size:56px;line-height:1}
+.preco-sub{text-align:center;font-size:14px;color:#6A6F78;margin-bottom:16px}
+.btn.navy{background:var(--navy);color:#fff;box-shadow:0 10px 26px rgba(15,30,54,.35);max-width:none}
+.btn.navy span{color:var(--ouro)}
+.garantia{display:flex;gap:12px;align-items:center;margin-top:16px;padding:14px;border-radius:14px;background:#F6F2E8;font-size:14px;line-height:1.4;color:#3B3F48}
+.garantia svg{flex:0 0 38px;height:38px}
+.semcompra{text-align:center;margin-top:26px;font-size:15px;color:#AEB7C7}
+.semcompra a{color:var(--ambar);font-weight:700}
+
+/* BOX IMPRESSÃO */
+.impresso{margin-top:34px;background:#F3EEE2;color:var(--tinta);border-radius:22px;padding:28px 18px 26px;box-shadow:0 24px 50px rgba(0,0,0,.35);background-image:radial-gradient(rgba(20,22,28,.05) 1px,transparent 1px);background-size:14px 14px}
+.imp-selo{display:inline-block;background:var(--navy);color:var(--ouro);font-weight:800;font-size:12px;letter-spacing:1.4px;text-transform:uppercase;padding:7px 13px;border-radius:999px}
+.impresso h3{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(27px,7.4vw,36px);line-height:1.15;color:var(--navy);margin:14px 0 10px;text-wrap:balance}
+.impresso h3 em{color:#A7802F;font-weight:600}
+.imp-lead{font-size:17px;line-height:1.5;color:#3B3F48;margin-bottom:22px}
+.imp-lead b{color:var(--navy)}
+.cartao{position:relative;background:#fff;border-radius:6px;padding:26px 16px 16px;margin:0 4px 22px;box-shadow:0 8px 20px rgba(20,22,28,.13);transform:rotate(var(--r))}
+.cartao:before{content:"";position:absolute;top:-10px;left:50%;width:84px;height:22px;margin-left:-42px;background:rgba(217,179,106,.55);transform:rotate(-3deg);border-radius:2px}
+.lugar{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#8A6A1F;margin-bottom:8px;line-height:1.3}
+.lugar svg{flex:0 0 22px;width:22px;height:22px;color:var(--navy)}
+.cartao h4{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:26px;line-height:1.05;color:var(--navy);text-transform:uppercase;margin-bottom:6px}
+.cartao p{font-size:16.5px;line-height:1.45;color:#30343C}
+.vol-tag{display:inline-block;margin-top:10px;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--navy);background:#EEF1F6;padding:4px 10px;border-radius:999px}
+.imp-fecho{text-align:center;font-family:'Playfair Display',serif;font-style:italic;font-size:24px;line-height:1.3;color:var(--navy);margin-top:6px}
+.imp-fecho b{font-style:normal;color:#A7802F}
+.imp-nota{text-align:center;font-size:14px;color:#6A6F78;margin-top:8px;text-wrap:balance}
+@media(min-width:760px){.impresso{padding:36px 32px}.cartoes{display:grid}}
+/* CTA FINAL */
+.final{background:linear-gradient(180deg,var(--navy) 0%,#0A1528 100%);padding:20px 0 60px;text-align:center}
+.final-pre{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(22px,6vw,28px);line-height:1.3;color:#E3E7EF;text-wrap:balance;margin-bottom:26px}
+.final-pre b{display:block;text-wrap:balance;font-style:normal;color:var(--ouro);font-weight:700}
+.cta-final{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;max-width:540px;margin:0 auto;padding:22px 18px 22px;border-radius:20px;overflow:hidden;
+  background:linear-gradient(180deg,#FFD15C 0%,#FFB020 50%,#F08C00 100%);color:#14161C;border:3px solid #FFE3A0;
+  animation:cfPulsa 1.5s ease-in-out infinite}
+.cta-final:before{content:"";position:absolute;inset:-40%;background:conic-gradient(from 0deg,transparent 0 70%,rgba(255,255,255,.55) 80%,transparent 90%);animation:cfGira 3.2s linear infinite;z-index:0}
+.cta-final:after{content:"";position:absolute;inset:3px;border-radius:16px;background:linear-gradient(180deg,#FFD15C 0%,#FFB020 50%,#F08C00 100%);z-index:0}
+.cta-final>span{position:relative;z-index:1}
+.cf-selo{background:#14161C;color:var(--ambar);font-weight:800;font-size:12px;letter-spacing:1.4px;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.cf-1{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:clamp(34px,10vw,48px);line-height:1;letter-spacing:.6px}
+.cf-2{font-size:clamp(14px,3.9vw,16px);font-weight:700;color:#3A2A08}
+.cta-final:active{transform:scale(.97)}
+@keyframes cfPulsa{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,176,32,.7),0 18px 44px rgba(255,176,32,.4)}50%{transform:scale(1.045);box-shadow:0 0 0 16px rgba(255,176,32,0),0 22px 54px rgba(255,176,32,.6)}}
+@keyframes cfGira{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.cta-final,.cta-final:before{animation:none}}
+.final-pos{text-wrap:balance;margin-top:16px;font-size:14px;color:#AEB7C7}
+.final .semcompra{margin-top:30px}
+footer{background:#070B14;color:#7E8899;font-size:12.5px;text-align:center;padding:26px 20px 110px;line-height:1.6}
+footer img{height:30px;margin:0 auto 10px;opacity:.85}
+
+/* barra fixa */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:rgba(11,14,19,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--linha);transform:translateY(110%);transition:transform .3s}
+.barra.on{transform:none}
+.barra a{display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:600px;margin:0 auto;padding:13px 16px;border-radius:12px;background:var(--navy);border:1px solid rgba(217,179,106,.5);text-decoration:none;color:#fff;font-weight:700;font-size:15px}
+.barra a em{font-style:normal;color:var(--ouro);white-space:nowrap}
+
+@media(min-width:760px){
+  body{font-size:18px}
+  .galeria{margin:0;padding:4px 0 14px}
+  .galeria figure{flex-basis:46%}
+  .capas{grid-template-columns:repeat(6,1fr)}
+}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <img src="/img/logo.webp" alt="Simbas Pet" onerror="this.style.display='none'">
+  <span>@simbas.amoranimais</span>
+</header>
+
+<!-- 1. ENTREGA -->
+<section class="hero">
+  <div class="wrap">
+    <span class="selo">✓ Grátis · sem cadastro · sem e-mail</span>
+    <h1 class="anton">Seu mapa<br><span class="amb">chegou.</span></h1>
+    <p class="sub">As 7 manias, o que cada uma <b>quer dizer</b> e o que fazer <b>hoje</b> — em 12 páginas.</p>
+    <img class="mock" src="/mapa/mapa-mockup.webp" alt="Páginas do Mapa das 7 Manias" width="1100" height="940">
+    <a class="btn" id="baixar" href="/mapa/mapa-das-7-manias.pdf" download="Mapa-das-7-Manias-Simbas.pdf">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
+      BAIXAR O MAPA (PDF)
+    </a>
+    <p class="micro">PDF · 12 páginas · abre no celular · dá pra imprimir e colar na geladeira</p>
+    <div class="ok" id="ok">Pronto! Se não baixou, <a href="/mapa/mapa-das-7-manias.pdf" target="_blank" rel="noopener"><b>toque aqui para abrir</b></a>.</div>
+  </div>
+</section>
+
+<!-- 2. A VIRADA (ainda no tom do Mapa) -->
+<section class="virada-topo" id="dores">
+  <div class="wrap">
+    <div style="text-align:center"><span class="selo">Leia antes de abrir o PDF</span></div>
+    <h2 class="anton bomba">O Mapa mostra<br>o <span class="amb">porquê.</span><br>Falta o <span class="amb">como.</span></h2>
+    <p class="lead">Saber o que ele está dizendo já muda tudo. Mas, na hora em que acontece, você precisa saber <b>exatamente o que fazer.</b></p>
+  </div>
+</section>
+
+<!-- 3. ZONA LANDING PAGE: DORES × SOLUÇÃO COM AS CAPAS -->
+<section class="dores">
+  <div class="faixa"><span>↓ &nbsp;O passo a passo está aqui&nbsp; ↓</span></div>
+  <div class="wrap">
+    <h2>Se uma destas cenas é a sua, <em>existe um guia feito só para ela.</em></h2>
+    <a class="cta-brilho" id="cta-topo" href="https://www.simbaspet.com.br/?utm_source=mapa&amp;utm_medium=bridge&amp;utm_campaign=7manias&amp;utm_content=cta-topo">
+      <span class="cta-1">CLIQUE AQUI E GARANTA<br>OS 12 GUIAS</span>
+      <span class="cta-2">Xixi Fora do Lugar · Cão Late Demais · Destrói Coisas · Puxa a Guia… e muito mais</span>
+    </a>
+    <a class="dor" href="https://www.simbaspet.com.br/?vol=03&amp;utm_source=mapa&amp;utm_medium=bridge&amp;utm_campaign=7manias&amp;utm_content=vol03" data-cta="vol03">
+      <div class="capa" style="--d:0.00s"><img src="/mapa/capas/vol-03.webp" alt="Capa do volume 03" loading="lazy"></div>
+      <div class="txt"><div class="hoje">O passeio virou cabo de guerra. Seu ombro dói e você já pensou em parar de passear.</div></div>
+      <div class="depois"><span>Um passo a passo de <b>como ensinar a guia frouxa</b>, começando em casa, até a rua.<span class="v">VOL. 03</span></span></div>
+    </a>
+    <a class="dor" href="https://www.simbaspet.com.br/?vol=04&amp;utm_source=mapa&amp;utm_medium=bridge&amp;utm_campaign=7manias&amp;utm_content=vol04" data-cta="vol04">
+      <div class="capa duo" style="--d:0.35s"><img src="/mapa/capas/vol-04.webp" alt="Capa do volume 04" loading="lazy"><img src="/mapa/capas/vol-05.webp" alt="Capa do volume 05" loading="lazy"></div>
+      <div class="txt"><div class="hoje">Você sai de casa com o coração apertado, sem saber o que vai encontrar na volta.</div></div>
+      <div class="depois"><span>Como <b>preparar a saída</b>, ajustar o ambiente e perceber quando é hora de pedir ajuda.<span class="v">VOL. 04 · 05</span></span></div>
+    </a>
+    <a class="dor" href="https://www.simbaspet.com.br/?vol=09&amp;utm_source=mapa&amp;utm_medium=bridge&amp;utm_campaign=7manias&amp;utm_content=vol09" data-cta="vol09">
+      <div class="capa" style="--d:0.70s"><img src="/mapa/capas/vol-09.webp" alt="Capa do volume 09" loading="lazy"></div>
+      <div class="txt"><div class="hoje">O filhote morde mão, pé, roupa — e você já ouviu que "vai ficar agressivo".</div></div>
+      <div class="depois"><span>O que <b>oferecer no lugar da mão</b>, a pausa certa e o cuidado com crianças em casa.<span class="v">VOL. 09</span></span></div>
+    </a>
+    <a class="dor" href="https://www.simbaspet.com.br/?vol=01&amp;utm_source=mapa&amp;utm_medium=bridge&amp;utm_campaign=7manias&amp;utm_content=vol01" data-cta="vol01">
+      <div class="capa duo" style="--d:1.05s"><img src="/mapa/capas/vol-01.webp" alt="Capa do volume 01" loading="lazy"><img src="/mapa/capas/vol-06.webp" alt="Capa do volume 06" loading="lazy"></div>
+      <div class="txt"><div class="hoje">A campainha toca e começa o vexame: latido, pulo, visita constrangida.</div></div>
+      <div class="depois"><span>Como <b>preparar a chegada</b> e ensinar "quatro patas no chão" — com a visita ajudando.<span class="v">VOL. 01 · 06</span></span></div>
+    </a>
+    <a class="dor" href="https://www.simbaspet.com.br/?vol=08&amp;utm_source=mapa&amp;utm_medium=bridge&amp;utm_campaign=7manias&amp;utm_content=vol08" data-cta="vol08">
+      <div class="capa" style="--d:1.40s"><img src="/mapa/capas/vol-08.webp" alt="Capa do volume 08" loading="lazy"></div>
+      <div class="txt"><div class="hoje">Fim de ano chegando e você já sabe: fogos, tremedeira, ele escondido embaixo da cama.</div></div>
+      <div class="depois"><span>Um plano para <b>antes, durante e depois</b> dos barulhos fortes.<span class="v">VOL. 08</span></span></div>
+    </a>
+    <a class="dor" href="https://www.simbaspet.com.br/?vol=02&amp;utm_source=mapa&amp;utm_medium=bridge&amp;utm_campaign=7manias&amp;utm_content=vol02" data-cta="vol02">
+      <div class="capa" style="--d:1.75s"><img src="/mapa/capas/vol-02.webp" alt="Capa do volume 02" loading="lazy"></div>
+      <div class="txt"><div class="hoje">Xixi no tapete, no sofá, atrás da porta — e você já não sabe mais onde colocar o tapetinho.</div></div>
+      <div class="depois"><span>Como <b>organizar o ambiente</b> e começar uma rotina nova de banheiro.<span class="v">VOL. 02</span></span></div>
+    </a>
+    <a class="dor" href="https://www.simbaspet.com.br/?vol=07&amp;utm_source=mapa&amp;utm_medium=bridge&amp;utm_campaign=7manias&amp;utm_content=vol07" data-cta="vol07">
+      <div class="capa" style="--d:2.10s"><img src="/mapa/capas/vol-07.webp" alt="Capa do volume 07" loading="lazy"></div>
+      <div class="txt"><div class="hoje">Ele come fezes — e você sente nojo, vergonha e medo de que faça mal.</div></div>
+      <div class="depois"><span>O que <b>observar</b> e como agir com cuidado, sem bronca.<span class="v">VOL. 07</span></span></div>
+    </a>
+    <a class="dor" href="https://www.simbaspet.com.br/?vol=11&amp;utm_source=mapa&amp;utm_medium=bridge&amp;utm_campaign=7manias&amp;utm_content=vol11" data-cta="vol11">
+      <div class="capa duo" style="--d:2.45s"><img src="/mapa/capas/vol-11.webp" alt="Capa do volume 11" loading="lazy"><img src="/mapa/capas/vol-12.webp" alt="Capa do volume 12" loading="lazy"></div>
+      <div class="txt"><div class="hoje">Ele está envelhecendo, ou acabou de chegar — e você não sabe se está fazendo o certo.</div></div>
+      <div class="depois"><span>Guias para o <b>cão idoso</b> e para os <b>primeiros dias do recém-adotado</b>.<span class="v">VOL. 11 · 12</span></span></div>
+    </a>
+
+    <p class="virada">Você para de <b>adivinhar</b>.<br>E começa a ter <b>resposta</b>.</p>
+
+    <div class="impresso">
+      <span class="imp-selo">O que faz a diferença no dia a dia</span>
+      <h3>A resposta fica <em>onde o problema acontece.</em></h3>
+      <p class="imp-lead">Use no celular, no tablet ou no computador. E, quando quiser, <b>imprima em folha A4, em qualquer impressora de casa</b> — e pendure o card no lugar exato da cena:</p>
+      <div class="cartao" style="--r:-1.2deg">
+        <div class="lugar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17M3 21h18M14.5 12.5h.01"/></svg>Na porta, na altura do gancho da coleira</div>
+        <h4>Puxa a guia?</h4>
+        <p>Antes de sair, o card te lembra: o que fazer antes de abrir a porta, como segurar a guia, onde parar — e o sinal de que está funcionando.</p>
+        <span class="vol-tag">Card do Volume 03</span>
+      </div>
+      <div class="cartao" style="--r:1deg">
+        <div class="lugar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v17H4zM12 4v17M9.5 11h.01M14.5 11h.01"/></svg>No armário da limpeza, onde você pega o pano</div>
+        <h4>Xixi fora do lugar?</h4>
+        <p>Na hora de limpar mais uma vez, a resposta está ali: o que observar e o que ajustar na rotina.</p>
+        <span class="vol-tag">Card do Volume 02</span>
+      </div>
+      <div class="cartao" style="--r:-0.8deg">
+        <div class="lugar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10a6 6 0 1 1 12 0v4l2 3H4l2-3zM10 20a2 2 0 0 0 4 0"/></svg>Ao lado da campainha</div>
+        <h4>Late demais?</h4>
+        <p>O que fazer antes de abrir, como reduzir o gatilho da porta — e por que gritar “não” costuma piorar.</p>
+        <span class="vol-tag">Card do Volume 01</span>
+      </div>
+      <div class="cartao" style="--r:1.2deg">
+        <div class="lugar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M2 13a2 2 0 0 1 4 0v2h12v-2a2 2 0 0 1 4 0v5H2zM5 18v2M19 18v2"/></svg>Ao lado do sofá</div>
+        <h4>Destrói coisas?</h4>
+        <p>Como separar destruição de tédio e de ansiedade, o que oferecer antes de sair e o que guardar.</p>
+        <span class="vol-tag">Card do Volume 05</span>
+      </div>
+      <div class="cartao" style="--r:-1deg">
+        <div class="lugar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12v20H6zM6 10h12M9 5v2M9 13v3"/></svg>Na porta da geladeira</div>
+        <h4>Sofre quando fica sozinho?</h4>
+        <p>A sequência da saída, o que deixar com ele e o que não fazer na hora da despedida.</p>
+        <span class="vol-tag">Card do Volume 04</span>
+      </div>
+      <p class="imp-fecho">Na hora do aperto, você não procura nada.<br><b>Só olha.</b></p>
+      <p class="imp-nota">São 6 cards em cada volume. Você imprime só o que precisa, quando precisa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. CTA FINAL -->
+<section class="final" id="oferta">
+  <div class="wrap">
+    <p class="final-pre">Você já sabe o que ele está dizendo.<b>Agora tenha o passo a passo na mão.</b></p>
+    <a class="cta-final" id="cta-lp" href="https://www.simbaspet.com.br/?utm_source=mapa&amp;utm_medium=bridge&amp;utm_campaign=7manias&amp;utm_content=cta-final">
+      <span class="cf-selo">12 guias · 72 cards · acesso imediato</span>
+      <span class="cf-1">QUERO OS 12 GUIAS<br>AGORA</span>
+      <span class="cf-2">Toque e veja tudo o que tem dentro →</span>
+    </a>
+    <p class="final-pos">No celular, no computador ou impresso · garantia de 15 dias</p>
+    <p class="semcompra">Só queria o Mapa? Sem problema — <a href="/mapa/mapa-das-7-manias.pdf" download="Mapa-das-7-Manias-Simbas.pdf">baixe aqui de novo</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <img src="/img/logo.webp" alt="Simbas Pet" onerror="this.style.display='none'">
+  Simbas Pet · conteúdo educativo sobre comportamento e rotina de cães.<br>
+  Não substitui a avaliação de um médico-veterinário ou de um profissional de comportamento.<br>
+  <a href="https://www.simbaspet.com.br/?utm_source=mapa&amp;utm_medium=bridge&amp;utm_campaign=7manias&amp;utm_content=rodape">simbaspet.com.br</a>
+</footer>
+
+<div class="barra" id="barra"><a id="cta-barra" href="https://www.simbaspet.com.br/?utm_source=mapa&amp;utm_medium=bridge&amp;utm_campaign=7manias&amp;utm_content=barra">Quer o passo a passo de cada mania? <em>Ver →</em></a></div>
+
+<script>
+var barra=document.getElementById('barra');
+document.getElementById('baixar').addEventListener('click',function(){document.getElementById('ok').classList.add('on');ev('BaixouMapa');setTimeout(function(){document.getElementById('dores').scrollIntoView({behavior:'smooth'})},1500);});
+[].forEach.call(document.querySelectorAll('.dor'),function(a){a.addEventListener('click',function(){ev('CliqueColecao',{origem:a.dataset.cta})})});
+['cta-lp','cta-barra','cta-topo'].forEach(function(id){document.getElementById(id).addEventListener('click',function(){ev('CliqueColecao',{origem:id})})});
+// barra aparece depois que a pessoa passa do botão de download
+var mostrou=false;window.addEventListener('scroll',function(){var y=window.scrollY,of=document.getElementById('oferta').getBoundingClientRect().top;
+  if(y>700)barra.classList.add('on');
+  if(of<window.innerHeight*0.6)barra.classList.remove('on'); else if(y>700)barra.classList.add('on');},{passive:true});
+// repassa UTMs que vieram do Direct para os links da LP
+(function(){var q=location.search;if(!q)return;var p=new URLSearchParams(q),src=p.get('utm_source');if(!src)return;
+  [].forEach.call(document.querySelectorAll('a[href*="simbaspet.com.br/?"]'),function(a){a.href=a.href.replace('utm_source=mapa','utm_source=mapa_'+encodeURIComponent(src))});
+})();
+</script>
+</body>
+</html>

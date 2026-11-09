@@ -28,5 +28,12 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/mapa7manias",
+      "destination": "/mapa",
+      "permanent": false
+    }
   ]
 }

@@ -3559,7 +3559,6 @@ src="https://www.facebook.com/tr?id=35007983302181877&ev=PageView&noscript=1"
      ========================================================================== -->
 <script>
 /* Configurações comerciais e de rastreamento */
-const CHECKOUT_URL = "https://pay.hotmart.com/O108186457I?checkoutMode=10&sck=HOTMART_PRODUCT_PAGE&off=xmpilkt4&hotfeature=32";
 const PIXEL_ID = "";     // ID do Pixel Meta se aplicável
 
 /* Banco de dados dos 12 volumes e seus 6 cards com descrições exatas */
@@ -3740,24 +3739,6 @@ const escapeHtml = str => str.replace(/[&<>'"]/g, tag => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
 }[tag] || tag));
 
-/* Integração Checkout e Passagem de Parâmetros UTM */
-const currentSearchParams = new URLSearchParams(window.location.search);
-function setupCheckoutLinks() {
-  $$("a[data-checkout]").forEach(link => {
-    if (CHECKOUT_URL) {
-      try {
-        const url = new URL(CHECKOUT_URL);
-        currentSearchParams.forEach((val, key) => {
-          if (!url.searchParams.has(key)) url.searchParams.set(key, val);
-        });
-        link.href = url.toString();
-      } catch (err) {
-        console.warn("Invalid Checkout URL:", err);
-      }
-    }
-  });
-}
-setupCheckoutLinks();
 
 /* Renderização da Prateleira Infinita de Capas no Topo */
 const shelfTrack = $("#shelf-track");
@@ -3838,8 +3819,6 @@ function selectVolume(index, shouldScroll) {
       </div>
     </div>
   `;
-
-  setupCheckoutLinks();
 
   if (shouldScroll) {
     volDetail.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest" });

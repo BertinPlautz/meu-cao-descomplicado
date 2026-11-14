@@ -28,7 +28,7 @@ const PENDING_KEY = 'queue:pending';
 // ── Crypto ──
 const crypto = require('crypto');
 function sha256(text) {
-  return crypto.createHash('sha256', text).digest('hex');
+  return crypto.createHash('sha256').update(text).digest('hex');
 }
 
 // ── KV REST helpers ──

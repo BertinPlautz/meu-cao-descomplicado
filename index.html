@@ -16,13 +16,15 @@
 <meta name="theme-color" content="#FBF8F2">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Meu Cão Descomplicado — Simbas Pet">
-<meta property="og:description" content="12 guias digitais com orientações, exemplos práticos e 72 cards para consultar nas situações do dia a dia. R$27.">
-<meta property="og:image" content="img/og.jpg">
+<meta property="og:description" content="Ele late, puxa a guia e destrói a casa? 12 guias para consultar na hora da dúvida. R$27, pagamento único, 15 dias de garantia.">
+<meta property="og:image" content="https://simbaspet.com.br/img/og-v5.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero-geladeira-720.webp" media="(max-width: 899px)">
-<link rel="preload" as="image" href="img/hero-geladeira-1200.webp" media="(min-width: 900px)">
+<link rel="preload" as="image" href="img/hero-guia-720.webp" media="(max-width: 899px)">
+<link rel="preload" as="image" href="img/hero-guia-1200.webp" media="(min-width: 900px)">
 
 <style>
 /* ==========================================================================
@@ -2832,6 +2834,19 @@ footer {
 .lp-covers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 18px; background: var(--cream); cursor: pointer; }
 .lp-covers img { width: 100%; aspect-ratio: 220 / 311; object-fit: cover; border-radius: 4px; box-shadow: 0 4px 10px -4px rgba(15,30,54,.35); }
 @media (min-width: 640px) { .lp-covers { grid-template-columns: repeat(6, 1fr); } }
+
+/* Auditoria v5.1 */
+.lp-obj-media img { object-position: 62% 40%; }
+.lp-obj-media figcaption { font-size: 12.5px; color: var(--muted-light); text-align: center; margin-top: 8px; }
+.lp-hero-media img { object-position: 50% 60%; }
+/* pulso só nos botões de decisão: dobra, oferta e barra fixa */
+.btn-primary { animation: none; }
+#hero-cta .btn-primary, #comprar .btn-primary { animation: ctaPulse 2.6s ease-in-out infinite; }
+
+/* contraste AA nos rótulos sobre fundo claro */
+.sec-tag, .vol-number-tag { color: #7A5C0E; }
+.lp-hero-media figcaption, .lp-obj-media figcaption, .disclaimer-text { color: var(--muted); }
+.lp-auth .lp-auth-num { font-family: var(--font-serif); font-size: 22px; line-height: 1.3; color: var(--ink); font-weight: 600; }
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -2876,7 +2891,7 @@ src="https://www.facebook.com/tr?id=35007983302181877&ev=PageView&noscript=1"
 
       <div class="lp-cta-wrap" id="hero-cta">
         <a class="btn-primary lp-btn" href="https://pay.hotmart.com/O108186457I?checkoutMode=10&sck=HOTMART_PRODUCT_PAGE&off=xmpilkt4&hotfeature=32" data-checkout>QUERO O MAPA DO MEU CÃO — R$27</a>
-        <p class="lp-micro">Acesso logo após o pagamento · 15 arquivos · Garantia de 15 dias · Sem mensalidade</p>
+        <p class="lp-micro">Garantia de 15 dias · Sem mensalidade<br>Acesso assim que o pagamento é aprovado</p>
       </div>
 
       <ul class="lp-selos" aria-label="Resumo da coleção">
@@ -2889,10 +2904,9 @@ src="https://www.facebook.com/tr?id=35007983302181877&ev=PageView&noscript=1"
 
     <figure class="lp-hero-media">
       <picture>
-        <source media="(min-width: 900px)" srcset="img/hero-geladeira-1200.webp">
-        <img src="img/hero-geladeira-720.webp" width="720" height="900" fetchpriority="high" alt="Mão prende na geladeira a página do passeio do Volume 03 enquanto o cão late na cozinha">
+        <source media="(min-width: 900px)" srcset="img/hero-guia-1200.webp">
+        <img src="img/hero-guia-720.webp" width="720" height="900" fetchpriority="high" alt="Vista de quem segura a guia vermelha enquanto o cão puxa na calçada">
       </picture>
-      <figcaption>Cena ilustrativa com a página real do Volume 03, impressa em A4.</figcaption>
     </figure>
   </div>
 </header>
@@ -2969,7 +2983,8 @@ src="https://www.facebook.com/tr?id=35007983302181877&ev=PageView&noscript=1"
       <p class="lp-punch">O que não funcionou até hoje foi tentar decorar. Aqui você consulta.</p>
     </div>
     <figure class="lp-obj-media">
-      <img src="img/cena-guia-720.webp" width="720" height="900" loading="lazy" alt="Mão segurando a guia vermelha enquanto o cão puxa na calçada">
+      <img src="img/hero-geladeira-720.webp" width="720" height="900" loading="lazy" alt="Mão prende na geladeira a página do passeio do Volume 03 enquanto o cão late na cozinha">
+      <figcaption>Cena ilustrativa com a página real do Volume 03, impressa em A4.</figcaption>
     </figure>
   </div>
 
@@ -3069,7 +3084,7 @@ src="https://www.facebook.com/tr?id=35007983302181877&ev=PageView&noscript=1"
 <section class="lp-sec lp-auth" aria-labelledby="t-auth">
   <div class="wrap">
     <div class="lp-auth-top">
-      <p class="lp-auth-num" id="t-auth"><b>265 mil</b> pessoas acompanham o Simbas nas redes</p>
+      <h2 class="lp-auth-num" id="t-auth"><b>265 mil</b> pessoas acompanham o Simbas nas redes</h2>
       <ul class="lp-redes">
         <li><b>170 mil</b><span>Instagram</span></li>
         <li><b>57 mil</b><span>TikTok</span></li>
@@ -3210,7 +3225,7 @@ src="https://www.facebook.com/tr?id=35007983302181877&ev=PageView&noscript=1"
         </div>
         <p class="price-condition">Pagamento único. Sem mensalidade.</p>
         <a class="btn-primary btn-block" href="https://pay.hotmart.com/O108186457I?checkoutMode=10&sck=HOTMART_PRODUCT_PAGE&off=xmpilkt4&hotfeature=32" data-checkout>QUERO MEU CÃO DESCOMPLICADO</a>
-        <p class="oferta-microcopy">Acesso digital logo após o pagamento · Garantia de 15 dias · Sem envio físico</p>
+        <p class="oferta-microcopy">Acesso assim que o pagamento é aprovado · Garantia de 15 dias · Sem envio físico</p>
       </div>
     </div>
 
@@ -3286,7 +3301,7 @@ src="https://www.facebook.com/tr?id=35007983302181877&ev=PageView&noscript=1"
     <h2 id="t-fechamento">Escolha por onde começar. A coleção acompanha.</h2>
     <p>12 guias, 72 cards e as fichas para a dúvida de hoje e as próximas.</p>
     <a class="btn-primary btn-block" href="https://pay.hotmart.com/O108186457I?checkoutMode=10&sck=HOTMART_PRODUCT_PAGE&off=xmpilkt4&hotfeature=32" data-checkout>QUERO COM 15 DIAS DE GARANTIA</a>
-    <p class="fechamento-terms">R$27 · Pagamento único · Acesso logo após o pagamento</p>
+    <p class="fechamento-terms">R$27 · Pagamento único · Garantia de 15 dias</p>
   </div>
 </section>
 
@@ -3693,7 +3708,7 @@ function selectVolume(index, shouldScroll) {
     <div class="vol-detail-grid">
       <div class="vol-cover-frame">
         <button type="button" data-zoom="img/capa-v4-${v.num}-zoom.jpg" data-caption="Capa em alta resolução do Volume ${v.num}: ${escapeHtml(v.title)}" aria-label="Ampliar capa do volume ${v.num}">
-          <img src="img/capa-v4-${v.num}.jpg" width="480" height="679" alt="Capa do volume ${v.num}: ${escapeHtml(v.title)}">
+          <img src="img/capa-v4-${v.num}.jpg" width="480" height="679" loading="lazy" alt="Capa do volume ${v.num}: ${escapeHtml(v.title)}">
           <span class="vol-zoom-badge" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/></svg>
           </span>

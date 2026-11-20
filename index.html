@@ -12,8 +12,8 @@
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Simbas Pet — Meu Cão Descomplicado | 12 Guias Digitais e 72 Cards</title>
-<meta name="description" content="Você não precisa saber tudo sobre seu cão. Precisa saber onde consultar na hora da dúvida. 12 guias práticos com orientações e exemplos para consultar nas situações do dia a dia. Do passeio difícil à ansiedade de separação. Por R$27.">
-<meta name="theme-color" content="#0F1E36">
+<meta name="description" content="Ele late, puxa a guia, é ansioso e destrói a casa. 12 guias digitais para consultar na hora da dúvida: o que fazer, o que evitar e o que observar. R$27, pagamento único.">
+<meta name="theme-color" content="#FBF8F2">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Meu Cão Descomplicado — Simbas Pet">
 <meta property="og:description" content="12 guias digitais com orientações, exemplos práticos e 72 cards para consultar nas situações do dia a dia. R$27.">
@@ -21,8 +21,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/capa-v4-01.jpg">
-<link rel="preload" as="image" href="img/foto-mesa.webp">
+<link rel="preload" as="image" href="img/hero-geladeira-720.webp" media="(max-width: 899px)">
+<link rel="preload" as="image" href="img/hero-geladeira-1200.webp" media="(min-width: 900px)">
 
 <style>
 /* ==========================================================================
@@ -2675,6 +2675,163 @@ footer {
   .btn-primary, .btn-primary::after { animation: none; transition: none; }
   .sticky-bar { transition: none; }
 }
+
+/* ==========================================================================
+   NOVA LANDING V5 — mobile first
+   ========================================================================== */
+:root { --lp-green: #1F5E3B; --lp-cream: #F6F1E7; }
+
+.lp-hero {
+  background: linear-gradient(180deg, #FBF8F2 0%, var(--lp-cream) 100%);
+  color: var(--ink);
+  padding: 14px 0 34px;
+  border-bottom: 1px solid var(--line);
+}
+.lp-hero-grid { display: grid; gap: 22px; }
+.lp-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.lp-brand img { width: 34px; height: 34px; border-radius: 8px; }
+.lp-brand span { font-weight: 800; font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--navy); line-height: 1.15; }
+.lp-brand i { display: block; font-style: normal; font-weight: 600; font-size: 11px; letter-spacing: .08em; color: var(--muted); }
+
+.lp-h1 { font-family: var(--font-serif); margin: 0 0 16px; letter-spacing: -0.02em; text-wrap: balance; }
+.lp-h1 .l1 { display: block; font-weight: 600; font-size: clamp(27px, 7.4vw, 46px); line-height: 1.14; color: var(--ink); }
+.lp-h1 .l2 { display: block; margin-top: 14px; font-weight: 800; font-size: clamp(21px, 5.6vw, 32px); line-height: 1.2; color: var(--lp-green); }
+
+.lp-sub { font-size: 17px; line-height: 1.55; color: var(--ink-secondary); margin-bottom: 20px; max-width: 560px; }
+.lp-sub strong { color: var(--ink); }
+
+.lp-cta-wrap { margin-bottom: 18px; }
+.lp-btn { width: 100%; padding: 16px 20px; font-size: 18px; line-height: 1.25; }
+.lp-micro { margin-top: 12px; font-size: 13.5px; line-height: 1.45; color: var(--muted); text-align: center; }
+
+.lp-selos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.lp-selos li { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 9px 4px; text-align: center; line-height: 1.15; }
+.lp-selos b { display: block; font-size: 16px; color: var(--navy); font-weight: 800; }
+.lp-selos span { display: block; font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+
+.lp-hero-media { margin: 0; }
+.lp-hero-media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 18px; box-shadow: var(--shadow-lg); }
+.lp-hero-media figcaption { font-size: 12.5px; color: var(--muted-light); margin-top: 8px; text-align: center; }
+
+@media (min-width: 900px) {
+  .lp-hero { padding: 28px 0 56px; }
+  .lp-hero-grid { grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+  .lp-btn { width: auto; padding: 18px 34px; }
+  .lp-micro { text-align: left; }
+  .lp-selos { max-width: 520px; }
+}
+
+/* Seções genéricas */
+.lp-sec { padding: 56px 0; }
+.lp-head { margin-bottom: 26px; }
+.lp-head h2, .lp-sec h2 { font-size: clamp(27px, 6.4vw, 40px); color: var(--navy); }
+.lp-lead { font-size: 18px; line-height: 1.55; color: var(--ink); margin: 14px 0 12px; font-weight: 500; }
+.lp-sec p { color: var(--ink-secondary); }
+.lp-center { text-align: center; }
+.lp-mt { margin-top: 30px; }
+.lp-small { font-size: 14px; color: var(--muted); margin-top: 10px; }
+
+/* Dobra 2 */
+.lp-dor { background: var(--paper); }
+.lp-trip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 26px; }
+.lp-trip img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 12px; }
+.lp-cenas { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.lp-cenas li { background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--gold); border-radius: 14px; padding: 18px 18px 16px; }
+.lp-cenas h3 { font-family: var(--font-serif); font-size: 19.5px; line-height: 1.3; color: var(--ink); font-weight: 700; margin-bottom: 8px; }
+.lp-cenas p { font-size: 16px; line-height: 1.55; }
+.lp-vol-link { display: inline-flex; align-items: center; min-height: 40px; margin-top: 6px; font-size: 14px; font-weight: 700; color: var(--lp-green); text-decoration: underline; text-underline-offset: 3px; }
+.lp-vol-link::after { content: "→"; margin-left: 6px; text-decoration: none; }
+.lp-absolve { margin-top: 28px; padding: 24px 20px; border-radius: 16px; background: var(--navy); }
+.lp-absolve p { color: #DDE4F0; font-size: 16.5px; line-height: 1.6; margin-bottom: 10px; }
+.lp-absolve p:last-child { margin-bottom: 0; }
+.lp-absolve .big { font-family: var(--font-serif); font-size: 23px; line-height: 1.3; color: #fff; font-weight: 700; margin-bottom: 14px; }
+.lp-absolve strong { color: var(--gold-lt); }
+@media (min-width: 760px) {
+  .lp-cenas { grid-template-columns: 1fr 1fr; }
+  .lp-trip { gap: 14px; }
+  .lp-trip img { aspect-ratio: 4 / 3; }
+  .lp-absolve { padding: 34px 40px; text-align: center; }
+}
+
+/* Dobra 3 */
+.lp-obj { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.lp-obj-grid { display: grid; gap: 22px; }
+.lp-punch { margin-top: 14px; font-weight: 800; color: var(--lp-green) !important; font-size: 17.5px; }
+.lp-obj-media { margin: 0; }
+.lp-obj-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 45%; border-radius: 16px; }
+.lp-tria { list-style: none; margin: 26px 0 28px; padding: 0; display: grid; gap: 10px; }
+.lp-tria li { padding: 16px 18px; border-radius: 14px; background: var(--paper); border: 1px solid var(--line); }
+.lp-tria b { display: block; font-size: 17px; color: var(--ink); margin-bottom: 4px; }
+.lp-tria span { display: block; font-size: 16px; line-height: 1.5; color: var(--ink-secondary); }
+.lp-obj .lp-btn { max-width: 520px; }
+@media (min-width: 860px) {
+  .lp-obj-grid { grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; }
+  .lp-obj-media img { aspect-ratio: 4 / 5; }
+  .lp-tria { grid-template-columns: 1fr 1fr; }
+}
+
+/* Dobra 4 */
+.lp-dare { margin-top: 12px !important; font-weight: 800; color: var(--navy) !important; font-size: 17.5px; }
+.lp-steps-close { text-align: center; font-weight: 700; color: var(--navy); margin: 22px 0 6px; font-size: 16.5px; }
+
+/* Dobra 5 */
+.lp-auth { background: var(--lp-cream); }
+.lp-auth-top { text-align: center; max-width: 720px; margin: 0 auto 30px; }
+.lp-auth-num { font-family: var(--font-serif); font-size: 22px; line-height: 1.3; color: var(--ink) !important; font-weight: 600; }
+.lp-auth-num b { display: block; font-size: clamp(50px, 15vw, 76px); line-height: 1; color: var(--navy); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 6px; }
+.lp-redes { list-style: none; margin: 20px 0 16px; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.lp-redes li { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px 4px; }
+.lp-redes b { display: block; font-size: 19px; color: var(--navy); }
+.lp-redes span { font-size: 13px; color: var(--muted); }
+.lp-auth-sub { font-size: 16px; }
+.lp-fontes { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 22px 20px; max-width: 760px; margin: 0 auto; }
+.lp-fontes h3 { font-family: var(--font-serif); font-size: 22px; color: var(--navy); margin-bottom: 8px; }
+.lp-fontes p { font-size: 16px; line-height: 1.55; }
+.lp-fontes-list { list-style: none; margin: 14px 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.lp-fontes-list li { font-size: 14px; font-weight: 700; color: var(--navy); background: var(--paper); border: 1px solid var(--line-strong); border-radius: 999px; padding: 6px 12px; }
+.lp-fontes-note { font-size: 15px !important; color: var(--muted) !important; }
+
+/* Impressão */
+.lp-print { background: #fff; border-top: 1px solid var(--line); }
+.lp-print h2 { font-size: clamp(26px, 6vw, 40px); color: var(--navy); }
+.lp-checks { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 8px; }
+.lp-checks li { position: relative; padding-left: 28px; font-size: 16px; color: var(--ink-secondary); }
+.lp-checks li::before { content: "✓"; position: absolute; left: 0; top: 0; font-weight: 800; color: var(--lp-green); }
+.lp-print .painel-apoio-card { margin-top: 40px; }
+
+/* Dobra 7 */
+.lp-ancora { list-style: none; margin: 0 auto 14px; padding: 0; max-width: 620px; }
+.lp-ancora li { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 13px 2px; border-bottom: 1px dashed rgba(244, 231, 197, .28); }
+.lp-ancora span { font-size: 15.5px; color: #DDE4F0; }
+.lp-ancora b { font-size: 16px; color: #fff; white-space: nowrap; text-align: right; }
+.lp-ancora li:nth-child(3) b { white-space: normal; font-weight: 600; color: #DDE4F0; font-style: italic; max-width: 45%; }
+.lp-ancora li.total { border-bottom: none; padding-top: 16px; }
+.lp-ancora li.total span { color: #fff; font-weight: 700; font-size: 17px; }
+.lp-ancora li.total b { font-size: 30px; color: #FDE068; }
+.lp-ancora-nota { max-width: 620px; margin: 0 auto 30px; text-align: center; color: #DDE4F0; font-size: 15.5px; line-height: 1.55; }
+.lp-ancora-nota strong { display: block; color: #fff; font-size: 17px; margin-bottom: 4px; }
+.lp-inclui { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+.lp-inclui li { position: relative; padding-left: 28px; font-size: 16px; color: var(--ink-secondary); }
+.lp-inclui li::before { content: "✓"; position: absolute; left: 0; font-weight: 800; color: var(--lp-green); }
+.lp-inclui b { color: var(--ink); }
+.lp-futuro { max-width: 640px; margin: 30px auto; text-align: center; color: #DDE4F0; font-size: 17px; line-height: 1.6; }
+.lp-futuro strong { color: #fff; }
+.lp-fonte-precos { text-align: center; font-size: 12.5px; color: rgba(221, 228, 240, .7); margin-top: 22px; }
+
+/* Ajustes mobile gerais */
+@media (max-width: 420px) {
+  .lp-btn { font-size: 17px; }
+  .lp-selos b { font-size: 15px; }
+  .lp-selos span { font-size: 11px; }
+}
+
+.btn-card-zoom { background: var(--paper); color: var(--navy); min-height: 44px; font-size: 14px; }
+.lp-page-shot { margin: 0 auto; max-width: 420px; cursor: zoom-in; }
+.lp-page-shot img { width: 100%; border-radius: 6px; box-shadow: 0 18px 40px -14px rgba(15,30,54,.35), 0 2px 6px rgba(15,30,54,.12); transform: rotate(-1.5deg); background: #fff; }
+.lp-page-shot figcaption { font-size: 13px; color: var(--muted); text-align: center; margin-top: 14px; }
+.lp-covers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 18px; background: var(--cream); cursor: pointer; }
+.lp-covers img { width: 100%; aspect-ratio: 220 / 311; object-fit: cover; border-radius: 4px; box-shadow: 0 4px 10px -4px rgba(15,30,54,.35); }
+@media (min-width: 640px) { .lp-covers { grid-template-columns: repeat(6, 1fr); } }
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -2697,216 +2854,152 @@ src="https://www.facebook.com/tr?id=35007983302181877&ev=PageView&noscript=1"
 </head>
 <body>
 
-<a class="skip-link" href="#escolha-volume">Pular para os 12 volumes</a>
+<a class="skip-link" href="#comprar">Pular para a oferta</a>
 
 <!-- ==========================================================================
-     HERO SECTION
+     DOBRA 1 — HERO
      ========================================================================== -->
-<header class="hero" id="topo">
-  <div class="wrap">
-    
-    <div class="hero-brand">
-      <img src="img/logo.webp" width="44" height="44" alt="Logo Simbas Pet com coração dourado e pata de cachorro">
-      <div class="hero-brand-text">
-        <span>Simbas Pet</span>
-        <i>Meu Cão Descomplicado</i>
-      </div>
-    </div>
-
-    <div class="hero-header">
-      <div class="hero-kicker-wrap">
-        <span class="hero-kicker">
-          <span class="kicker-dot" aria-hidden="true"></span>
-          Coleção de 12 Guias Digitais + 72 Cards
-        </span>
+<header class="lp-hero" id="topo">
+  <div class="wrap lp-hero-grid">
+    <div class="lp-hero-copy">
+      <div class="lp-brand">
+        <img src="img/logo.webp" width="34" height="34" alt="">
+        <span>Simbas Pet<i>Meu Cão Descomplicado</i></span>
       </div>
 
-      <!-- Trilha animada de patinhas de cachorro passando -->
-      <div class="paw-trail-container" aria-hidden="true">
-        <div class="paw-track">
-          <div class="paw-print paw-1"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 11c-2.2 0-4 1.8-4 4 0 1.9 1.5 3.5 3.4 3.5 1.1 0 1.9-.5 2.6-.5.7 0 1.5.5 2.6.5 1.9 0 3.4-1.6 3.4-3.5 0-2.2-1.8-4-4-4-1 0-1.5.5-2 .5s-1-.5-2-.5z"/><circle cx="6.5" cy="10" r="1.8"/><circle cx="10" cy="7" r="1.8"/><circle cx="14" cy="7" r="1.8"/><circle cx="17.5" cy="10" r="1.8"/></svg></div>
-          <div class="paw-print paw-2"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 11c-2.2 0-4 1.8-4 4 0 1.9 1.5 3.5 3.4 3.5 1.1 0 1.9-.5 2.6-.5.7 0 1.5.5 2.6.5 1.9 0 3.4-1.6 3.4-3.5 0-2.2-1.8-4-4-4-1 0-1.5.5-2 .5s-1-.5-2-.5z"/><circle cx="6.5" cy="10" r="1.8"/><circle cx="10" cy="7" r="1.8"/><circle cx="14" cy="7" r="1.8"/><circle cx="17.5" cy="10" r="1.8"/></svg></div>
-          <div class="paw-print paw-3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 11c-2.2 0-4 1.8-4 4 0 1.9 1.5 3.5 3.4 3.5 1.1 0 1.9-.5 2.6-.5.7 0 1.5.5 2.6.5 1.9 0 3.4-1.6 3.4-3.5 0-2.2-1.8-4-4-4-1 0-1.5.5-2 .5s-1-.5-2-.5z"/><circle cx="6.5" cy="10" r="1.8"/><circle cx="10" cy="7" r="1.8"/><circle cx="14" cy="7" r="1.8"/><circle cx="17.5" cy="10" r="1.8"/></svg></div>
-          <div class="paw-print paw-4"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 11c-2.2 0-4 1.8-4 4 0 1.9 1.5 3.5 3.4 3.5 1.1 0 1.9-.5 2.6-.5.7 0 1.5.5 2.6.5 1.9 0 3.4-1.6 3.4-3.5 0-2.2-1.8-4-4-4-1 0-1.5.5-2 .5s-1-.5-2-.5z"/><circle cx="6.5" cy="10" r="1.8"/><circle cx="10" cy="7" r="1.8"/><circle cx="14" cy="7" r="1.8"/><circle cx="17.5" cy="10" r="1.8"/></svg></div>
-          <div class="paw-print paw-5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 11c-2.2 0-4 1.8-4 4 0 1.9 1.5 3.5 3.4 3.5 1.1 0 1.9-.5 2.6-.5.7 0 1.5.5 2.6.5 1.9 0 3.4-1.6 3.4-3.5 0-2.2-1.8-4-4-4-1 0-1.5.5-2 .5s-1-.5-2-.5z"/><circle cx="6.5" cy="10" r="1.8"/><circle cx="10" cy="7" r="1.8"/><circle cx="14" cy="7" r="1.8"/><circle cx="17.5" cy="10" r="1.8"/></svg></div>
-          <div class="paw-print paw-6"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 11c-2.2 0-4 1.8-4 4 0 1.9 1.5 3.5 3.4 3.5 1.1 0 1.9-.5 2.6-.5.7 0 1.5.5 2.6.5 1.9 0 3.4-1.6 3.4-3.5 0-2.2-1.8-4-4-4-1 0-1.5.5-2 .5s-1-.5-2-.5z"/><circle cx="6.5" cy="10" r="1.8"/><circle cx="10" cy="7" r="1.8"/><circle cx="14" cy="7" r="1.8"/><circle cx="17.5" cy="10" r="1.8"/></svg></div>
-          <div class="paw-print paw-7"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 11c-2.2 0-4 1.8-4 4 0 1.9 1.5 3.5 3.4 3.5 1.1 0 1.9-.5 2.6-.5.7 0 1.5.5 2.6.5 1.9 0 3.4-1.6 3.4-3.5 0-2.2-1.8-4-4-4-1 0-1.5.5-2 .5s-1-.5-2-.5z"/><circle cx="6.5" cy="10" r="1.8"/><circle cx="10" cy="7" r="1.8"/><circle cx="14" cy="7" r="1.8"/><circle cx="17.5" cy="10" r="1.8"/></svg></div>
-          <div class="paw-print paw-8"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 11c-2.2 0-4 1.8-4 4 0 1.9 1.5 3.5 3.4 3.5 1.1 0 1.9-.5 2.6-.5.7 0 1.5.5 2.6.5 1.9 0 3.4-1.6 3.4-3.5 0-2.2-1.8-4-4-4-1 0-1.5.5-2 .5s-1-.5-2-.5z"/><circle cx="6.5" cy="10" r="1.8"/><circle cx="10" cy="7" r="1.8"/><circle cx="14" cy="7" r="1.8"/><circle cx="17.5" cy="10" r="1.8"/></svg></div>
-        </div>
-      </div>
-
-      <h1>
-        <span class="h1-top">Você não precisa saber tudo sobre seu cão.</span>
-        <em>Precisa saber onde consultar na hora da dúvida.</em>
+      <h1 class="lp-h1">
+        <span class="l1">Ele late, puxa a guia, é ansioso e destrói a casa.</span>
+        <span class="l2">E você já tentou de tudo — menos ter o que fazer na hora em que acontece.</span>
       </h1>
 
-      <p class="hero-sublead">
-        Do passeio difícil à ansiedade de separação: orientações práticas com exemplos para você ter o que fazer <span class="hero-stat-badge">hoje</span>. 12 guias, 72 cards, por R$27 uma vez.
-      </p>
+      <p class="lp-sub">12 guias digitais para consultar na hora da dúvida: o que fazer, o que evitar e o que observar. <strong>R$27 pelos 12 volumes, pagamento único.</strong></p>
+
+      <div class="lp-cta-wrap" id="hero-cta">
+        <a class="btn-primary lp-btn" href="https://pay.hotmart.com/O108186457I?checkoutMode=10&sck=HOTMART_PRODUCT_PAGE&off=xmpilkt4&hotfeature=32" data-checkout>QUERO O MAPA DO MEU CÃO — R$27</a>
+        <p class="lp-micro">Acesso logo após o pagamento · 15 arquivos · Garantia de 15 dias · Sem mensalidade</p>
+      </div>
+
+      <ul class="lp-selos" aria-label="Resumo da coleção">
+        <li><b>12</b><span>volumes</span></li>
+        <li><b>72</b><span>cards</span></li>
+        <li><b>R$2,25</b><span>por guia</span></li>
+        <li><b>Consulta</b><span>não é aula</span></li>
+      </ul>
     </div>
 
-  </div>
-
-  <!-- Prateleira dinâmica das 12 capas em alta resolução (Posicionada mais para cima) -->
-  <div class="hero-shelf-container" aria-label="As 12 capas da coleção. Clique em qualquer volume para conhecer.">
-    <div class="shelf-rail">
-      <div class="shelf-track" id="shelf-track"></div>
-    </div>
-    <div class="shelf-base"></div>
-  </div>
-
-  <div class="wrap">
-    <div class="hero-cta-box" id="hero-cta">
-      <a class="btn-primary" href="https://pay.hotmart.com/O108186457I?checkoutMode=10&sck=HOTMART_PRODUCT_PAGE&off=xmpilkt4&hotfeature=32" data-checkout>QUERO A COLEÇÃO POR R$27</a>
-      <p class="hero-cta-guarantee">Pagamento único · 15 dias de garantia · Leia no celular ou imprima em casa</p>
-      
-      <div>
-        <a class="btn-jump" href="#por-dentro">
-          <span>Antes, quero ver por dentro</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-        </a>
-      </div>
-
-      </div>
-
-    <!-- 3 Value Pillars -->
-    <div class="hero-pillars">
-      <div class="pillar-item">
-        <div class="pillar-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
-        </div>
-        <div class="pillar-content">
-          <strong>Cada dúvida tem um lugar</strong>
-          <span>O passeio virou disputa? O filhote mordeu tudo? Abra o guia daquele momento e tenha a orientação.</span>
-        </div>
-      </div>
-
-      <div class="pillar-item">
-        <div class="pillar-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="14" x="3" y="5" rx="2"/><path d="M7 9h10M7 13h6"/></svg>
-        </div>
-        <div class="pillar-content">
-          <strong>O momento que você precisa</strong>
-          <span>Um card para consultar na situação, com exemplo de como aplicar na rotina.</span>
-        </div>
-      </div>
-
-      <div class="pillar-item">
-        <div class="pillar-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
-        </div>
-        <div class="pillar-content">
-          <strong>Imprima o que quiser</strong>
-          <span>Só o volume de hoje, um card para a geladeira ou a coleção inteira para ter em mãos. A4 e papel comum.</span>
-        </div>
-      </div>
-    </div>
-
+    <figure class="lp-hero-media">
+      <picture>
+        <source media="(min-width: 900px)" srcset="img/hero-geladeira-1200.webp">
+        <img src="img/hero-geladeira-720.webp" width="720" height="900" fetchpriority="high" alt="Mão prende na geladeira a página do passeio do Volume 03 enquanto o cão late na cozinha">
+      </picture>
+      <figcaption>Cena ilustrativa com a página real do Volume 03, impressa em A4.</figcaption>
+    </figure>
   </div>
 </header>
 
 <main>
 
 <!-- ==========================================================================
-     ABERTURA: IMAGEM PROTAGONISTA DOMÉSTICA
+     DOBRA 2 — ESPELHO DA DOR
      ========================================================================== -->
-<section class="section-abertura" aria-label="Apresentação visual da coleção">
+<section class="lp-sec lp-dor" aria-labelledby="t-dor">
   <div class="wrap">
-    <div class="abertura-card">
-      <div class="abertura-media" data-zoom="img/foto-mesa.webp" data-caption="Orientações para consultar. Páginas para ter por perto." role="button" tabindex="0" aria-label="Ampliar foto do material sobre a mesa">
-        <img src="img/foto-mesa.webp" srcset="img/foto-mesa-640.webp 640w, img/foto-mesa.webp 1000w" sizes="(min-width: 900px) 900px, 100vw" width="1000" height="625" loading="lazy" alt="Tutor com o material impresso sobre a mesa em situação doméstica reconhecível">
-        <div class="abertura-badge">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-          <span>Cena de uso real</span>
-        </div>
-        <div class="abertura-zoom-hint">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
-          <span>Toque para ampliar</span>
-        </div>
-      </div>
-      <div class="abertura-caption-box">
-        <p>“Orientações para consultar. Páginas para ter por perto.”</p>
-        <span>Você pode manter os guias no celular e consultar onde estiver.</span>
-      </div>
+    <div class="lp-head">
+      <span class="sec-tag">Você reconhece alguma?</span>
+      <h2 id="t-dor">Seis cenas que só quem vive sabe.</h2>
+    </div>
+
+    <div class="lp-trip" aria-hidden="true">
+      <img src="img/cena-latido.webp" width="480" height="640" loading="lazy" alt="">
+      <img src="img/cena-passeio.webp" width="480" height="640" loading="lazy" alt="">
+      <img src="img/cena-destroi.webp" width="480" height="640" loading="lazy" alt="">
+    </div>
+
+    <ol class="lp-cenas">
+      <li>
+        <h3>“Ele late para tudo — e o vizinho já reclamou duas vezes.”</h3>
+        <p>Você já deixou de sair. Já fechou a janela no calor. Já pediu desculpa no grupo do prédio. E o latido continua às 7h de sábado.</p>
+        <a class="lp-vol-link" href="#escolha-volume" data-goto-vol="1">Volume 01 · Late demais</a>
+      </li>
+      <li>
+        <h3>“O passeio virou cabo de guerra — e o seu ombro sabe.”</h3>
+        <p>Você evita a rua movimentada. Troca de calçada. Ele puxa, você puxa, e os dois voltam para casa estressados.</p>
+        <a class="lp-vol-link" href="#escolha-volume" data-goto-vol="3">Volume 03 · Passeio</a>
+      </li>
+      <li>
+        <h3>“Ele fez xixi no tapete de novo — e você já lavou três vezes.”</h3>
+        <p>Tem cheiro. Tem vergonha. E tem a dúvida: é birra? É doença? É manha? Ninguém explica.</p>
+        <a class="lp-vol-link" href="#escolha-volume" data-goto-vol="2">Volume 02 · Xixi fora do lugar</a>
+      </li>
+      <li>
+        <h3>“Ele destrói tudo quando fica sozinho — e você já pensou em desistir.”</h3>
+        <p>Sofá aberto, almofada morta, porta arranhada. E aquela culpa de sair para trabalhar.</p>
+        <a class="lp-vol-link" href="#escolha-volume" data-goto-vol="4">Volumes 04 e 05 · Sozinho e destruição</a>
+      </li>
+      <li>
+        <h3>“Ele pula em quem chega — e você já pediu desculpa pela roupa suja.”</h3>
+        <p>A campainha toca e a casa vira festa. Você segura pela coleira, a visita sorri amarelo e ninguém consegue nem entrar.</p>
+        <a class="lp-vol-link" href="#escolha-volume" data-goto-vol="6">Volume 06 · Visitas</a>
+      </li>
+      <li>
+        <h3>“Ele está velho e a rotina mudou — e você não sabe o que é normal.”</h3>
+        <p>Ele dorme diferente. Escorrega no piso. Você quer cuidar e não sabe por onde começar.</p>
+        <a class="lp-vol-link" href="#escolha-volume" data-goto-vol="11">Volume 11 · Cão idoso</a>
+      </li>
+    </ol>
+
+    <div class="lp-absolve">
+      <p class="big">Não é falta de amor, nem de esforço. Ninguém te entregou o mapa.</p>
+      <p>Você não precisa de mais um vídeo. Precisa saber o que fazer naquele exato momento — e o que observar depois.</p>
+      <p><strong>Nenhum desses 12 assuntos é mistério. Todos têm um caminho. É isso que a coleção entrega.</strong></p>
     </div>
   </div>
 </section>
 
 <!-- ==========================================================================
-     SITUAÇÕES & EMPATIA
+     DOBRA 3 — QUEBRA DE OBJEÇÃO
      ========================================================================== -->
-<section class="section-situacoes" aria-labelledby="t-situacoes">
+<section class="lp-sec lp-obj" aria-labelledby="t-obj">
+  <div class="wrap lp-obj-grid">
+    <div>
+      <span class="sec-tag">A pergunta que você está fazendo</span>
+      <h2 id="t-obj">“Já tentei de tudo. Por que isso seria diferente?”</h2>
+      <p class="lp-lead">Porque isto não é treino, é consulta. Você não assiste aula, não cumpre cronograma, não decora nada.</p>
+      <p>Abre o guia do problema de hoje, encontra a situação no mapa, lê o card daquele caso — o que fazer agora, como praticar, o que evitar e o sinal de que está funcionando — e aplica. No momento em que acontece.</p>
+      <p class="lp-punch">O que não funcionou até hoje foi tentar decorar. Aqui você consulta.</p>
+    </div>
+    <figure class="lp-obj-media">
+      <img src="img/cena-guia-720.webp" width="720" height="900" loading="lazy" alt="Mão segurando a guia vermelha enquanto o cão puxa na calçada">
+    </figure>
+  </div>
+
   <div class="wrap">
-    <div class="section-head">
-      <span class="sec-tag">Dúvidas da Convivência</span>
-      <h2 id="t-situacoes">Você conhece seu cão. Mas algumas situações ainda deixam dúvidas.</h2>
+    <ul class="lp-tria">
+      <li><b>“Não tenho tempo.”</b><span>É para quem não tem tempo. Um card se lê em menos de um minuto.</span></li>
+      <li><b>“Meu cão é caso perdido.”</b><span>Caso perdido é o que ninguém mapeou. São 12 mapas — e cada um diz também quando é hora de chamar um profissional.</span></li>
+      <li><b>“Já gastei muito.”</b><span>R$27, uma vez. Uma única aula com adestrador custa, em média, de R$100 a R$200.</span></li>
+      <li><b>“É mais um curso em vídeo?”</b><span>Não. Vídeo você assiste e esquece. Isto você consulta — na hora em que o cão late, não no domingo à tarde.</span></li>
+    </ul>
+    <div class="lp-center">
+      <a class="btn-primary lp-btn" href="https://pay.hotmart.com/O108186457I?checkoutMode=10&sck=HOTMART_PRODUCT_PAGE&off=xmpilkt4&hotfeature=32" data-checkout>QUERO OS 12 GUIAS POR R$27</a>
     </div>
-
-    <div class="situacoes-grid">
-      <div class="situacao-card">
-        <div class="situacao-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-        </div>
-        <div class="situacao-text">
-          <h3>O passeio virou uma disputa com a guia?</h3>
-          <p>Tensão constante, puxões repentinos e encontros difíceis pelo caminho que deixam você e o cão estressados.</p>
-        </div>
-      </div>
-
-      <div class="situacao-card">
-        <div class="situacao-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14h-2v-2h2zm0-4h-2V7h2z"/></svg>
-        </div>
-        <div class="situacao-text">
-          <h3>Seu filhote está mordendo mãos, pés e roupas?</h3>
-          <p>A fase de exploração com dentes pontiagudos que parece não ter pausa e machuca na hora das brincadeiras.</p>
-        </div>
-      </div>
-
-      <div class="situacao-card">
-        <div class="situacao-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <div class="situacao-text">
-          <h3>Seu cão está envelhecendo e a rotina começou a mudar?</h3>
-          <p>Passos mais lentos, necessidade de piso seguro, sono diferente e cuidados especiais que exigem adaptações.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="situacoes-highlight-box">
-      <p>Nem sempre é fácil saber o que observar, o que ajustar e quando procurar ajuda. <strong>É exatamente essa a lacuna que a coleção preenche: entre a dúvida e a ação, você tem um caminho.</strong></p>
-      <p>O <strong>Meu Cão Descomplicado</strong> reúne esses assuntos em volumes separados, com mapas de situações, cards de consulta, exemplos e ferramentas de registro.</p>
-      <p><strong>Você não precisa ler tudo para começar. Escolha o momento de hoje, confira a orientação e saiba o que fazer agora.</strong></p>
-    </div>
-
   </div>
 </section>
 
 <!-- ==========================================================================
-     POR DENTRO: ANATOMIA REAL (VOLUME 04: ELE SOFRE QUANDO FICA SOZINHO?)
+     DOBRA 4 — AMOSTRA + MECANISMO EM 3 PASSOS (VOLUME 04)
      ========================================================================== -->
 <section class="section-por-dentro" id="por-dentro" aria-labelledby="t-pordentro">
   <div class="wrap">
-    
     <div class="section-head">
-      <span class="sec-tag">Transparência Total</span>
-      <h2 id="t-pordentro">Veja o que está comprando. Por dentro.</h2>
-      <p>Esta é uma demonstração real de 3 páginas do volume <strong>Ele sofre quando fica sozinho?</strong> (Volume 04 da coleção).</p>
-      <p style="margin-top: 6px;">Abra a amostra para ampliar e ler cada orientação em tamanho real, ver como os exemplos funcionam e como registrar suas observações.</p>
+      <span class="sec-tag">Prova antes da compra</span>
+      <h2 id="t-pordentro">Abra. Leia. Decida com o texto na frente.</h2>
+      <p>Estas são 3 páginas reais do Volume 04, <strong>“Ele sofre quando fica sozinho?”</strong>: o mapa de situações, um card e a ficha. Sem corte, sem resumo.</p>
+      <p class="lp-dare">Se o texto não te convencer, não compre. É assim que deve ser.</p>
     </div>
 
     <div class="por-dentro-card">
-      <div class="por-dentro-top-action">
-        <button class="btn-primary" type="button" data-sample-idx="0" data-caption="Volume 04: Mapa de situações real mostrando os 6 cards correspondentes">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
-          <span>AMPLIAR A AMOSTRA (3 PÁGINAS)</span>
-        </button>
-      </div>
-
       <div class="por-dentro-steps">
-        
-        <!-- Step 1 -->
         <div class="step-card">
           <div class="step-media" data-zoom="img/v4-pag-04-zoom.webp" data-sample-idx="0" data-caption="Página 04: Mapa de situações e direcionamento de cards" role="button" tabindex="0" aria-label="Ampliar Mapa de Situações (Página 04)">
             <img src="img/v4-pag-04.webp" width="760" height="1074" loading="lazy" alt="Página de mapa de situações indicando quais cards consultar">
@@ -2914,16 +3007,15 @@ src="https://www.facebook.com/tr?id=35007983302181877&ev=PageView&noscript=1"
           </div>
           <div class="step-body">
             <div class="step-number">1</div>
-            <h3>1. Encontre a situação</h3>
-            <p>O mapa de cada volume apresenta situações e indica quais cards consultar.</p>
+            <h3>Encontre a situação no mapa</h3>
+            <p>Ele aponta o card exato para o que está acontecendo.</p>
             <button class="btn-card-zoom" type="button" data-sample-idx="0">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/></svg>
-              <span>Ampliar e ler página 04</span>
+              <span>Ler a página 04</span>
             </button>
           </div>
         </div>
 
-        <!-- Step 2 -->
         <div class="step-card">
           <div class="step-media" data-zoom="img/v4-pag-06-zoom.webp" data-sample-idx="1" data-caption="Página 06: Cards de consulta com o que fazer, praticar, evitar e o sinal de progresso" role="button" tabindex="0" aria-label="Ampliar Cards de Orientação (Página 06)">
             <img src="img/v4-pag-06.webp" width="760" height="1074" loading="lazy" alt="Cards recortáveis com blocos de orientação prática">
@@ -2931,16 +3023,15 @@ src="https://www.facebook.com/tr?id=35007983302181877&ev=PageView&noscript=1"
           </div>
           <div class="step-body">
             <div class="step-number">2</div>
-            <h3>2. Leia a orientação e o exemplo</h3>
-            <p>Cada card traz o que fazer agora, como praticar, o que evitar e o sinal de que está funcionando.</p>
+            <h3>Leia o card</h3>
+            <p>O que fazer agora, como praticar, o que evitar e o sinal de que está funcionando.</p>
             <button class="btn-card-zoom" type="button" data-sample-idx="1">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/></svg>
-              <span>Ampliar e ler página 06</span>
+              <span>Ler a página 06</span>
             </button>
           </div>
         </div>
 
-        <!-- Step 3 -->
         <div class="step-card">
           <div class="step-media" data-zoom="img/v4-pag-11-zoom.webp" data-sample-idx="2" data-caption="Página 11: Ficha de registro com exemplo preenchido, para levar à consulta" role="button" tabindex="0" aria-label="Ampliar Ficha de Registro (Página 11)">
             <img src="img/v4-pag-11.webp" width="760" height="1074" loading="lazy" alt="Ficha de observação com campos para preenchimento">
@@ -2948,187 +3039,107 @@ src="https://www.facebook.com/tr?id=35007983302181877&ev=PageView&noscript=1"
           </div>
           <div class="step-body">
             <div class="step-number">3</div>
-            <h3>3. Organize suas observações</h3>
-            <p>A ficha já vem com uma linha de exemplo preenchida. Anote o que aconteceu, o que ajudou e o que perguntar ao veterinário.</p>
+            <h3>Registre na ficha</h3>
+            <p>Vira o roteiro da sua conversa com o veterinário.</p>
             <button class="btn-card-zoom" type="button" data-sample-idx="2">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/></svg>
-              <span>Ampliar e ler página 11</span>
+              <span>Ler a página 11</span>
             </button>
           </div>
         </div>
-
       </div>
+
+      <p class="lp-steps-close">Três passos. Nenhum exige que você assista a nada.</p>
 
       <div class="por-dentro-actions">
         <button class="btn-outline" type="button" data-sample-idx="0" data-caption="Mapa de situações do volume Ele sofre quando fica sozinho?">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <span>VER AS 3 PÁGINAS DA AMOSTRA</span>
+          <span>LER AS 3 PÁGINAS EM TAMANHO REAL</span>
         </button>
       </div>
 
-      <p class="disclaimer-text">As amostras mostram o conteúdo que você recebe. Exemplos preenchidos são fictícios e não representam resultados de compradores.</p>
+      <p class="disclaimer-text">Os exemplos preenchidos são fictícios e não representam resultados de compradores.</p>
     </div>
-
   </div>
 </section>
 
 <!-- ==========================================================================
-     SELETOR INTERATIVO: QUAL ASSUNTO FAZ SENTIDO PARA VOCÊ HOJE?
+     DOBRA 5 — AUTORIDADE
+     ========================================================================== -->
+<section class="lp-sec lp-auth" aria-labelledby="t-auth">
+  <div class="wrap">
+    <div class="lp-auth-top">
+      <p class="lp-auth-num" id="t-auth"><b>265 mil</b> pessoas acompanham o Simbas nas redes</p>
+      <ul class="lp-redes">
+        <li><b>170 mil</b><span>Instagram</span></li>
+        <li><b>57 mil</b><span>TikTok</span></li>
+        <li><b>38 mil</b><span>Facebook</span></li>
+      </ul>
+      <p class="lp-auth-sub">Tutores com as mesmas dúvidas que você: o latido, o passeio, o xixi, o medo de fogos.</p>
+    </div>
+
+    <div class="lp-fontes">
+      <h3>De onde vem cada orientação</h3>
+      <p>Cada volume termina com a lista das fontes usadas — <strong>76 referências</strong> no total, de instituições como:</p>
+      <ul class="lp-fontes-list">
+        <li>Dogs Trust</li><li>AVSAB</li><li>Merck Veterinary Manual</li><li>Cornell University</li><li>RSPCA</li><li>ASPCA</li><li>AAHA</li><li>PDSA</li>
+      </ul>
+      <p class="lp-fontes-note">E cada volume começa pelo semáforo do cuidado: os sinais de que é hora de procurar o veterinário, antes de qualquer card.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     OS 12 VOLUMES (SELETOR COM CTA NOMINAL)
      ========================================================================== -->
 <section class="section-seletor" id="escolha-volume" aria-labelledby="t-seletor">
   <div class="wrap">
-    
     <div class="section-head">
-      <span class="sec-tag">Os 12 Volumes da Coleção</span>
-      <h2 id="t-seletor">Qual assunto faz sentido para você hoje?</h2>
-      <p>Escolha um tema para conhecer o volume e os seis cards incluídos.</p>
-      
-      <div class="offer-anchor-badge">
-        <strong>Por R$27, você recebe os 12 volumes. Não precisa comprar cada assunto separadamente.</strong>
-      </div>
+      <span class="sec-tag">Os 12 volumes</span>
+      <h2 id="t-seletor">Qual é a dúvida de hoje?</h2>
+      <p>Toque num tema para ver o volume e os seis cards dele.</p>
     </div>
 
-    <!-- 12 Chips -->
     <div class="vol-chips-grid" id="vol-chips" role="group" aria-label="Selecione um dos 12 volumes"></div>
-
-    <!-- Visualizador Interativo do Volume Selecionado -->
     <div class="vol-detail-box" id="vol-detail" aria-live="polite"></div>
 
-    <div style="text-align: center; margin-top: 36px;">
+    <div class="lp-center lp-mt">
       <button class="btn-outline" type="button" id="btn-ver-todas-capas">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
         <span>VER AS 12 CAPAS</span>
       </button>
-      <p style="font-size: 14.5px; color: var(--muted); margin-top: 10px;">Cada volume tem 14 páginas, seis cards, exemplos e recursos de registro. Todos estão incluídos na coleção.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ==========================================================================
-     IMPRESSÃO BENEFÍCIO: Imprima só o que precisa
-     ========================================================================== -->
-<section class="section-praticidade" style="background: #FFFFFF; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 60px 0;" aria-labelledby="t-impressao-beneficio">
-  <div class="wrap">
-    <div class="praticidade-grid" style="align-items: start;">
-      
-      <div class="praticidade-copy">
-        <span class="sec-tag">Impressão Inteligente</span>
-        <h2 id="t-impressao-beneficio" style="font-size: clamp(26px, 5.5vw, 40px);">Imprima só o que precisa. Cole onde a dúvida acontece.</h2>
-        
-        <p style="font-size: 17px; color: var(--ink-secondary); line-height: 1.65; margin-bottom: 18px;">
-          O card do passeio na porta. O dos fogos na geladeira em dezembro. A ficha ao lado da caminha. Você imprime em casa, em folha A4 comum, só as páginas que quiser — e a orientação fica à vista de todo mundo da casa, na hora em que a dúvida aparece.
-        </p>
-        
-        <a class="btn-primary" href="https://pay.hotmart.com/O108186457I?checkoutMode=10&sck=HOTMART_PRODUCT_PAGE&off=xmpilkt4&hotfeature=32" data-checkout>QUERO A COLEÇÃO POR R$27</a>
-      </div>
-
-      <div class="fridge-photo-card" style="max-width: 520px;">
-        <div class="fridge-photo-wrapper" data-zoom="img/capa-mao-vol04.jpg" data-caption="Volume 04 impresso em folha A4, segurado na mão — pronto para consultar ou colocar à vista." role="button" tabindex="0" aria-label="Ampliar foto do volume impresso">
-          <img src="img/capa-mao-vol04.jpg" width="800" height="1067" loading="lazy" alt="Volume 04 impresso em folha A4, segurado na mão">
-        </div>
-        <div class="fridge-caption">
-          <h4>“Imprima só o que precisa. Cole onde a dúvida acontece.”</h4>
-          <p>Um volume inteiro na mão. Ou um card na geladeira. Você escolhe o que faz sentido para sua casa.</p>
-        </div>
-      </div>
-
+      <p class="lp-small">Cada volume tem 14 páginas, 6 cards, uma ficha e as fontes. Todos estão incluídos.</p>
     </div>
   </div>
 </section>
 
 <!-- ==========================================================================
-     PRATICIDADE & CARD NA GELADEIRA
+     IMPRESSÃO + PAINEL DE APOIO
      ========================================================================== -->
-<section class="section-praticidade" aria-labelledby="t-praticidade">
+<section class="section-praticidade lp-print" aria-labelledby="t-print">
   <div class="wrap">
     <div class="praticidade-grid">
-      
       <div class="praticidade-copy">
-        <span class="sec-tag">Flexibilidade Real</span>
-        <h2 id="t-praticidade">A resposta à vista, no lugar da dúvida.</h2>
-        
-        <ul class="practical-uses">
-          <li>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Um card pode ficar perto de onde a dúvida aparece — na porta, na geladeira, no cantinho do passeio.</span>
-          </li>
-          <li>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Uma ficha pode acompanhar suas anotações sobre a rotina e virar o roteiro da conversa com o veterinário.</span>
-          </li>
-          <li>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Um volume pode ser separado para conversar com quem também cuida do seu cão.</span>
-          </li>
-        </ul>
-
-        <p class="praticidade-subhead">Você para de adivinhar. Você consulta.</p>
-        <p style="color: var(--muted); font-size: 16px;">O que importa é ter a resposta quando a dúvida chegar.</p>
-
-        <a class="btn-primary" href="https://pay.hotmart.com/O108186457I?checkoutMode=10&sck=HOTMART_PRODUCT_PAGE&off=xmpilkt4&hotfeature=32" data-checkout>QUERO A COLEÇÃO COMPLETA POR R$27</a>
-
-        <ul class="specs-list" style="font-size: 14px; color: var(--muted-light); padding: 12px 18px; background: transparent; border: 1px solid var(--line); border-radius: var(--radius-md);">
-          <li>Impressão em folhas A4.</li>
+        <span class="sec-tag">O diferencial</span>
+        <h2 id="t-print">Imprima só o que precisa. Cole onde a dúvida acontece.</h2>
+        <p class="lp-lead">O card do passeio na porta. O dos fogos na geladeira em dezembro. A ficha ao lado da caminha. Você imprime em casa, em A4 comum, só as páginas que quiser — ou a coleção inteira para ter em mãos.</p>
+        <ul class="lp-checks">
+          <li>Funciona no celular, sem imprimir nada.</li>
           <li>Cards de 18 × 11,5 cm para recortar, se quiser.</li>
-          <li>Papel comum pode ser usado.</li>
+          <li>Uma página-resumo por volume, feita para a geladeira.</li>
           <li>Fichas para preencher à mão.</li>
-          <li>Instruções de impressão em cada volume.</li>
         </ul>
       </div>
-
-      <div class="fridge-photo-card">
-        <div class="fridge-photo-wrapper" data-zoom="img/card-geladeira-zoom.jpg" data-caption="Antes do passeio, uma orientação à vista. Card Prepare com calma fixado na geladeira com ímã." role="button" tabindex="0" aria-label="Ampliar foto do card na geladeira">
-          <img src="img/card-geladeira.jpg" width="747" height="1000" loading="lazy" alt="Card Prepare com calma do volume de passeio fixado com ímã na porta da geladeira">
-        </div>
-        <div class="fridge-caption">
-          <h4>“Antes do passeio, uma orientação à vista.”</h4>
-          <p>Imprima o card que deseja consultar e escolha onde deixá-lo à vista.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ==========================================================================
-     FERRAMENTAS DE REGISTRO & PAINEL DE APOIO
-     ========================================================================== -->
-<section class="section-ferramentas" aria-labelledby="t-ferramentas">
-  <div class="wrap">
-    
-    <div class="ferramentas-grid">
-      <div>
-        <span class="sec-tag">Registro & Parceria com Veterinário</span>
-        <h2 id="t-ferramentas">Para observar, anotar e conversar sobre o cuidado.</h2>
-        <p style="font-size: 16.5px; color: var(--ink-secondary); margin: 16px 0;">Além das orientações, cada volume inclui uma ferramenta de registro e um exemplo fictício preenchido.</p>
-        <p style="font-size: 16px; color: var(--muted); margin-bottom: 12px;">Você vê como organizar as informações antes de fazer suas próprias anotações.</p>
-        <p style="font-size: 16px; color: var(--muted); margin-bottom: 24px;">Isso permite registrar situações da rotina, combinar a participação de outros cuidadores e reunir dúvidas para uma consulta.</p>
-        
-        <button class="btn-outline" type="button" data-zoom="img/v4-pag-11-zoom.webp" data-sample-idx="2" data-caption="Exemplo de ficha de observação e anotações para o tutor">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          <span>VER UM EXEMPLO PREENCHIDO</span>
-        </button>
-      </div>
-
-      <div class="ferramentas-media-duo">
-        <div class="media-item-box">
-          <button class="media-thumb-btn" type="button" data-zoom="img/ficha-em-uso-zoom.jpg" data-caption="Observe a rotina. Registre o que vale conversar na consulta." aria-label="Ampliar foto do tutor consultando a ficha">
-            <img src="img/ficha-em-uso.jpg" width="747" height="1000" loading="lazy" alt="Tutor preenchendo a ficha de observação enquanto o cão descansa por perto">
-          </button>
-          <div class="media-thumb-caption">
-            <strong>“Observe a rotina. Registre o que vale conversar na consulta.”</strong>
-            <span>Cena ilustrativa da ficha impressa em uso.</span>
-          </div>
-        </div>
-      </div>
+      <figure class="lp-page-shot" data-zoom="img/v4-geladeira-vol08.webp" data-caption="Página real do Volume 08, feita para a porta da geladeira" role="button" tabindex="0" aria-label="Ampliar a página de geladeira do Volume 08">
+        <img src="img/v4-geladeira-vol08.webp" width="720" height="1019" loading="lazy" alt="Página para a geladeira do Volume 08, medo de fogos e trovões">
+        <figcaption>Página real do Volume 08 — a de fogos, para dezembro.</figcaption>
+      </figure>
     </div>
 
-    <!-- Painel de Apoio ao Tutor Card -->
     <div class="painel-apoio-card">
       <div class="painel-apoio-preview">
-        <button type="button" data-painel="true" data-zoom="img/v4-painel-zoom.jpg" data-caption="Painel de Apoio ao Tutor: guia prático com sinais de urgência, quando falar com o veterinário, lembretes dos 12 temas e contatos de emergência" aria-label="Ampliar Painel de Apoio ao Tutor">
-          <img src="img/v4-painel.jpg" width="800" height="1131" loading="lazy" alt="Painel de Apoio ao Tutor: SOS, urgências e contatos da rotina">
+        <button type="button" data-painel="true" data-zoom="img/v4-painel-zoom.jpg" data-caption="Painel de Apoio ao Tutor: sinais de urgência, quando falar com o veterinário, lembretes dos 12 temas e contatos" aria-label="Ampliar Painel de Apoio ao Tutor">
+          <img src="img/v4-painel.jpg" width="800" height="1131" loading="lazy" alt="Painel de Apoio ao Tutor: semáforo do cuidado e contatos da rotina">
           <span class="painel-zoom-badge" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/></svg>
             <span>Toque para ampliar</span>
@@ -3136,265 +3147,146 @@ src="https://www.facebook.com/tr?id=35007983302181877&ev=PageView&noscript=1"
         </button>
       </div>
       <div class="painel-apoio-copy">
-        <span class="sec-tag">Recurso de Emergência e Segurança</span>
+        <span class="sec-tag">Incluído</span>
         <h3>Painel de Apoio ao Tutor</h3>
-        <p>Um guia visual para ter à mão na geladeira ou mural: <strong>Na dúvida, comece pelo cuidado.</strong></p>
-        <p>Reúne o semáforo do cuidado (sinais de urgência, quando ligar para o veterinário e o que fazer na rotina), campos para os contatos de emergência e o índice dos 12 temas.</p>
-        <button class="btn-primary" type="button" data-painel="true" data-zoom="img/v4-painel-zoom.jpg" data-caption="Painel de Apoio ao Tutor: Guia prático de contatos e apoio">
+        <p>Uma página para a geladeira: <strong>na dúvida, comece pelo cuidado.</strong> O semáforo (urgência, ligar para o veterinário, rotina), campos para os contatos de emergência e o índice dos 12 temas.</p>
+        <button class="btn-outline" type="button" data-painel="true" data-zoom="img/v4-painel-zoom.jpg" data-caption="Painel de Apoio ao Tutor">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/></svg>
-          <span>AMPLIAR E LER O PAINEL</span>
+          <span>LER O PAINEL</span>
         </button>
-        <p class="painel-disclaimer">O painel é educativo e não substitui avaliação ou atendimento profissional.</p>
       </div>
     </div>
-
   </div>
 </section>
 
 <!-- ==========================================================================
-     OFERTA & CHECKOUT SEQUENCE
+     DOBRA 7 — ANCORAGEM + OFERTA
      ========================================================================== -->
 <section class="section-oferta" id="comprar" aria-labelledby="t-oferta">
   <div class="wrap">
-    
     <div class="oferta-header">
-      <span class="sec-tag" style="color: var(--gold-lt);">A Coleção Completa</span>
-      <h2 id="t-oferta">Você para de adivinhar e começa a ter resposta.</h2>
-      <div class="oferta-narrative">
-        <p>Hoje, a dúvida pode estar no passeio.</p>
-        <p>Em outra fase, na chegada de um filhote, na adaptação de um cão adotado ou nas mudanças da idade.</p>
-        <p>Em vez de ficar em dúvida se está fazendo certo, você consulta o guia daquele momento, aplica a orientação e anota o que observou. <strong>E quando for ao veterinário, vai sabendo o que perguntar.</strong></p>
-      </div>
+      <span class="sec-tag" style="color: var(--gold-lt);">A coleção completa</span>
+      <h2 id="t-oferta">Quanto custa continuar adivinhando?</h2>
     </div>
 
-    <!-- Mobile-First Box: Imagem → Resumo → R$27 → CTA → Garantia -->
+    <ul class="lp-ancora">
+      <li><span>Uma aula particular com adestrador</span><b>R$150 a R$300</b></li>
+      <li><span>Um pacote de 5 aulas</span><b>R$600 a R$900</b></li>
+      <li><span>A almofada, o tapete, o sofá</span><b>você sabe quanto custou</b></li>
+      <li class="total"><span>A coleção inteira, 12 guias</span><b>R$27</b></li>
+    </ul>
+    <p class="lp-ancora-nota"><strong>R$2,25 por guia — menos que um cafezinho.</strong> A coleção não substitui um adestrador: ela mostra por onde começar e quando vale chamar um.</p>
+
     <div class="oferta-main-box">
-      
-      <!-- 1. Imagem da Coleção -->
-      <div class="oferta-editorial-media" data-zoom="img/colecao-editorial-zoom.jpg" data-caption="Os 12 volumes fazem parte da sua coleção completa Meu Cão Descomplicado" role="button" tabindex="0" aria-label="Ampliar Composição Editorial da Coleção">
-        <img src="img/colecao-editorial.jpg" width="900" height="900" loading="lazy" alt="Composição editorial dos 12 volumes da coleção Meu Cão Descomplicado">
-        <div class="oferta-editorial-caption">
-          <span>“Os 12 volumes fazem parte da sua coleção.”</span>
-        </div>
+      <div class="lp-covers" id="lp-covers" role="button" tabindex="0" aria-label="Ver as 12 capas em tamanho maior">
+        <img src="img/capa-v4-01-thumb.webp" width="220" height="311" loading="lazy" alt="Capa do volume 01">
+        <img src="img/capa-v4-02-thumb.webp" width="220" height="311" loading="lazy" alt="Capa do volume 02">
+        <img src="img/capa-v4-03-thumb.webp" width="220" height="311" loading="lazy" alt="Capa do volume 03">
+        <img src="img/capa-v4-04-thumb.webp" width="220" height="311" loading="lazy" alt="Capa do volume 04">
+        <img src="img/capa-v4-05-thumb.webp" width="220" height="311" loading="lazy" alt="Capa do volume 05">
+        <img src="img/capa-v4-06-thumb.webp" width="220" height="311" loading="lazy" alt="Capa do volume 06">
+        <img src="img/capa-v4-07-thumb.webp" width="220" height="311" loading="lazy" alt="Capa do volume 07">
+        <img src="img/capa-v4-08-thumb.webp" width="220" height="311" loading="lazy" alt="Capa do volume 08">
+        <img src="img/capa-v4-09-thumb.webp" width="220" height="311" loading="lazy" alt="Capa do volume 09">
+        <img src="img/capa-v4-10-thumb.webp" width="220" height="311" loading="lazy" alt="Capa do volume 10">
+        <img src="img/capa-v4-11-thumb.webp" width="220" height="311" loading="lazy" alt="Capa do volume 11">
+        <img src="img/capa-v4-12-thumb.webp" width="220" height="311" loading="lazy" alt="Capa do volume 12">
       </div>
 
-      <!-- 2. Resumo do que você recebe -->
       <div class="oferta-included-container">
-        <h3 class="oferta-included-title">Na prática, você tem:</h3>
-        
-        <ul class="oferta-included-list">
-          <li>
-            <div class="oferta-check-icon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            <div class="oferta-item-text">
-              <strong>Resposta para cada momento</strong>
-              <span>12 guias temáticos — um para a dúvida de hoje, outro para a de amanhã.</span>
-            </div>
-          </li>
-
-          <li>
-            <div class="oferta-check-icon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            <div class="oferta-item-text">
-              <strong>Orientação à vista no lugar certo</strong>
-              <span>72 cards com exemplos de aplicação para consultar ou imprimir onde a dúvida aparece.</span>
-            </div>
-          </li>
-
-          <li>
-            <div class="oferta-check-icon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            <div class="oferta-item-text">
-              <strong>O que observar e como registrar</strong>
-              <span>Fichas para anotar a rotina e levar organizado para o veterinário.</span>
-            </div>
-          </li>
-
-          <li>
-            <div class="oferta-check-icon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            <div class="oferta-item-text">
-              <strong>Ferramentas específicas de cada tema</strong>
-              <span>Com exemplos fictícios preenchidos para mostrar como usar.</span>
-            </div>
-          </li>
-
-          <li>
-            <div class="oferta-check-icon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            <div class="oferta-item-text">
-              <strong>Capa geral, guia de entrada e Painel de Apoio ao Tutor</strong>
-              <span>15 arquivos em PDF ao todo.</span>
-            </div>
-          </li>
+        <h3 class="oferta-included-title">Meu Cão Descomplicado — 15 arquivos</h3>
+        <ul class="lp-inclui">
+          <li><b>12 guias</b> de 14 páginas, um por tema</li>
+          <li><b>72 cards</b> para consultar ou imprimir</li>
+          <li><b>12 fichas</b> para levar ao veterinário</li>
+          <li><b>Painel de Apoio ao Tutor</b></li>
+          <li><b>Guia de entrada</b> e capa geral</li>
         </ul>
       </div>
 
-      <!-- 3. Preço & 4. CTA -->
       <div class="oferta-price-action-box">
-        <p class="price-product-name">Meu Cão Descomplicado</p>
-        
         <div class="price-display" aria-label="Preço: R$ 27,00">
-          <span class="price-currency">R$</span>
-          <span>27</span>
-          <span class="price-cents">,00</span>
+          <span class="price-currency">R$</span><span>27</span><span class="price-cents">,00</span>
         </div>
-        
-        <p class="price-condition">Pagamento único pela coleção completa.</p>
-        
-        <a class="btn-primary btn-block" href="https://pay.hotmart.com/O108186457I?checkoutMode=10&sck=HOTMART_PRODUCT_PAGE&off=xmpilkt4&hotfeature=32" data-checkout>QUERO MINHA COLEÇÃO POR R$27</a>
-        <p class="oferta-microcopy">Arquivos em PDF. Leia no celular, imprima só o que precisar ou a coleção inteira. Não há envio físico.</p>
+        <p class="price-condition">Pagamento único. Sem mensalidade.</p>
+        <a class="btn-primary btn-block" href="https://pay.hotmart.com/O108186457I?checkoutMode=10&sck=HOTMART_PRODUCT_PAGE&off=xmpilkt4&hotfeature=32" data-checkout>QUERO MEU CÃO DESCOMPLICADO</a>
+        <p class="oferta-microcopy">Acesso digital logo após o pagamento · Garantia de 15 dias · Sem envio físico</p>
       </div>
-
     </div>
 
-    <!-- 5. Garantia de 15 Dias -->
+    <p class="lp-futuro">Você compra hoje a dúvida de hoje — e leva as 11 de amanhã. Filhote, adoção, velhice: a coleção acompanha a fase. <strong>Por isso são 12, e não 1.</strong></p>
+
+    <!-- DOBRA 8 — GARANTIA -->
     <div class="guarantee-box">
-      <div class="guarantee-seal" aria-hidden="true">
-        <div><b>15</b>dias</div>
-      </div>
+      <div class="guarantee-seal" aria-hidden="true"><div><b>15</b>dias</div></div>
       <div class="guarantee-text">
-        <strong>15 dias para avaliar a coleção.</strong>
-        <p>Se o material não for o que você esperava, você pode solicitar o reembolso dentro de 15 dias.</p>
+        <strong>Se não servir, o dinheiro volta — e você fica com o material.</strong>
+        <p>Não precisa justificar. Não precisa devolver nada. Não tem letra miúda. Se em 15 dias nenhum card tiver te ajudado, você pede o reembolso pela Hotmart e pronto. O risco é nosso, não seu.</p>
       </div>
     </div>
 
+    <p class="lp-fonte-precos">Preços de adestramento: médias nacionais publicadas pelo Cronoshare em janeiro de 2026.</p>
   </div>
 </section>
 
 <!-- ==========================================================================
-     FAQ (ANTES DE COMPRAR, TIRE SUAS DÚVIDAS)
+     DOBRA 9 — FAQ
      ========================================================================== -->
 <section class="section-faq" aria-labelledby="t-faq">
   <div class="wrap faq-container">
     <div class="section-head">
-      <span class="sec-tag">Perguntas Frequentes</span>
-      <h2 id="t-faq">Antes de comprar, tire suas dúvidas.</h2>
+      <span class="sec-tag">Perguntas frequentes</span>
+      <h2 id="t-faq">Antes de comprar.</h2>
     </div>
 
     <div class="faq-list">
-      
       <details class="faq-item">
-        <summary class="faq-question">
-          <span>Vou receber livros impressos em casa?</span>
-          <span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
-        </summary>
-        <div class="faq-answer">
-          <p>Não. Você recebe os arquivos em PDF. Pode consultar na tela ou imprimir as páginas desejadas. Não há envio de livros, papel ou outros materiais físicos.</p>
-        </div>
+        <summary class="faq-question"><span>Resolve qualquer comportamento?</span><span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+        <div class="faq-answer"><p><strong>Não, e nenhum material sério promete isso.</strong> O que ele faz é te dar por onde começar — e te levar organizado até quem resolve. Cada volume diz quando a situação pede veterinário ou profissional de comportamento.</p></div>
       </details>
 
       <details class="faq-item">
-        <summary class="faq-question">
-          <span>Preciso imprimir a coleção inteira?</span>
-          <span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
-        </summary>
-        <div class="faq-answer">
-          <p>Não. Os volumes são independentes e você escolhe o que deseja imprimir. Pode começar por um tema e selecionar apenas as páginas que pretende usar.</p>
-        </div>
+        <summary class="faq-question"><span>Substitui o veterinário?</span><span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+        <div class="faq-answer"><p>Não, e é importante que não substitua. A coleção organiza o cuidado da rotina — o que observar, o que ajustar, o que registrar — para você chegar à consulta sabendo o que perguntar.</p></div>
       </details>
 
       <details class="faq-item">
-        <summary class="faq-question">
-          <span>Preciso ler todos os volumes antes de começar?</span>
-          <span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
-        </summary>
-        <div class="faq-answer">
-          <p>Não. Abra o guia de entrada, escolha um assunto e confira os cuidados do volume. Depois, use o mapa para encontrar os cards correspondentes.</p>
-        </div>
+        <summary class="faq-question"><span>Como eu recebo?</span><span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+        <div class="faq-answer"><p>Por e-mail, com acesso à área de membros da Hotmart, logo após o pagamento ser aprovado. São 15 arquivos em PDF. Não há envio de material físico.</p></div>
       </details>
 
       <details class="faq-item">
-        <summary class="faq-question">
-          <span>Consigo usar sem impressora?</span>
-          <span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
-        </summary>
-        <div class="faq-answer">
-          <p>Sim. Você pode consultar os PDFs na tela. No celular, pode ser necessário ampliar. Se preferir papel, uma copiadora também pode imprimir os arquivos.</p>
-        </div>
+        <summary class="faq-question"><span>Preciso de impressora?</span><span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+        <div class="faq-answer"><p>Não. Tudo funciona no celular. Se quiser papel, imprima só o que for usar — em casa ou numa copiadora, em A4 comum.</p></div>
       </details>
 
       <details class="faq-item">
-        <summary class="faq-question">
-          <span>Posso preencher as fichas no celular?</span>
-          <span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
-        </summary>
-        <div class="faq-answer">
-          <p>Os campos foram preparados para preencher à mão após a impressão. Os PDFs têm links de navegação, mas não são formulários digitais interativos.</p>
-        </div>
+        <summary class="faq-question"><span>Preciso ler os 12 volumes?</span><span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+        <div class="faq-answer"><p>Não. Abra o volume da dúvida de hoje, encontre a situação no mapa e vá direto ao card. Os outros ficam guardados para quando precisar.</p></div>
       </details>
 
       <details class="faq-item">
-        <summary class="faq-question">
-          <span>É um curso com aulas em vídeo?</span>
-          <span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
-        </summary>
-        <div class="faq-answer">
-          <p><strong>Não — e isso é proposital.</strong> A coleção é feita para consultar na hora da dúvida, não para assistir aulas e esquecer. São 12 guias objetivos que você abre quando precisa: na volta do veterinário, no passeio difícil, na chegada de um filhote. Resultado no seu ritmo, sem agenda e sem compromisso de horário.</p>
-        </div>
+        <summary class="faq-question"><span>Posso preencher as fichas no celular?</span><span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+        <div class="faq-answer"><p>As fichas foram feitas para preencher à mão depois de impressas. Os PDFs têm links de navegação, mas não são formulários digitais.</p></div>
       </details>
 
       <details class="faq-item">
-        <summary class="faq-question">
-          <span>O material resolve qualquer comportamento?</span>
-          <span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
-        </summary>
-        <div class="faq-answer">
-          <p><strong>Não substitui avaliação profissional — e nenhum material sério promete isso.</strong> O que a coleção faz é te dar por onde começar: orientações práticas, exemplos reais de aplicação e fichas para registrar o que você observa e levar organizado ao veterinário. É o que falta entre "não sei o que fazer" e "vou procurar ajuda": um caminho.</p>
-        </div>
+        <summary class="faq-question"><span>É o mesmo produto que o Volto Já?</span><span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
+        <div class="faq-answer"><p>Não. O Meu Cão Descomplicado é esta coleção de guias em PDF. O Volto Já é um curso em áudio vendido à parte.</p></div>
       </details>
-
-      <details class="faq-item">
-        <summary class="faq-question">
-          <span>Substitui veterinário ou profissional de comportamento?</span>
-          <span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
-        </summary>
-        <div class="faq-answer">
-          <p><strong>Não, e é importante que não substitua.</strong> A coleção organiza o cuidado da rotina — o que observar, o que ajustar, o que registrar — para você chegar à consulta sabendo exatamente o que perguntar. O profissional avalia; a coleção te dá o mapa para o dia a dia.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary class="faq-question">
-          <span>É o mesmo produto que o VOLTO JÁ?</span>
-          <span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
-        </summary>
-        <div class="faq-answer">
-          <p>Não. Meu Cão Descomplicado é esta coleção de guias em PDF sobre 12 temas. Recursos de outras ofertas, como áudios, não estão incluídos.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary class="faq-question">
-          <span>E se eu não gostar?</span>
-          <span class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
-        </summary>
-        <div class="faq-answer">
-          <p>Você tem 15 dias para avaliar o material e solicitar o reembolso.</p>
-        </div>
-      </details>
-
     </div>
   </div>
 </section>
 
 <!-- ==========================================================================
-     FECHAMENTO / FINAL CALL TO ACTION
+     FECHAMENTO
      ========================================================================== -->
 <section class="section-fechamento" aria-labelledby="t-fechamento">
   <div class="wrap fechamento-box">
     <h2 id="t-fechamento">Escolha por onde começar. A coleção acompanha.</h2>
-    <p>12 guias digitais, 72 cards e exemplos para consultar nas dúvidas da rotina com seu cão.</p>
-    
-    <a class="btn-primary btn-block" href="https://pay.hotmart.com/O108186457I?checkoutMode=10&sck=HOTMART_PRODUCT_PAGE&off=xmpilkt4&hotfeature=32" data-checkout>QUERO O MEU CÃO DESCOMPLICADO POR R$27</a>
-    
-    <p class="fechamento-terms">Pagamento único · Coleção completa · 15 dias de garantia</p>
-    <p class="fechamento-sub">Arquivos em PDF. Você consulta no celular ou imprime em casa. Não há envio físico.</p>
+    <p>12 guias, 72 cards e as fichas para a dúvida de hoje e as próximas.</p>
+    <a class="btn-primary btn-block" href="https://pay.hotmart.com/O108186457I?checkoutMode=10&sck=HOTMART_PRODUCT_PAGE&off=xmpilkt4&hotfeature=32" data-checkout>QUERO COM 15 DIAS DE GARANTIA</a>
+    <p class="fechamento-terms">R$27 · Pagamento único · Acesso logo após o pagamento</p>
   </div>
 </section>
 
@@ -3544,10 +3436,10 @@ src="https://www.facebook.com/tr?id=35007983302181877&ev=PageView&noscript=1"
      ========================================================================== -->
 <div class="sticky-bar" id="sticky-bar" aria-hidden="true">
   <div class="sticky-text">
-    <strong>Meu Cão Descomplicado</strong>
-    <span>12 volumes por R$27 · Pagamento único</span>
+    <strong>R$27 · 15 dias de garantia</strong>
+    <span>12 guias · pagamento único</span>
   </div>
-  <a class="btn-primary" href="https://pay.hotmart.com/O108186457I?checkoutMode=10&sck=HOTMART_PRODUCT_PAGE&off=xmpilkt4&hotfeature=32" data-checkout tabindex="-1">Quero a coleção</a>
+  <a class="btn-primary" href="https://pay.hotmart.com/O108186457I?checkoutMode=10&sck=HOTMART_PRODUCT_PAGE&off=xmpilkt4&hotfeature=32" data-checkout tabindex="-1">Quero o mapa</a>
 </div>
 
 <!-- ==========================================================================
@@ -3769,7 +3661,7 @@ const makeShelfItem = (v, i, isClone) => `
     </div>
   </button>
 `;
-shelfTrack.innerHTML = VOLUMES.map((v, i) => makeShelfItem(v, i, false)).join("") + 
+if (shelfTrack) shelfTrack.innerHTML = VOLUMES.map((v, i) => makeShelfItem(v, i, false)).join("") + 
                        VOLUMES.map((v, i) => makeShelfItem(v, i, true)).join("");
 
 /* Renderização dos Chips dos 12 Volumes */
@@ -3782,6 +3674,10 @@ volChips.innerHTML = VOLUMES.map((v, i) => `
     <span>${escapeHtml(v.short)}</span>
   </button>
 `).join("");
+
+/* Nome do problema para o botão de cada volume */
+const VOL_CTA = ["DO LATIDO","DO XIXI","DO PASSEIO","DO CÃO SOZINHO","DA CASA DESTRUÍDA","DAS VISITAS","DE COMER FEZES","DOS FOGOS","DO FILHOTE","DOS BRINQUEDOS","DO CÃO IDOSO","DA ADOÇÃO"];
+const VOL_STICKY = ["Guia do latido","Guia do xixi","Guia do passeio","Guia do cão sozinho","Guia da casa destruída","Guia das visitas","Guia de comer fezes","Guia dos fogos","Guia do filhote","Guia dos brinquedos","Guia do cão idoso","Guia da adoção"];
 
 /* Seleção de Volume */
 function selectVolume(index, shouldScroll) {
@@ -3828,8 +3724,8 @@ function selectVolume(index, shouldScroll) {
         </ul>
 
         <div class="vol-detail-footer">
-          <p class="vol-detail-footer-note">Este e todos os outros 11 volumes estão incluídos por <strong>R$27</strong>.</p>
-          <a class="btn-primary" href="https://pay.hotmart.com/O108186457I?checkoutMode=10&sck=HOTMART_PRODUCT_PAGE&off=xmpilkt4&hotfeature=32" data-checkout>QUERO A COLEÇÃO COMPLETA</a>
+          <p class="vol-detail-footer-note">Este e os outros 11 volumes por <strong>R$27</strong>, pagamento único.</p>
+          <a class="btn-primary lp-btn" href="${CHECKOUT_URL}" data-checkout>QUERO O GUIA ${VOL_CTA[index]} + OS OUTROS 11 — R$27</a>
         </div>
       </div>
     </div>
@@ -3849,6 +3745,8 @@ function selectVolume(index, shouldScroll) {
   const n = parseInt(fromQuery || fromHash || "", 10);
   if (n >= 1 && n <= VOLUMES.length) {
     selectVolume(n - 1, false);
+    const st = document.querySelector("#sticky-bar .sticky-text span");
+    if (st) st.textContent = VOL_STICKY[n - 1] + " + os outros 11";
     window.addEventListener("load", () => {
       const sec = document.getElementById("escolha-volume");
       if (sec) setTimeout(() => sec.scrollIntoView({ behavior: "smooth", block: "start" }), 350);
@@ -3857,6 +3755,14 @@ function selectVolume(index, shouldScroll) {
     selectVolume(0, false);
   }
 })();
+
+// Links das cenas para o volume certo
+document.querySelectorAll("[data-goto-vol]").forEach(a => a.addEventListener("click", e => {
+  e.preventDefault();
+  const idx = parseInt(a.dataset.gotoVol, 10) - 1;
+  selectVolume(idx, false);
+  document.getElementById("escolha-volume").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+}));
 
 // Eventos de clique nos chips e prateleira
 volChips.addEventListener("click", e => {
@@ -3867,7 +3773,7 @@ volChips.addEventListener("click", e => {
   }
 });
 
-shelfTrack.addEventListener("click", e => {
+if (shelfTrack) shelfTrack.addEventListener("click", e => {
   const card = e.target.closest(".shelf-card");
   if (card) {
     const idx = parseInt(card.dataset.volIdx, 10);
@@ -3891,6 +3797,11 @@ galleryGrid.innerHTML = VOLUMES.map(v => `
 btnVerCapas.addEventListener("click", () => {
   galleryDialog.showModal();
 });
+const lpCovers = document.getElementById("lp-covers");
+if (lpCovers) {
+  lpCovers.addEventListener("click", () => galleryDialog.showModal());
+  lpCovers.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); galleryDialog.showModal(); } });
+}
 galleryClose.addEventListener("click", () => {
   galleryDialog.close();
 });
